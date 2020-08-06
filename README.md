@@ -37,8 +37,9 @@
 |postage_payer_id|integer|references, null: false, foreign_key: true|
 |category_id|integer|references, null: false, foreign_key: true|
 |item_condition_id|integer|references, null: false, foreign_key: true|
-|seller_id|integer|references, null: false, foreign_key: true|
 |preparation_day_id|integer|references, null: false, foreign_key: true|
+|postage_type_id|integer|references, null: false, foreign_key: true|
+|seller_id|integer|references, null: false, foreign_key: true|
 |buyer_id|integer|references, foreign_key: true|
 |deal_closed_date|integer|timestamp|
 
