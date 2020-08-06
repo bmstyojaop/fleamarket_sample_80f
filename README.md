@@ -234,6 +234,7 @@
 
 | Column | Type | Options|
 |--------|------|--------|
+|phone_number|integer||
 |post_code|integer(7)|null: false|
 |prefecture_code|integer|null: false|
 |city|string|null: false|
