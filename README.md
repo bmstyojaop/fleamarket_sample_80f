@@ -30,8 +30,8 @@
 | Column | Type | Options|
 |--------|------|--------|
 |item_name|string|null: false|
-|author|string|null: false, foreign_key: true|
-|company|string|null: false, foreign_key: true|
+|author|string|null: false|
+|company|string|null: false|
 |price|integer|null: false|
 |item_introduction|text|null:false|
 |postage_payer_id|integer|references, null: false, foreign_key: true|
