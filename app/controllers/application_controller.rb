@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+  # デバイス用のストソングパラメーターを設置
+  def configure_permitted_parameters
+    devise_parameter_sanitaizer.permit(:sign_up, keys: [:name, :age])
+  end
 
   private
 
@@ -13,4 +20,5 @@ class ApplicationController < ActionController::Base
       password == Rails.application.credentials[:basic_auth][:pass]
     end
   end
+
 end
