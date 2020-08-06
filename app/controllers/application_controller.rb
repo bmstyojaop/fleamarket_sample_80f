@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
   # デバイス用のストソングパラメーターを設置
   def configure_permitted_parameters
-    devise_parameter_sanitaizer.permit(:sign_up, keys: [:name, :age])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end
 
   private
