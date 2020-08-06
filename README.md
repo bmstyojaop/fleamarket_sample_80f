@@ -1,7 +1,7 @@
 
 # fleamarket_sample_80f README
 
-## ビジネス書に特化したフリマアプリ。探しているものが、ピンポイントで見つかる!
+## ビジネス書に特化したフリマアプリ。探しているものが、ピンポイントで見つかる。
 
 ## usersテーブル
 
@@ -30,9 +30,8 @@
 | Column | Type | Options|
 |--------|------|--------|
 |item_name|string|null: false|
-|item_image_id|integer|references, null: false, foreign_key: true|
-|author_id|integer|references, null: false, foreign_key: true|
-|company_id|integer|references, null: false, foreign_key: true|
+|author|string|null: false|
+|company|string|null: false|
 |price|integer|null: false|
 |item_introduction|text|null:false|
 |postage_payer_id|integer|references, null: false, foreign_key: true|
@@ -123,28 +122,6 @@
 
 
 
-## authorsテーブル
-
-| Column | Type | Options|
-|--------|------|--------|
-|authors|string|null: false| 
-
-### Association
-
-- has_many :items
-
-
-
-## companiesテーブル
-
-| Column | Type | Options|
-|--------|------|--------|
-|company|string|null: false| 
-
-### Association
-
-- has_many :items
-
 
 
 ## item_imagesテーブル
@@ -234,6 +211,7 @@
 
 | Column | Type | Options|
 |--------|------|--------|
+|phone_number|integer||
 |post_code|integer(7)|null: false|
 |prefecture_code|integer|null: false|
 |city|string|null: false|
