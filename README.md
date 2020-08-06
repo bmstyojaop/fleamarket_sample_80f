@@ -30,7 +30,6 @@
 | Column | Type | Options|
 |--------|------|--------|
 |item_name|string|null: false|
-|item_image_id|integer|references, null: false, foreign_key: true|
 |author_id|integer|references, null: false, foreign_key: true|
 |company_id|integer|references, null: false, foreign_key: true|
 |price|integer|null: false|
