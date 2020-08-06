@@ -49,8 +49,6 @@
 - has_many :favorites
 - has_many :item_images, dependent: :destroy
 - belongs_to :category
-- belongs_to :company
-- belongs_to :author
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - belongs_to_active_hash :postage_type
