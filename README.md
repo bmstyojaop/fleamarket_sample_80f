@@ -41,7 +41,7 @@
 |seller_id|integer|references, null: false, foreign_key: true|
 |buyer_id|integer|references, foreign_key: true|
 |preparation_day_id|integer|null: false, foreign_key: true|
-???|deal_closed_date|integer|timestamp|
+|deal_closed_date|integer|timestamp|
 
 
 ### Association
@@ -59,6 +59,7 @@
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :item_condition
 ???- Gem: jp_prefectureを使用して都道府県コードを取得
+- Gem: jp_prefectureを使用して都道府県コードを取得
 
 
 
