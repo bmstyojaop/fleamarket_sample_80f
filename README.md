@@ -30,8 +30,8 @@
 | Column | Type | Options|
 |--------|------|--------|
 |item_name|string|null: false|
-|author_id|integer|references, null: false, foreign_key: true|
-|company_id|integer|references, null: false, foreign_key: true|
+|author|string|null: false, foreign_key: true|
+|company|string|null: false, foreign_key: true|
 |price|integer|null: false|
 |item_introduction|text|null:false|
 |postage_payer_id|integer|references, null: false, foreign_key: true|
@@ -121,28 +121,6 @@
 - has_many :items
 
 
-
-## authorsテーブル
-
-| Column | Type | Options|
-|--------|------|--------|
-|authors|string|null: false| 
-
-### Association
-
-- has_many :items
-
-
-
-## companiesテーブル
-
-| Column | Type | Options|
-|--------|------|--------|
-|company|string|null: false| 
-
-### Association
-
-- has_many :items
 
 
 
