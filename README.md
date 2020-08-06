@@ -38,8 +38,8 @@
 |category_id|integer|references, null: false, foreign_key: true|
 |item_condition_id|integer|references, null: false, foreign_key: true|
 |seller_id|integer|references, null: false, foreign_key: true|
+|preparation_day_id|integer|references, null: false, foreign_key: true|
 |buyer_id|integer|references, foreign_key: true|
-|preparation_day_id|integer|null: false, foreign_key: true|
 |deal_closed_date|integer|timestamp|
 
 
@@ -62,12 +62,13 @@
 | Column | Type | Options|
 |--------|------|--------|
 |name|string|null: false| 
-|ancestry|string|null: false|
+|ancestry|string|null: false, index: true|
 
 
 ### Association
 
 - has_many :items
+- has_ancestry
 
 
 
