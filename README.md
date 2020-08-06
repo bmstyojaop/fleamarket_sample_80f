@@ -58,11 +58,7 @@
 - belongs_to_active_hash :preparation_day
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :item_condition
-???- Gem: jp_prefectureを使用して都道府県コードを取得
 - Gem: jp_prefectureを使用して都道府県コードを取得
-
-
-
 
 ## categoriesテーブル
 
