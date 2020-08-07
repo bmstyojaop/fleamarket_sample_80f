@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 2020_08_06_072821) do
 
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone_number"
-    t.integer "post_code", null: false
+    t.integer "", null: false
     t.integer "prefecture_code", null: false
-    t.string "city", null: false
-    t.string "house_number", null: false
-    t.string "building_number"
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building"
     t.string "destination_family_name", null: false
     t.string "destination_first_name", null: false
     t.string "destination_family_name_kana", null: false

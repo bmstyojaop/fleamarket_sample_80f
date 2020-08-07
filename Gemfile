@@ -68,3 +68,7 @@ gem 'devise'
 
 gem "haml-rails"
 
+gem 'jp_prefecture'
+
+gem 'jquery-rails'
+

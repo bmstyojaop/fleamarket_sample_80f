@@ -90,7 +90,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   protected
   def sending_destination_params
-    params.require(:sending_destination).permit(:phone_number, :post_code, :prefecture_code, :city, :house_number, :building_number, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana)
+    params.require(:sending_destination).permit(:phone_number, :post_code, :prefecture_code, :address_city, :address_street, :address_building, :destination_family_name, :destination_first_name, :destination_family_name_kana, :destination_first_name_kana)
   end
 
 end
