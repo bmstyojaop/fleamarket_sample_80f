@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2020_08_06_033715) do
 =======
 <<<<<<< HEAD
@@ -104,6 +105,18 @@ ActiveRecord::Schema.define(version: 2020_08_06_225227) do
 ActiveRecord::Schema.define(version: 2020_08_06_033715) do
 >>>>>>> cf17d494ff6af4bb3374bdcfee2e8ee3013f9616
 
+>>>>>>> Stashed changes
+=======
+ActiveRecord::Schema.define(version: 2020_08_06_080725) do
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "expiration_year", null: false
+    t.integer "expiration_month", null: false
+    t.integer "security_code", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "card_number"
+  end
 >>>>>>> Stashed changes
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
