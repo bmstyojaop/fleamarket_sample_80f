@@ -16,6 +16,8 @@ class User < ApplicationRecord
                    message: "全角カタカナのみで入力して下さい"
                  }
   
+  validates :nickname, presence: true, length: { maximum: 10 }
+
 
   has_one :sending_destination 
 end
