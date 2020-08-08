@@ -1,0 +1,32 @@
+
+-# %header
+-#   .Header
+-#     .Header__top
+
+-#       .Header__top--logo
+-#         = link_to image_tag("logo.png", alt: "ロゴ画像"), root_path
+
+-#       .Header__top--search
+-#     .Header__bottom
+
+.Wrapper
+  %header.Header
+    .Header__top
+      .Header__top--logo
+        = link_to image_tag("logo.png", alt: "ロゴ画像"), root_path
+      .Header__top--search
+        = form_with(url: '#', local: true, method: :get, class: "search-form") do |form|
+          = form.text_field :keyword, placeholder: "", class: "search-input"
+          = form.submit "", class: "search-btn" 
+
+    .Header__bottom
+      .Header__bottom--left
+        %h3 カテゴリ
+        %h3 ブランド
+      .Header__bottom--right
+        - if user_signed_in?
+          %h3 マイページ
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          = link_to '新規登録', new_user_registration_path
+          = link_to 'ログイン', new_user_session_path
