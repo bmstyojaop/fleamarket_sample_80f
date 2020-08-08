@@ -8,8 +8,8 @@ FactoryBot.define do
     family_name_kana      {"ジンナン"}
     first_name_kana       {"タロウ"}
     birthday              {"2020-01-01"}
-    password              {"00000000"}
-    password_confirmation {"00000000"}
+    password              {"abcdefgh"}
+    password_confirmation {"abcdefgh"}
   end
 
 end

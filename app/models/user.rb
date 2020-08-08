@@ -7,13 +7,13 @@ class User < ApplicationRecord
   validates :family_name, :first_name, presence: true,
                  format: {
                    with: /\A[ぁ-んァ-ン一-龥]/,
-                   message: "全角のみで入力して下さい"
+                  #  message: "全角のみで入力して下さい"
                  }
                  
   validates :family_name_kana, :first_name_kana, presence: true,
                  format: {
                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                   message: "全角カタカナのみで入力して下さい"
+                  #  message: "全角カタカナのみで入力して下さい"
                  }
   
   validates :nickname, presence: true, length: { maximum: 10 }
