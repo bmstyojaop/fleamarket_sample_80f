@@ -69,6 +69,11 @@ end
 
 gem 'devise'
 
+
+gem 'active_hash'
+
+gem 'ancestry'
+
 gem "haml-rails"
 
 gem 'jp_prefecture'
