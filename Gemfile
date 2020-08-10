@@ -80,3 +80,9 @@ gem 'jp_prefecture'
 
 gem 'jquery-rails'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog-aws'
+
