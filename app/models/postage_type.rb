@@ -1,5 +1,4 @@
 class PostageType < ActiveHash::Base
-  # has_many :items
 
   self.data = [
     {id: 1, name: 'ヤマト宅急便'}, {id: 2, name: 'ゆうパック'}, {id: 3, name: 'ヤマト便'},
