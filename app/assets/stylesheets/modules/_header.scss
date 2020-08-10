@@ -17,7 +17,12 @@ a {
 }
 
 header {
+  width: 100vw;
   display: block;
+  position: fixed;
+  z-index: 9999;
+  background-color: #fff;
+  border-bottom: 1px solid;
 }
 .Header {
   padding: 0 60px;
