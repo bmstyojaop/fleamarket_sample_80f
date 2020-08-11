@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :item_images, dependent: :destroy
-  belongs_to :category
+  # belongs_to :category
   belongs_to_active_hash :postage_type
   belongs_to_active_hash :preparation_day
   belongs_to_active_hash :postage_payer
@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   validates :auction_status,               presence: true
   validates :postage_payer,                presence: true
   validates :shipping_origin,              presence: true
-  validates :preparation_day,              presence: true
+  validates :preparation_id,              presence: true
   validates :price,                        presence: true
   validates :images,                       presence: true
 

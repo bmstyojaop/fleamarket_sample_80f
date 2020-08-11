@@ -5,7 +5,5 @@ class Categories < ActiveHash::Base
       {id: 5, name: '職種別'},{id: 6, name: 'ライフスタイル'},{id: 7, name: 'その他'}
   ]
 
-  include ActiveHash::Associations
-  has_many :items
 
 end

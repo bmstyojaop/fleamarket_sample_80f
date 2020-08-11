@@ -5,7 +5,5 @@ class PostageType < ActiveHash::Base
     {id: 4, name: '飛脚宅配便'}
   ]
 
-  include ActiveHash::Associations
-  has_many :items
 
 end
