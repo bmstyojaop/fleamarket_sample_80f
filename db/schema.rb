@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_090116) do
+ActiveRecord::Schema.define(version: 2020_08_07_235905) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -78,13 +78,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_090116) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image"
-    t.text "introduction"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone_number"
     t.integer "post_code", null: false
@@ -109,6 +102,8 @@ ActiveRecord::Schema.define(version: 2020_08_10_090116) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
+    t.text "image"
+    t.text "introduce"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

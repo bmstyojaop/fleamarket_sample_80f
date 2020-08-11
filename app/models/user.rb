@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, presence: true
@@ -20,7 +21,6 @@ class User < ApplicationRecord
 
 
   has_one :sending_destination 
-  has_one :profile
   # has_many :seller_items, foreign_key: 'seller_id', class_name: 'Item'
   # has_many :buyer_items, foreign_key: 'buyer_id', class_name: 'Item'
 end

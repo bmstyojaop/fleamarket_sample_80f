@@ -3,10 +3,12 @@
     .UserDetails__field
       %section.UserDetails__field--image
         .UserImage
-          .UserImage__icon
-
+          - if @user.image?
+            = image_tag @user.image.url, class: "UserImage__icon "
+          - else
+            = icon('far', smile-wink), class: "UserImage__icon "
         .UserEdit
-          = link_to edit_profile_path(current_user), method: :get do
+          = link_to edit_user_path(current_user), method: :get do
             = @nickname
 
       %section.UserDetails__field--introduction
