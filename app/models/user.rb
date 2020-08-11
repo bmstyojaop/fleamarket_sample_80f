@@ -9,5 +9,7 @@ class User < ApplicationRecord
   # has_many :buyer_items, foreign_key: 'buyer_id', class_name: 'Item'
   validates :nickname, presence: true
   has_one :sending_destination
+  has_one :card, dependent: :destroy
 
 end
+  

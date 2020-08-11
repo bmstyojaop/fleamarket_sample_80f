@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 2020_08_06_033715) do
-=======
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_08_06_091952) do
+ActiveRecord::Schema.define(version: 2020_08_06_081355) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -25,30 +20,16 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.references :user , null: false, foreign_key: true
+    t.string :customer_id, null: false
+    t.string :card_id, null: false
+  end
+
   create_table "item_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_condition", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "item_name", null: false
-    t.string "author", null: false
-    t.string "company", null: false
-    t.integer "price", null: false
-    t.text "item_introduction", null: false
-    t.bigint "category_id", null: false
-    t.bigint "item_condition_id", null: false
-    t.bigint "postage_type_id", null: false
-    t.bigint "postage_payer_id", null: false
-    t.bigint "preparation_day_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
-    t.index ["postage_payer_id"], name: "index_items_on_postage_payer_id"
-    t.index ["postage_type_id"], name: "index_items_on_postage_type_id"
-    t.index ["preparation_day_id"], name: "index_items_on_preparation_day_id"
   end
 
   create_table "postage_payers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,39 +67,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.index ["user_id"], name: "index_sending_destinations_on_user_id"
   end
 
-ActiveRecord::Schema.define(version: 2020_08_06_225227) do
-
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.string "url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-=======
-ActiveRecord::Schema.define(version: 2020_08_06_033715) do
->>>>>>> cf17d494ff6af4bb3374bdcfee2e8ee3013f9616
-
->>>>>>> Stashed changes
-=======
-ActiveRecord::Schema.define(version: 2020_08_06_080725) do
-
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "expiration_year", null: false
-    t.integer "expiration_month", null: false
-    t.integer "security_code", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "card_number"
-  end
->>>>>>> Stashed changes
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -132,9 +80,4 @@ ActiveRecord::Schema.define(version: 2020_08_06_080725) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "item_conditions"
-  add_foreign_key "items", "postage_payers"
-  add_foreign_key "items", "postage_types"
-  add_foreign_key "items", "preparation_days"
 end
