@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/edit'
+  get 'profile/edit'
   get 'users/show'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -10,4 +12,5 @@ Rails.application.routes.draw do
   root to: "items#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: :show
+  resources :profiles, only: :edit
 end

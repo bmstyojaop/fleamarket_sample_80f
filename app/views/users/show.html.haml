@@ -1,2 +1,13 @@
-= @nickname
-= @address
+.UserBackground
+  .UserDetails
+    .UserDetails__field
+      %section.UserDetails__field--image
+        .UserImage
+          .UserImage__icon
+
+        .UserEdit
+          = link_to edit_profile_path(current_user), method: :get do
+            = @nickname
+
+      %section.UserDetails__field--introduction
+
