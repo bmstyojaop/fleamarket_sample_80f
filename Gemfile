@@ -75,3 +75,5 @@ gem "haml-rails"
 
 gem 'payjp'
 
+gem 'dotenv-rails'
+
