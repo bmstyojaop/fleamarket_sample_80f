@@ -20,9 +20,10 @@ class Item < ApplicationRecord
   validates :item_name,                    presence: true,    length: { maximum: 40 } 
   validates :item_introduction,            presence: true,    length: { maximum: 1000 } 
   validates :category_id,                  presence: true
-  validates :item_condition,               presence: true
+  validates :item_condition_id,               presence: true
   validates :auction_status,               presence: true
-  validates :postage_payer,                presence: true
+  validates :postage_payer_id,                presence: true
+  validates :postage_type_id,                presence: true
   validates :shipping_origin,              presence: true
   validates :preparation_id,              presence: true
   validates :price,                        presence: true
