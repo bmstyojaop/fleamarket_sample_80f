@@ -2,19 +2,45 @@
   .UserDetails
     .UserDetails__field
       = form_with model: @user, local: true do |f|
-        %section.UserDetails__field--image
-          .UserImage 
-            - if @user.image?
-              = f.label :image, class: 'UserImage__icon' do
-                .UserImage__icon{style: "background-image: url(#{@user.image})"}
-          
-            - else
-              = f.label :image, class: 'UserImage__icon' do
-                = icon('far', 'smile-wink')
-                = f.file_field :image, class: 'Hidden'
-          .UserEdit
-            = f.label class: 'UserNickname' do
-              = f.text_area :nickname
+        - if @user.background_image?
+          .UserDetails__field--image{style: "background-image: url(#{@user.background_image})"}
+            .UserImage 
+              - if @user.image?
+                = f.label :image, class: 'UserImage__icon' do
+                  = image_tag @user.image.url, class: "UserImage__icon "
+                  = f.file_field :image, class: 'Hidden'
+
+              - else
+                = f.label :image, class: 'UserImage__icon' do
+                  = icon('far', 'smile-wink')
+                  = f.file_field :image, class: 'Hidden'
+              .BackgroundImageForm
+                = f.label :background_image do
+                  = icon('far', 'smile-wink')
+                  = f.file_field :background_image, class: 'Hidden'
+            .UserEdit
+              = f.label class: 'UserNickname' do
+                = f.text_field :nickname
+            
+        - else
+          .UserDetails__field--image
+            .UserImage 
+              - if @user.image?
+                = f.label :image, class: 'UserImage__icon' do
+                  = image_tag @user.image.url, class: "UserImage__icon "
+                  = f.file_field :image, class: 'Hidden'
+
+              - else
+                = f.label :image, class: 'UserImage__icon' do
+                  = icon('far', 'smile-wink')
+                  = f.file_field :image, class: 'Hidden'
+              .BackgroundImageForm
+                = f.label :background_image do
+                  = icon('far', 'smile-wink')
+                  = f.file_field :background_image, class: 'Hidden'
+            .UserEdit
+              = f.label class: 'UserNickname' do
+                = f.text_field :nickname
 
         %section.UserDetails__field--introduction
           = f.text_area :introduce, placeholder: '自己紹介をしてみましょう。', rows: "10"

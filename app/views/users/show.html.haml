@@ -2,6 +2,7 @@
   .UserDetails
     .UserDetails__field
       %section.UserDetails__field--image
+        
         .UserImage
           - if @user.image?
             = image_tag @user.image.url, class: "UserImage__icon "

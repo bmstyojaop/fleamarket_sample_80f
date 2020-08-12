@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
   def show
-    @nickname = current_user.nickname
     @user = User.find(params[:id])
-    @introduce = User.find(params[:id])
+    @nickname = @user.nickname
+    
   end
   
   def edit
-    @nickname = current_user.nickname
     @user = User.find(params[:id])
+    @nickname = @user.nickname
+    
   end
 
   def update
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:nickname, :image, :introduce)
+      params.require(:user).permit(:nickname, :image, :introduce, :background_image)
     end
 
 end
