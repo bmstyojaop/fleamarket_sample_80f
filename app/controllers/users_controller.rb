@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @nickname = current_user.nickname
     @user = User.find(params[:id])
+    @introduce = User.find(params[:id])
   end
   
   def edit
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to "/users/#{current_user.id}"
     else
       render :edit
     end
