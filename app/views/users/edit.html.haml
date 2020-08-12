@@ -2,8 +2,8 @@
   .UserDetails
     .UserDetails__field
       = form_with model: @user, local: true do |f|
-        - if @user.background_image?
-          .UserDetails__field--image{style: "background-image: url(#{@user.background_image})"}
+        - if @user.background?
+          .UserDetails__field--image{style: "background-image: url(#{@user.background})"}
             .UserImage 
               - if @user.image?
                 = f.label :image, class: 'UserImage__icon' do
@@ -15,9 +15,9 @@
                   = icon('far', 'smile-wink')
                   = f.file_field :image, class: 'Hidden'
               .BackgroundImageForm
-                = f.label :background_image do
+                = f.label :background do
                   = icon('far', 'smile-wink')
-                  = f.file_field :background_image, class: 'Hidden'
+                  = f.file_field :background, class: 'Hidden'
             .UserEdit
               = f.label class: 'UserNickname' do
                 = f.text_field :nickname
@@ -35,15 +35,15 @@
                   = icon('far', 'smile-wink')
                   = f.file_field :image, class: 'Hidden'
               .BackgroundImageForm
-                = f.label :background_image do
+                = f.label :background do
                   = icon('far', 'smile-wink')
-                  = f.file_field :background_image, class: 'Hidden'
+                  = f.file_field :background, class: 'Hidden'
             .UserEdit
               = f.label class: 'UserNickname' do
                 = f.text_field :nickname
 
         %section.UserDetails__field--introduction
-          = f.text_area :introduce, placeholder: '自己紹介をしてみましょう。', rows: "10"
+          = f.text_area :introduction, placeholder: '自己紹介をしてみましょう。', rows: "10"
 
         = f.submit 'Send', class: 'submit' 
 

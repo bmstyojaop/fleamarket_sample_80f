@@ -9,9 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :family_name_kana, null: false
       t.string :first_name_kana, null: false
       t.date :birthday,  null: false
-      t.text :background_image
+      t.text :background
       t.text :image
-      t.text :introduce
+      t.text :introduction
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
