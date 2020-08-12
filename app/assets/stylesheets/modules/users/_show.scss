@@ -1,3 +1,7 @@
+.Hidden {
+  display: none;
+}
+
 .UserBackground {
   background-color: #f5f5f5;
   height: 100%;
@@ -16,7 +20,7 @@
     flex-direction: column;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.4);
     &--image {
-      background-color: orange;
+      background-color: #d3d3d3;
       height: 230px;
       width: 100%;
       padding-top: 50px;
@@ -26,9 +30,12 @@
       background-position: center;
     }
     &--introduction {
-      background-color: palegreen;
+      // background-color: palegreen;
       height: 200px;
       width: 100%;
+      overflow: scroll;
+      padding: 20px 40px;
+      overflow-wrap: break-word;
     }
   }
 }
@@ -39,13 +46,37 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   &__icon {
     // background-color: forestgreen;
-    height: 100px;
     width: 100px;
+    height: 100px;
     border-radius: 50%;
     font-size: 100px;
   }
+  &__default {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #3ccace;
+    font-size: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.BackgroundForm {
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+  &__icon {
+    font-size: 30px;
+    color: rgba(255,255,255,0.8);
+
+  }
+
 }
 
 .UserEdit{
@@ -55,19 +86,34 @@
   font-size: 30px;
 }
 
-.Hidden {
-  display: none;
-}
 
-.UserDetails__field--introduction{
-  overflow: scroll;
-  padding: 20px 40px;
-  overflow-wrap: break-word;
 
-}
 
-.UserBackground{
+
+
+.IntroductionForm {
   height: 100%;
   width: 100%;
+  overflow: scroll;
+  background-color: rgba(0,0,0,0);
+  border-style: none;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
+}
+
+.SubmitArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  &__btn {
+    width: 200px;
+    height: 50px;
+    color: #fff;
+    font-size: 30px;
+    background-color: #3ccace;
+    border-style: none;
+    border-radius: 40px;
+    cursor: pointer;
+  }
 }
 

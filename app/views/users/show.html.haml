@@ -1,17 +1,24 @@
 .UserBackground
   .UserDetails
     .UserDetails__field
-      %section.UserDetails__field--image
-        
-        .UserImage
-          - if @user.image?
-            = image_tag @user.image.url, class: "UserImage__icon "
-          - else
-            = icon('far', 'smile-wink', class: 'UserImage__icon')
+      - if @user.background?
+        .UserDetails__field--image{style: "background-image: url(#{@user.background})"}
+          .UserImage
+            - if @user.image?
+              = image_tag @user.image.url, class: "UserImage__icon "
+            - else
+              = icon('far', 'smile-wink', class: 'UserImage__default')
+      - else
+        .UserDetails__field--image
+          .UserImage
+            - if @user.image?
+              = image_tag @user.image.url, class: "UserImage__icon "
+            - else
+              = icon('far', 'smile-wink', class: 'UserImage__default')
 
-        .UserEdit
-          = link_to edit_user_path(current_user), method: :get do
-            = @nickname
+          .UserEdit
+            = link_to edit_user_path(current_user), method: :get do
+              = @nickname
 
       %section.UserDetails__field--introduction
         = @user.introduction
