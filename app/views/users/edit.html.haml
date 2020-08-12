@@ -3,8 +3,19 @@
     .UserDetails__field
       %section.UserDetails__field--image
         .UserImage
-          .UserImage__icon
-
+          - if @user.image?
+            = form_with model: @user, local: true do |f|
+              = f.label :image, class: 'UserImage__icon' do
+                .UserImage__icon{style: "background-image: url(#{@user.image})"}
+                = f.file_field :image, class: 'Hidden'
+              = f.submit 'Send', class: 'submit' 
+          
+          - else
+            = form_with model: @user, local: true do |f|
+              = f.label :image, class: 'UserImage__icon' do
+                = icon('far', 'smile-wink')
+                = f.file_field :image, class: 'Hidden'
+              = f.submit 'Send', class: 'submit' 
         .UserEdit
           = @nickname
 

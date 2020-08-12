@@ -41,6 +41,7 @@
     height: 100px;
     width: 100px;
     border-radius: 50%;
+    font-size: 100px;
   }
 }
 
@@ -49,4 +50,8 @@
   display: flex;
   justify-content: center;
   font-size: 30px;
+}
+
+.Hidden {
+  display: none;
 }
