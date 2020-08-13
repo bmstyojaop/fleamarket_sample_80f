@@ -1,10 +1,10 @@
-.mainShow
-  .mainShow__box
-    .mainShow__box__content
-      .mainShow__box__content__top
-        .mainShow__box__content__top__itemBox
+.main
+  .main__box
+    .main__box__content
+      .main__box__content__top
+        .main__box__content__top__item
           %h2= @item.item_name
-          .mainShow__box__content__top__itemBox__images
+          .main__box__content__top__item__images
             %ul.image__main
               %li.image__main__list
                 = image_tag(@images_first.image.url, class: "main__photo")
@@ -13,18 +13,18 @@
                     - @images.each do |img|
                       %li.image__sub__list
                         = image_tag(img.image.url, class: "sub__photo", size: "75x75")
-          .mainShow__box__content__top__itemBox__price
+          .main__box__content__top__item__price
             %span.price
               = @item.price.to_s(:delimited)
               円
-            .mainShow__box__content__top__itemBox__price__detail
+            .main__box__content__top__item__price__detail
               %span
                 (税込)
               %span
                 送料込み 
-          .mainShow__box__content__top__itemBox__explanation
+          .main__box__content__top__item__explanation
             = @item.item_introduction
-          .mainShow__box__content__top__itemBox__table
+          .main__box__content__top__item__table
             %table 
               %tr 
                 %th 出品者
@@ -53,13 +53,13 @@
               %tr
                 %th 発送日の目安
                 %td= @item.preparation_day.name
-          .mainShow__box__content__top__itemBox__option
+          .main__box__content__top__item__option
             %ul.report
               %li.report__list
                 = link_to "#" do
                   -# = icon('fa', 'flag')
                   不適切な商品の通報
-        .mainShow__box__content__top__editDeleteBuy
+        .main__box__content__top__edit
           - if current_user == @user
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
