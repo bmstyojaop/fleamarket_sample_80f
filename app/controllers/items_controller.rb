@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
 
-  # before_action :show_all_instance, only: [:show ]
-
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
@@ -21,9 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def  post_done
-    @item = Item.where(user_id: current_user.id).last
-  end
 
   def show
     @item = Item.find(params[:id])
@@ -32,15 +27,20 @@ class ItemsController < ApplicationController
     @images_first = Image.where(item_id: params[:id]).first
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to  root_path
+    else
+      flash.now[:alert] = '削除できませんでした'
+      render :show
+    end
+  end
+
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price,:author, :company, :preparation_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price,:author, :company, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
   
-  # def show_all_instance
-  #   @user = User.find(@item.user_id)
-  #   @images = Image.where(item_id: params[:id])
-  #   @images_first = Image.where(item_id: params[:id]).first
-  # end
 
 end
