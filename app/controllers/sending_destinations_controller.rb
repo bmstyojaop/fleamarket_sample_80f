@@ -2,14 +2,15 @@ class SendingDestinationsController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @sending_destination = @user.sending_destination
-    
   end
 
   def update
-    if current_user.update(sending_destination_params)
+    @user = User.find(params[:id])
+    @sending_destination = @user.sending_destination
+    if @sending_destination.update(sending_destination_params)
       redirect_to "/users/#{current_user.id}"
     else
-      render :edit_sending_destination
+      render :edit_user_sending_destination
     end
   end
 
