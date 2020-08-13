@@ -1,106 +1,115 @@
-.new__page__header
-= form_for @item do |f|
-  = render 'layouts/error_messages', model: f.object
-  .name__field
-    .form__label
-      .lavel__name
-        出品画像
-      .lavel__Required
-        [必須]
-  #image-box-1
-    %label.img-label{for: "img-file"}
-      .item-num-0#image-box__container
-        = f.fields_for :images do |image|
-          #append-js
-            .js-file_group{"data-index" => "#{image.index}"}
-              = image.file_field :image, type: 'file', id:"img-file", class:'js-file', data:{index:"0"}
-        %i.fas.fa-camera
-  .item_name
-    .form__label
-      .lavel__name
-        商品名
-      .lavel__Required
-        [必須]
-    =f.text_field :item_name, class: 'name_field', placeholder: "40字まで"
-  .item_introduction
-    .form__label
-      .lavel__name 
-        商品の説明
-      .lavel__Required
-        [必須]
-    =f.text_field :item_introduction, class: 'explanation_field', placeholder: '商品の説明（必須 1,000文字以内）'.html_safe 
-  .append__category
-    .category
+- if user_signed_in?
+  .new__page__header
+  = form_for @item do |f|
+    = render 'layouts/error_messages', model: f.object
+    .name__field
       .form__label
-        .lavel__name 
-          カテゴリー
+        .lavel__name
+          出品画像
         .lavel__Required
           [必須]
-      =f.collection_select(:category_id, Categories.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .author
-    .form__label
-      .lavel__name
-        著者
-    =f.text_field :author, class: 'serect_field', placeholder: ""
-  .company
-    .form__label
-      .lavel__name
-        出版社
-    =f.text_field :company, class: 'serect_field', placeholder: ""
-  .item_condition
-    .form__label
-      .lavel__name
-        商品の状態
-      .lavel__Required
-        [必須]
-    =f.collection_select(:item_condition_id, ItemCondition.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .postage_payer
-    .form__label
-      .lavel__name
-        配送料の負担
-      .lavel__Required
-        [必須]
-    =f.collection_select(:postage_payer_id, PostagePayer.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .shipping_origin
-    .form__label
-      .lavel__name
-        発送元の地域
-      .lavel__Required
-        [必須]
-    =f.collection_select(:shipping_origin, Shipping.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .preparation_day
-    .form__label
-      .lavel__name
-        発送元までの日数
-      .lavel__Required
-        [必須]
-    =f.collection_select(:preparation_id, PreparationDay.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .postage_type
-    .form__label
-      .lavel__name
-        配送方法
-      .lavel__Required
-        [必須]
-    =f.collection_select(:postage_type_id, PostageType.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
-  .exhibition_price
-    .form__label
-      .lavel__name
-        販売価格
-      .lavel__Required
-        [必須]
-    .note
-      出品価格(300円 〜 9,999,999円)
-    =f.number_field :price, min:300,max:999999999,placeholder: "０",class:"exhibition_price_field" 
-    円
-    %br
-    .sales_commission
-      .lavel__name
-        販売手数料（10%）
-      #sales_commission_price
-    .sales_profit
-      .lavel__name
-        販売利益
-      #sales_profit_proce
-      
-  .send
-    = f.submit "出品する",class:"send__sipping_btn"
+    #image-box-1
+      %label.img-label{for: "img-file"}
+        .item-num-0#image-box__container
+          = f.fields_for :images do |image|
+            #append-js
+              .js-file_group{"data-index" => "#{image.index}"}
+                = image.file_field :image, type: 'file', id:"img-file", class:'js-file', data:{index:"0"}
+          %i.fas.fa-camera
+    .item_name
+      .form__label
+        .lavel__name
+          商品名
+        .lavel__Required
+          [必須]
+      =f.text_field :item_name, class: 'name_field', placeholder: "40字まで"
+    .item_introduction
+      .form__label
+        .lavel__name 
+          商品の説明
+        .lavel__Required
+          [必須]
+      =f.text_field :item_introduction, class: 'explanation_field', placeholder: '商品の説明（必須 1,000文字以内）'.html_safe 
+    .append__category
+      .category
+        .form__label
+          .lavel__name 
+            カテゴリー
+          .lavel__Required
+            [必須]
+        =f.collection_select(:category_id, Category.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .author
+      .form__label
+        .lavel__name
+          著者
+      =f.text_field :author, class: 'serect_field', placeholder: ""
+    .company
+      .form__label
+        .lavel__name
+          出版社
+      =f.text_field :company, class: 'serect_field', placeholder: ""
+    .item_condition
+      .form__label
+        .lavel__name
+          商品の状態
+        .lavel__Required
+          [必須]
+      =f.collection_select(:item_condition_id, ItemCondition.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .postage_payer
+      .form__label
+        .lavel__name
+          配送料の負担
+        .lavel__Required
+          [必須]
+      =f.collection_select(:postage_payer_id, PostagePayer.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .shipping_origin
+      .form__label
+        .lavel__name
+          発送元の地域
+        .lavel__Required
+          [必須]
+      =f.collection_select(:shipping_origin_id, ShippingOrigin.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .preparation_day
+      .form__label
+        .lavel__name
+          発送元までの日数
+        .lavel__Required
+          [必須]
+      =f.collection_select(:preparation_day_id, PreparationDay.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .postage_type
+      .form__label
+        .lavel__name
+          配送方法
+        .lavel__Required
+          [必須]
+      =f.collection_select(:postage_type_id, PostageType.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    .exhibition_price
+      .form__label
+        .lavel__name
+          販売価格
+        .lavel__Required
+          [必須]
+      .note
+        出品価格(300円 〜 9,999,999円)
+      =f.number_field :price, min:300,max:999999999,placeholder: "０",class:"exhibition_price_field" 
+      円
+      %br
+      .sales_commission
+        .lavel__name
+          販売手数料（10%）
+        #sales_commission_price
+      .sales_profit
+        .lavel__name
+          販売利益
+        #sales_profit_proce
+        
+    .send
+      = f.submit "出品する",class:"send__sipping_btn"
+- else
+  .done#fullsize
+    .done__title
+      商品を出品するには新規会員登録またはログインが必要です
+    .done__backlink
+      = link_to '新規会員登録', new_user_registration_path, class: 'link'
+    .done__backlink
+      = link_to 'ログイン', new_user_session_path, class: 'link'
