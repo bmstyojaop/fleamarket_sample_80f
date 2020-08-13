@@ -33,6 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
+
   # GET /resource/sign_up
   # def new
   #   super

@@ -1,0 +1,58 @@
+%h2 商品送り先の情報を登録
+= form_for model: @sending_destination, local: true do  |f|
+  = render "devise/shared/error_messages", resource: @sending_destination
+
+  .field
+    = f.label :post_code
+    %br/
+    = f.text_field :post_code
+
+  .field
+    = f.label :prefecture_code
+    %br/
+    = f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' 
+
+  .field
+    = f.label :address_city
+    %br/
+    = f.text_field :address_city
+
+  .field
+    = f.label :address_street
+    %br/
+    = f.text_field :address_street
+
+  .field
+    = f.label :address_building
+    %br/
+    = f.text_field :address_building
+
+  .field
+    = f.label :destination_family_name
+    %br/
+    = f.text_field :destination_family_name
+
+  .field
+    = f.label :destination_first_name
+    %br/
+    = f.text_field :destination_first_name
+
+  .field
+    = f.label :destination_family_name_kana
+    %br/
+    = f.text_field :destination_family_name_kana
+
+  .field
+    = f.label :destination_first_name_kana
+    %br/
+    = f.text_field :destination_first_name_kana
+
+  .field
+    = f.label :phone_number
+    %br/
+    = f.text_field :phone_number
+
+  .actions
+    = f.submit "Sign up"
+
+= render "devise/shared/links"

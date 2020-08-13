@@ -1,6 +1,20 @@
 .UserBackground
   .UserDetails
-    .UserDetails__field
+    -if user_signed_in? && current_user.id.to_s == params[:id]
+      %nav.UserDetails__nav
+        %h2 
+          編集・設定
+          = icon('fas', 'cog')
+        %sectoin.UserDetails__nav--element
+          = link_to edit_user_path(current_user), method: :get do
+            プロフィール
+        %sectoin.UserDetails__nav--element
+          = link_to edit_sending_destination_user_path(current_user), method: :get do
+            発送元・お届け先住所
+        -# %sectoin.UserDetails__nav--element
+        -# %sectoin.UserDetails__nav--element
+
+    %main.UserDetails__field
       - if @user.background?
         .UserDetails__field--image{style: "background-image: url(#{@user.background})"}
           .UserImage
@@ -32,3 +46,4 @@
 
       %section.UserDetails__field--introduction
         = @user.introduction
+      
