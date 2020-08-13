@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sending_destinations/edit'
   get 'profiles/edit'
   get 'profile/edit'
   get 'users/show'
@@ -12,9 +13,6 @@ Rails.application.routes.draw do
   root to: "items#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
-    member do
-      get 'edit_sending_destination'
-      post 'update_sending_destination'
-    end
+    resources :sending_destinations, only: [:edit, :update]
   end
 end
