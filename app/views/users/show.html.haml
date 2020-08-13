@@ -8,6 +8,13 @@
               = image_tag @user.image.url, class: "UserImage__icon "
             - else
               = icon('far', 'smile-wink', class: 'UserImage__default')
+          .UserEdit
+            -if user_signed_in? && current_user.id.to_s == params[:id]
+              = link_to edit_user_path(current_user), method: :get do
+                = @nickname
+            - else 
+              = @nickname
+
       - else
         .UserDetails__field--image
           .UserImage
@@ -17,7 +24,10 @@
               = icon('far', 'smile-wink', class: 'UserImage__default')
 
           .UserEdit
-            = link_to edit_user_path(current_user), method: :get do
+            -if user_signed_in? && current_user.id.to_s == params[:id]
+              = link_to edit_user_path(current_user), method: :get do
+                = @nickname
+            - else 
               = @nickname
 
       %section.UserDetails__field--introduction
