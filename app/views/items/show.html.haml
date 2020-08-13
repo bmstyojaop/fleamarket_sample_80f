@@ -1,69 +1,68 @@
-.main
-  .main__box
-    .main__box__content
-      .main__box__content__top
-        .main__box__content__top__item
-          %h2= @item.item_name
-          .main__box__content__top__item__images
-            %ul.image__main
-              %li.image__main__list
-                = image_tag(@images_first.image.url, class: "main__photo")
-                .image__box
-                  %ul.image__sub
-                    - @images.each do |img|
-                      %li.image__sub__list
-                        = image_tag(img.image.url, class: "sub__photo", size: "75x75")
-          .main__box__content__top__item__price
-            %span.price
-              = @item.price.to_s(:delimited)
-              円
-            .main__box__content__top__item__price__detail
-              %span
-                (税込)
-              %span
-                送料込み 
-          .main__box__content__top__item__explanation
-            = @item.item_introduction
-          .main__box__content__top__item__table
-            %table 
-              %tr 
-                %th 出品者
-                %td= @user.nickname
-              %tr 
-                %th カテゴリー
-                %td= @item.category.name
-              %tr
-                %th 著者
-                %td= @item.author
-              %tr
-                %th 出版社
-                %td= @item.company
-              %tr
-                %th 商品の状態
-                %td= @item.item_condition_id
-              %tr
-                %th 配送料の負担
-                %td= @item.postage_payer.name
-              %tr
-                %th 発送元の地域
-                %td= @item.shipping_origin.name
-              %tr
-                %th 発送方法
-                %td= @item.postage_type.name
-              %tr
-                %th 発送日の目安
-                %td= @item.preparation_day.name
-          .main__box__content__top__item__option
-            %ul.report
-              %li.report__list
-                = link_to "#" do
-                  -# = icon('fa', 'flag')
-                  不適切な商品の通報
-        .main__box__content__top__edit
-          - if current_user == @user
-            = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
-            = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
-          - elsif user_signed_in?
-            = link_to "購入画面に進む", root_path
-            -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
-          - else
+.Box
+  .Box__content
+    .Box__content__top
+      .Box__content__item
+        %h2= @item.item_name
+        .Images
+          %ul.Image__main
+            %li.Image__list
+              = image_tag(@images_first.image.url, class: "main__photo")
+              .Image__box
+                %ul.Image__sub
+                  - @images.each do |img|
+                    %li.Image__sub__list
+                      = image_tag(img.image.url, class: "sub__photo", size: "75x75")
+        .Box__price
+          %span.price
+            = @item.price.to_s(:delimited)
+            円
+          .Box__price__detail
+            %span
+              (税込)
+            %span
+              送料込み 
+        .Box__explanation
+          = @item.item_introduction
+        .Box__table
+          %table 
+            %tr 
+              %th 出品者
+              %td= @user.nickname
+            %tr 
+              %th カテゴリー
+              %td= @item.category.name
+            %tr
+              %th 著者
+              %td= @item.author
+            %tr
+              %th 出版社
+              %td= @item.company
+            %tr
+              %th 商品の状態
+              %td= @item.item_condition_id
+            %tr
+              %th 配送料の負担
+              %td= @item.postage_payer.name
+            %tr
+              %th 発送元の地域
+              %td= @item.shipping_origin.name
+            %tr
+              %th 発送方法
+              %td= @item.postage_type.name
+            %tr
+              %th 発送日の目安
+              %td= @item.preparation_day.name
+        .Box__option
+          %ul.report
+            %li.report__list
+              = link_to "#" do
+                -# = icon('fa', 'flag')
+                不適切な商品の通報
+      .Box__edit
+        - if current_user == @user
+          = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
+          = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
+        - elsif user_signed_in?
+          = link_to "購入画面に進む", root_path
+          -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
+        - else
