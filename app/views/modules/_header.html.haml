@@ -18,7 +18,7 @@
       
       %ul.NavLists__right
         - if user_signed_in?
-          %h3 マイページ
+          = link_to "マイページ", "/users/#{current_user.id}"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete
         - else
           %li.NavLists__right--login.NavLists__right--item

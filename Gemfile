@@ -80,3 +80,8 @@ gem 'jp_prefecture'
 
 gem 'jquery-rails'
 
+gem 'carrierwave'
+
+gem 'font-awesome-sass'
+
+gem 'mini_magick'
