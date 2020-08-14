@@ -20,9 +20,9 @@ ja:
         address_building: 建物名
         destination_family_name: 姓
         destination_first_name: 名
-        destination_family_name_kana: セイ
-        destination_first_name_kana: メイ
-        phone_number: 電話番号
+        destination_family_name_kana: フリガナ(セイ)
+        destination_first_name_kana: フリガナ(メイ)
+        phone_number: 電話番号(ハイフンなし)
 
     errors:
       messages:

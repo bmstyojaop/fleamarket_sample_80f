@@ -3,56 +3,56 @@
   = render "devise/shared/error_messages", resource: @sending_destination
 
   .field
-    = f.label :'郵便番号(ハイフンなし)'
+    = f.label :post_code
     %br/
     = f.text_field :post_code
 
   .field
-    = f.label :都道府県
+    = f.label :prefecture_code
     %br/
     = f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' 
 
   .field
-    = f.label :市区町村
+    = f.label :address_city
     %br/
     = f.text_field :address_city
 
   .field
-    = f.label :番地
+    = f.label :address_street
     %br/
     = f.text_field :address_street
 
   .field
-    = f.label :建物名
+    = f.label :address_building
     %br/
     = f.text_field :address_building
 
   .field
-    = f.label :姓
+    = f.label :destination_family_name
     %br/
     = f.text_field :destination_family_name
 
   .field
-    = f.label :名
+    = f.label :destination_first_name
     %br/
     = f.text_field :destination_first_name
 
   .field
-    = f.label :セイ
+    = f.label :destination_family_name_kana
     %br/
     = f.text_field :destination_family_name_kana
 
   .field
-    = f.label :メイ
+    = f.label :destination_first_name_kana
     %br/
     = f.text_field :destination_first_name_kana
 
   .field
-    = f.label :'電話番号(ハイフンなし)'
+    = f.label :phone_number
     %br/
     = f.text_field :phone_number
 
   .actions
-    = f.submit "サインアップ"
+    = f.submit "Sign up"
 
 = render "devise/shared/links"
