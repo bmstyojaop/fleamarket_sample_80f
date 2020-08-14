@@ -67,14 +67,14 @@
         発送元の地域
       .lavel__Required
         [必須]
-    =f.collection_select(:shipping_origin, Shipping.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    =f.collection_select(:shipping_origin_id, ShippingOrigin.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
   .preparation_day
     .form__label
       .lavel__name
         発送元までの日数
       .lavel__Required
         [必須]
-    =f.collection_select(:preparation_id, PreparationDay.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+    =f.collection_select(:preparation_day_id, PreparationDay.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
   .postage_type
     .form__label
       .lavel__name

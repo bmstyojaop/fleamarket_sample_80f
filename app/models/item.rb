@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   # belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
 
 
-  belongs_to_active_hash :categories
-  belongs_to_active_hash :Shipping
+  belongs_to_active_hash :category
+  belongs_to_active_hash :Shipping_origin
 
   has_many :images
  
@@ -24,8 +24,8 @@ class Item < ApplicationRecord
   validates :auction_status,               presence: true
   validates :postage_payer_id,                presence: true
   validates :postage_type_id,                presence: true
-  validates :shipping_origin,              presence: true
-  validates :preparation_id,              presence: true
+  validates :shipping_origin_id,              presence: true
+  validates :preparation_day_id,              presence: true
   validates :price,                        presence: true
   validates :images,                       presence: true
 
