@@ -1,6 +1,20 @@
 ---
 ja:
   activerecord:
+    attributes:
+        item:
+          images: "出品画像"
+          item_name: "商品名"
+          item_introduction: "商品の説明"
+          category_id: "カテゴリー"
+          author: "著者"
+          company: "出版社"
+          item_condition_id: "商品の状態"
+          postage_payer_id: "配送料の負担"
+          shipping_origin_id: "発送元の地域"
+          preparation_day_id: "発送までの日数"
+          postage_type_id: "発送方法"
+          price: "販売価格"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -2,6 +2,7 @@
 #   has_many :items
 #   has_ancestry
 # end
+# categoryが完成するまでActiveHash代用中です。categoryが完成するまでコメントアウトしておきます。
 class Category < ActiveHash::Base
 
   self.data = [
