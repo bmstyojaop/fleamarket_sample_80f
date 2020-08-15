@@ -13,7 +13,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認用）
       sending_destination:
-        post_code: 郵便番号
+        post_code: 郵便番号(ハイフンなし)
         prefecture_code: 都道府県
         address_city: 市区町村
         address_street: 番地

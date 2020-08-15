@@ -1,3 +1,17 @@
+.Requre {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+.Red {
+  background-color: #e1352d;
+  color: #fff;
+}
+.Gray {
+  background-color: #ccc;
+  color: #fff;
+}
 .LocationNav {
   background-color: #f5f5f5;
   width: 100%;
@@ -48,13 +62,15 @@
   background-color: #d5d5d5;
   height: 100%;
   display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
   &__form {
 
     background-color: #fff;
     width: 600px;
     height: auto;
     margin-left: 30%;
-    margin-top: 50px;
+    // margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,11 +107,13 @@
         display: flex;
         justify-content: center;
         border-radius: 10px;
+        background-color: #3ccace;
+        color: #fff;
       }
     }
   }
   &__error {
-    margin-top: 50px;
+    // margin-top: 50px;
     background-color: #d5d5d5;
     height: auto;
     width: 30%;
@@ -108,4 +126,31 @@
 
 .InputBirthday {
   display: flex;
+}
+
+.RegistrationSaved {
+  margin-top: 30px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+
+  a {
+    text-decoration: none;
+    background-color: #3ccace;
+    color: #fff;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 20px;
+    line-height: 50px;
+    border-radius: 20px;
+    box-shadow: 0.3px 1px 1px 0.3px rgba(0,0,0,0.8);
+  }
+  a:active {
+    box-shadow: none;
+    position: relative;
+    top: 3px;
+  }
 }
