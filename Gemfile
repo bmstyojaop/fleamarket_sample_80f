@@ -83,6 +83,8 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 
+gem 'font-awesome-sass'
+
 gem 'mini_magick'
 
 gem 'fog-aws'

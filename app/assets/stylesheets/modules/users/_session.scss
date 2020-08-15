@@ -1,0 +1,64 @@
+.SessionField {
+  width: 100%;
+  background-color: #d5d5d5;
+  height: 100%;
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  &__form {
+
+    background-color: #fff;
+    width: 600px;
+    height: auto;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px ;
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      display: flex;
+      justify-content: center;
+    }
+    form {
+      height: 100%;
+      width: 80%;
+    }
+    &--field {
+      width: 100%;
+      margin-top: 20px;
+      input {
+        width: 100%;
+        height: 2.5rem;
+        line-height: 2.5rem;
+      }
+    }
+    &--action{
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      input {
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: #3ccace;
+        color: #fff;
+      }
+    }
+  }
+  &__error {
+    background-color: #d5d5d5;
+    height: auto;
+    width: 30%;
+    padding: 60px 10px 10px 10px;
+    overflow: scroll;
+    text-align: 1.5rem;
+    font-weight: bold;
+  }
+}
