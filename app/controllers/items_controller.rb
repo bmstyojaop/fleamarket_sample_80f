@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -23,9 +24,32 @@ class ItemsController < ApplicationController
 
 
   def show
-    @user = User.find(@item.user_id)
-    @images = Image.where(item_id: params[:id])
-    @images_first = Image.where(item_id: params[:id]).first
+  end
+
+  def edit
+  end
+
+  def update
+    if item_params[:images_attributes].nil?
+      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
+      render :edit
+    else
+      exit_ids = []
+      item_params[:images_attributes].each do |a,b|
+        exit_ids << item_params[:images_attributes].dig(:"#{a}",:id).to_i
+      end
+      ids = Image.where(item_id: params[:id]).map{|image| image.id }
+      exit_ids_uniq = exit_ids.uniq
+      delete__db = ids - exit_ids_uniq
+      Image.where(id:delete__db).destroy_all
+      @item.touch
+      if @item.update(item_params)
+        redirect_to  root_path
+      else
+        flash.now[:alert] = '更新できませんでした'
+        render :edit
+      end
+    end
   end
 
   def destroy
@@ -45,4 +69,11 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def show_all_instance
+    @user = User.find(@item.user_id)
+    @images = Image.where(item_id: params[:id])
+    @images_first = Image.where(item_id: params[:id]).first
+  end
+
 end
