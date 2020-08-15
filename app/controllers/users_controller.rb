@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user
-  
   def show
+    @user = User.find(params[:id])
+    @nickname = @user.nickname
+    
   end
   
-  def edit    
+  def edit
+    @user = User.find(params[:id])
+    @nickname = @user.nickname
+    
   end
 
   def update
@@ -24,6 +29,5 @@ class UsersController < ApplicationController
 
     def  set_user
       @user = User.find(params[:id])
-      @nickname = @user.nickname
     end
 end
