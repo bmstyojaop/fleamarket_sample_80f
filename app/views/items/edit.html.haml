@@ -1,0 +1,110 @@
+.PageHeader
+= form_for @item do |f|
+  = render 'layouts/error_messages', model: f.object
+  .NameField
+    .FormLabel
+      .LavelName
+        出品画像
+      .LavelRequired
+        [必須]
+  #ImageBox-1{class:"#{@images.last.id}"}
+    - @images.each do |img|
+      .ItemImage{id:img.id}
+        = image_tag(img.image.url,{width:"188",height:"180"})
+        .ItemImage__operetion
+          .ItemImage__operetion--delete 削除
+    %label.img-label{for: "img-file"}
+      #ImageBox__container{class:"Item-num-#{@images.length}"}
+        #Append-js-edit
+          = f.fields_for :images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :image, type: 'file', value:"#{image.object.id}",style: "",  id:"img-file", class:'js-file-edit',name: "item[images_attributes][#{@item.images.count}][image]", data:{index:""}
+        %i.fas.fa-camera
+  .ItemName
+    .FormLabel
+      .LavelName
+        商品名
+      .LavelRequired
+        [必須]
+    =f.text_field :item_name, class: 'name_field', placeholder: "40字まで"
+  .ItemIntroduction
+    .FormLabel
+      .LavelName
+        商品の説明
+      .LavelRequired
+        [必須]
+    =f.text_field :item_introduction, class: 'explanation_field', placeholder: '商品の説明（必須 1,000文字以内）'
+  .AppendCategory
+    .Category
+      .FormLabel
+        .LavelName
+          カテゴリー
+        .LavelRequired
+          [必須]
+      =f.collection_select(:category_id, Category.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .Author
+    .FormLabel
+      .LavelName
+        著者
+    =f.text_field :author, class: 'serect_field', placeholder: ""
+  .Company
+    .FormLabel
+      .LavelName
+        出版社
+    =f.text_field :company, class: 'serect_field', placeholder: ""
+  .ItemCondition
+    .FormLabel
+      .LavelName
+      商品の状態
+    .LavelRequired
+      [必須]
+    =f.collection_select(:item_condition_id, ItemCondition.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .PostagePayer
+    .FormLabel
+      .LavelName
+        配送料の負担
+      .LavelRequired
+        [必須]
+    =f.collection_select(:postage_payer_id, PostagePayer.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .ShippingOrigin
+    .FormLabel
+      .LavelName
+        発送元の地域
+      .LavelRequired
+        [必須]
+    =f.collection_select(:shipping_origin_id, ShippingOrigin.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .PreparationDay
+    .FormLabel
+      .LavelName
+        発送元までの日数
+      .LavelRequired
+        [必須]
+    =f.collection_select(:preparation_day_id, PreparationDay.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .PostageType
+    .FormLabel
+      .LavelName
+        配送方法
+      .LavelRequired
+        [必須]
+    =f.collection_select(:postage_type_id, PostageType.all, :id, :name,{include_blank: "選択してください"}, class: "serect_field")
+  .ExhibitionPrice
+    .FormLabel
+      .LavelName
+        販売価格
+      .LavelRequired
+        [必須]
+    .Note
+      出品価格(300円 〜 9,999,999円)
+    =f.number_field :price, min:300,max:999999999,placeholder: "０",class:"exhibition_price_field" 
+    円
+    %br
+    .SalesCommission
+      .LavelName
+        販売手数料（10%）
+      #Sales_commission_price
+    .Sales_profit
+      .LavelName
+        販売利益
+      #sales_profit_proce
+  .Send_sipping_btn
+    = f.submit "更新する",class:"sipping_btn"

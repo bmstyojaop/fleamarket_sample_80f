@@ -1,26 +1,26 @@
 $(function(){
-  var dataBox = new DataTransfer();
-  var file_field = document.getElementById('img-file')
-  $('#append-js').on('change','#img-file',function(){
+  let dataBox = new DataTransfer();
+  let file_field = document.getElementById('img-file')
+  $('#Append-js').on('change','#img-file',function(){
     $.each(this.files, function(i, file){
-      var fileReader = new FileReader();
+      let fileReader = new FileReader();
       dataBox.items.add(file)
-      var num = $('.item-image').length + 1 + i
-      var image_no = $('.item-image').length + i
+      let num = $('.ItemImage').length + 1 + i
+      let image_no = $('.ItemImage').length + i
       fileReader.readAsDataURL(file);
       if (num == 10){
-        $('#image-box__container').css('display', 'none')
+        $('#ImageBox__container').css('display', 'none')
       }
       fileReader.onloadend = function() {
-        var src = fileReader.result
-        var html= `<div class='item-image' data-image="${file.name}" data-index="${image_no}">
-                    <div class=' item-image__content'>
-                      <div class='item-image__content--icon'>
+        let src = fileReader.result
+        let html= `<div class='ItemImage' data-image="${file.name}" data-index="${image_no}">
+                    <div class=' ItemImage__content'>
+                      <div class='ItemImage__content--icon'>
                         <img src=${src} width="188" height="180" >
                       </div>
                     </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>削除</div>
+                    <div class='ItemImage__operetion'>
+                      <div class='ItemImage__operetion--delete'>削除</div>
                     </div>
                   </div>`
         const buildFileField = (num)=> {
@@ -33,9 +33,24 @@ $(function(){
         }
         $('.js-file').removeAttr('id');
         $('.img-label').before(html);
-        $('#append-js').append(buildFileField(num));
+        $('#Append-js').append(buildFileField(num));
       }; 
-      $('#image-box__container').attr('class', `item-num-${num}`)
+      $('#ImageBox__container').attr('class', `Item-num-${num}`)
     });
+  });
+  $(document).on("click", '.ItemImage__operetion--delete', function(){
+    let target_image = $(this).parent().parent();
+    let target_index = $(target_image).data('index');
+    let target_file = $('[data-index="'+target_index+'"].js-file');
+    target_image.remove()
+    target_file.remove()
+    let num = $('.ItemImage').length
+    $('#ImageBox__container').show()
+    $('#imageBox__container').attr('class', `Item-num-${num}`)
+  })
+  let dropArea = $(".Item-num-0");
+  dropArea.on("dragenter", function(e){
+    e.stopPropagation();
+    e.preventDefault();
   });
 });
