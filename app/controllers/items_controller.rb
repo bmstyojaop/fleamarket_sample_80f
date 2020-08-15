@@ -71,9 +71,9 @@ class ItemsController < ApplicationController
   end
 
   def show_all_instance
-    @user = User.find(@item.user_id)
+    @item.user = User.find(@item.user_id)
     @images = Image.where(item_id: params[:id])
-    @images_first = Image.where(item_id: params[:id]).first
+    @images.first = Image.where(item_id: params[:id]).first
   end
 
 end
