@@ -1,19 +1,15 @@
 class UsersController < ApplicationController
+  before_action :set_user
+  
   def show
-    @user = User.find(params[:id])
-    @nickname = @user.nickname
-    
   end
   
-  def edit
-    @user = User.find(params[:id])
-    @nickname = @user.nickname
-    
+  def edit    
   end
 
   def update
     if current_user.update(user_params)
-      redirect_to "/users/#{current_user.id}"
+      redirect_to user_path
     else
       render :edit
     end
@@ -26,5 +22,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:nickname, :image, :introduction, :background)
     end
 
-    
+    def  set_user
+      @user = User.find(params[:id])
+      @nickname = @user.nickname
+    end
 end
