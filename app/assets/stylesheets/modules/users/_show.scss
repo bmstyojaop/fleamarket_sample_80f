@@ -15,7 +15,6 @@
   &__nav {
     background-color: #fff;
     width: 300px;
-    // height: auto;
     margin-left: 30px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.4);
     z-index: 0;
@@ -54,7 +53,6 @@
       background-position: center;
     }
     &--introduction {
-      // background-color: palegreen;
       height: 200px;
       width: 100%;
       overflow: scroll;
@@ -73,7 +71,6 @@
   justify-content: center;
   align-items: center;
   &__icon {
-    // background-color: forestgreen;
     width: 100px;
     height: 100px;
     border-radius: 50%;
