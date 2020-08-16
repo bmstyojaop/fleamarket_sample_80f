@@ -17,7 +17,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :shipping_origin_id, null:false,_suffix: true
       t.integer :auction_status, null:false,_suffix: true, default:"1"
       t.timestamps 
-      t.references  :user_id, null: false, foreign_key: true
+      t.references  :user, null: false, foreign_key: true
     end
   end
 end
