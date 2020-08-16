@@ -6,7 +6,7 @@
         .Images
           %ul.Image__main
             %li.Image__list
-              = image_tag(@images_first.image.url, class: "main__photo")
+              = image_tag(@image.image.url, class: "main__photo")
               .Image__box
                 %ul.Image__sub
                   - @images.each do |img|
