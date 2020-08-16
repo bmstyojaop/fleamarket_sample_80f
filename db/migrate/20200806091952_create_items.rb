@@ -10,7 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :item_condition_id, null: false
       t.integer :postage_type_id, null:false
       t.integer :postage_payer_id, null: false
-      t.integer :preparation_id, null: false
+      t.integer :preparation_day_id, null: false
       # t.references :seller_id, null: false, foreign_key: true
       # t.references :buyer_id, foreign_key: true
 
