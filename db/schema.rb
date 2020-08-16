@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2020_08_06_091952) do
+ActiveRecord::Schema.define(version: 2020_08_10_103204) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +34,14 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
   create_table "item_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_condition", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -55,18 +61,17 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.string "company", null: false
     t.integer "price", null: false
     t.text "item_introduction", null: false
-    t.bigint "category_id", null: false
-    t.bigint "item_condition_id", null: false
-    t.bigint "postage_type_id", null: false
-    t.bigint "postage_payer_id", null: false
-    t.bigint "preparation_day_id", null: false
+    t.integer "category_id", null: false
+    t.integer "item_condition_id", null: false
+    t.integer "postage_type_id", null: false
+    t.integer "postage_payer_id", null: false
+    t.integer "preparation_day_id", null: false
+    t.integer "shipping_origin_id", null: false
+    t.integer "auction_status", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
-    t.index ["postage_payer_id"], name: "index_items_on_postage_payer_id"
-    t.index ["postage_type_id"], name: "index_items_on_postage_type_id"
-    t.index ["preparation_day_id"], name: "index_items_on_preparation_day_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "postage_payers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,16 +86,10 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "preparation_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "preparation_day", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone_number"
     t.integer "post_code", null: false
-    t.integer "prefecture_code", null: false
+    t.string "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building"
@@ -104,28 +103,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_091952) do
     t.index ["user_id"], name: "index_sending_destinations_on_user_id"
   end
 
-ActiveRecord::Schema.define(version: 2020_08_06_225227) do
-
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.string "url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-
-ActiveRecord::Schema.define(version: 2020_08_06_033715) do
-
-
-
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "family_name", null: false
@@ -133,6 +110,9 @@ ActiveRecord::Schema.define(version: 2020_08_06_033715) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
+    t.text "background"
+    t.text "image"
+    t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -150,4 +130,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_033715) do
   add_foreign_key "items", "postage_payers"
   add_foreign_key "items", "postage_types"
   add_foreign_key "items", "preparation_days"
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "users"
 end

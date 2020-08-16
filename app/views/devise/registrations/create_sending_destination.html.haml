@@ -1,2 +1,17 @@
-%h2登録が完了しました
-= link_to 'トップへ戻る', root_path
+%nav.LocationNav
+  .LocationNav__current
+    .LocationNav__current--num
+      1
+    %h4
+      本人確認情報
+  .LocationNav__current
+    .LocationNav__current--num
+      2
+    %h4 住所登録
+  .LocationNav__current
+    .LocationNav__current--now
+      3
+    %h4.Now 登録完了
+%main.RegistrationSaved
+  %h2登録が完了しました
+  = link_to 'FURIMAを利用する', root_path

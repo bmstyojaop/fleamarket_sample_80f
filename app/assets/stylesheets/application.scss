@@ -1,2 +1,18 @@
 @import "reset";
-@import "modules/header"
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "modules/header";
+@import "modules/users/show";
+@import "modules/users/registration";
+@import "modules/users/session";
+
+
+.TopBox {
+  height: 97.8px;
+  width: 100vw;
+}
+.MainWrapper {
+  height: 100%;
+  width: 100vw;
+  overflow: scroll; 
+}
