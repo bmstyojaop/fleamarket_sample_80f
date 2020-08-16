@@ -65,18 +65,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
-    # t.bigint "category_id", null: false
-    # t.bigint "item_condition_id", null: false
-    # t.bigint "postage_type_id", null: false
-    # t.bigint "postage_payer_id", null: false
-    # t.bigint "preparation_day_id", null: false
-    # t.datetime "created_at", precision: 6, null: false
-    # t.datetime "updated_at", precision: 6, null: false
-    # t.index ["category_id"], name: "index_items_on_category_id"
-    # t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
-    # t.index ["postage_payer_id"], name: "index_items_on_postage_payer_id"
-    # t.index ["postage_type_id"], name: "index_items_on_postage_type_id"
-    # t.index ["preparation_day_id"], name: "index_items_on_preparation_day_id"
   end
 
   create_table "postage_payers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,12 +75,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
 
   create_table "postage_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postage_type", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "preparation_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "preparation_day", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -137,9 +119,4 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
 
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
-  # add_foreign_key "items", "categories"
-  # add_foreign_key "items", "item_conditions"
-  # add_foreign_key "items", "postage_payers"
-  # add_foreign_key "items", "postage_types"
-  # add_foreign_key "items", "preparation_days"
 end
