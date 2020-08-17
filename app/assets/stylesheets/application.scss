@@ -1,5 +1,6 @@
 @import "reset";
-@import "modules/header";
+@import "modules/toppage";
+@import "modules/footer";
 @import "modules/new_item";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -7,11 +8,13 @@
 @import "modules/users/show";
 @import "modules/users/registration";
 @import "modules/users/session";
+@import "modules/sell_btn";
 
 
 .TopBox {
   height: 97.8px;
   width: 100vw;
+  background-color: #fff;
 }
 .MainWrapper {
   height: 100%;
