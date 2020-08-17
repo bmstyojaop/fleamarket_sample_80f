@@ -1,6 +1,7 @@
 @import "reset";
 @import "modules/toppage";
 @import "modules/footer";
+@import "modules/new_item";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/header";
@@ -18,5 +19,5 @@
 .MainWrapper {
   height: 100%;
   width: 100vw;
-  overflow: scroll; 
+  overflow: scroll;
 }
