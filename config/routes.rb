@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :sending_destinations, only: [:edit, :update]
   end
   
-  resources :items, only: :index
+  resources :items
  
 end
