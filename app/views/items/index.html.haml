@@ -89,127 +89,28 @@
         お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
 .PickupContainer
-  - @items.each do |item|
-    -if item.auction_status == '売り切れ'
-      .item__body__lists__list
-        = link_to item_path(item.id), data: {"turbolinks" => false}  do
-          %figure.list__img
-            = image_tag item.images.first.image.url
-      .list__body
-        %h3.name
-          = item.item_name
-          -#   .list__price
-          -#     %ul
-          -#       %li
-          -#         = item.exhibition_price.to_s(:delimited)
-          -#         円
-          -#     %p (税込)
-          -# .list__sold
-          -#   .list__sold__inner
-          -#     sold
-    - else
-      .item__body__lists__list
-        = link_to item_path(item.id), data: {"turbolinks" => false}  do
-          %figure.list__img
-            = image_tag item.images.first.image.url
-          .list__body
-            -# %h3.name
-            -#   = item.item_name
-            -# .list__price
-            -#   %ul
-            -#     %li
-            -#       = item.price.to_s(:delimited)
-            -#       円
-            -#   %p (税込)
-
-.PickupContainer
   %h2.PickupContainer__title
-    ピックアップブランド
+    ピックアップ
   %h3.PickupContainer__subtitle
-    = link_to '#' do
-      アーカイバ
+    新規投稿商品
   %ul.PickupContainer__items
-    %li.PickupContainer__items--item
-      = link_to '#' do
-        .Image
-          = image_tag 'beef.jpeg', alt: ''
-        .DetailBox
-          .DetailBox__name
-            テスト
-          .DetailBox__details
-            %ul
-              %li
-                金額
-              %li
-                = icon('fa', 'star likeIcon')
-                3
-            %p
-              (税込)
-    %li.PickupContainer__items--item
-      = link_to '#' do
-        .Image
-          = image_tag 'beef.jpeg', alt: ''
-        .DetailBox
-          .DetailBox__name
-            テスト
-          .DetailBox__details
-            %ul
-              %li
-                金額
-              %li
-                = icon('fa', 'star likeIcon')
-                3
-            %p
-              (税込)
+    - @items.each do |item|
+      %li.PickupContainer__items--item
+        = link_to item_path(item.id) do
+          .Image
+            = image_tag item.images.first.image.url
+          .DetailBox
+            .DetailBox__name
+              = item.item_name
+            .DetailBox__details
+              %ul
+                %li
+                  = item.price.to_s(:delimited)
+                  円
+              %p 
+                (税込)
+                = (item.price * 1.1).floor
+                円
 
-    %li.PickupContainer__items--item
-      = link_to '#' do
-        .Image
-          = image_tag 'beef.jpeg', alt: ''
-        .DetailBox
-          .DetailBox__name
-            テスト
-          .DetailBox__details
-            %ul
-              %li
-                金額
-              %li
-                = icon('fa', 'star likeIcon')
-                3
-            %p
-              (税込)
-
-    %li.PickupContainer__items--item
-      = link_to '#' do
-        .Image
-          = image_tag 'beef.jpeg', alt: ''
-        .DetailBox
-          .DetailBox__name
-            テスト
-          .DetailBox__details
-            %ul
-              %li
-                金額
-              %li
-                = icon('fa', 'star likeIcon')
-                3
-            %p
-              (税込)
-    %li.PickupContainer__items--item
-      = link_to '#' do
-        .Image
-          = image_tag 'beef.jpeg', alt: ''
-        .DetailBox
-          .DetailBox__name
-            テスト
-          .DetailBox__details
-            %ul
-              %li
-                金額
-              %li
-                = icon('fa', 'star likeIcon')
-                3
-            %p
-              (税込)
 = render 'modules/sell_btn'
 = render 'modules/footer'
