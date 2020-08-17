@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_103204) do
+ActiveRecord::Schema.define(version: 2020_08_13_084424) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
     t.integer "auction_status", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone_number"
     t.integer "post_code", null: false
-    t.string "prefecture_code", null: false
+    t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building"
@@ -103,9 +103,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_103204) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
-    t.text "background"
-    t.text "image"
-    t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

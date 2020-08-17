@@ -1,68 +1,63 @@
-.Box
-  .Box__content
-    .Box__content__top
-      .Box__content__item
-        %h2= @item.item_name
-        .Images
-          %ul.Image__main
-            %li.Image__list
-              = image_tag(@image.image.url, class: "main__photo")
-              .Image__box
-                %ul.Image__sub
-                  - @images.each do |img|
-                    %li.Image__sub__list
-                      = image_tag(img.image.url, class: "sub__photo", size: "75x75")
-        .Box__price
-          %span.price
-            = @item.price.to_s(:delimited)
-            円
-          .Box__price__detail
-            %span
-              (税込)
-            %span
-              送料込み 
-        .Box__explanation
-          = @item.item_introduction
-        .Box__table
-          %table 
-            %tr 
-              %th 出品者
-              %td= @user.nickname
-            %tr 
-              %th カテゴリー
-              %td= @item.category.name
-            %tr
-              %th 著者
-              %td= @item.author
-            %tr
-              %th 出版社
-              %td= @item.company
-            %tr
-              %th 商品の状態
-              %td= @item.item_condition_id
-            %tr
-              %th 配送料の負担
-              %td= @item.postage_payer.name
-            %tr
-              %th 発送元の地域
-              %td= @item.shipping_origin.name
-            %tr
-              %th 発送方法
-              %td= @item.postage_type.name
-            %tr
-              %th 発送日の目安
-              %td= @item.preparation_day.name
-        .Box__option
-          %ul.report
-            %li.report__list
-              = link_to "#" do
-                -# = icon('fa', 'flag')
-                不適切な商品の通報
-      .Box__edit
-        - if current_user == @user
-          = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
-          = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
-        - elsif user_signed_in?
-          = link_to "購入画面に進む", root_path
-          -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
-        - else
+.MainShow  
+  .MainShow__box
+    .MainShow__box__content
+      .MainShow__box__content__top
+        .ItemBox
+          %h2= @item.item_name
+          .ItemBox__Images
+            %ul.Image__main
+              %li.Image__main__list
+                = image_tag(@image.image.url, class: "Main__photo")
+                .Image__box
+                  %ul.Image__sub
+                    - @images.each do |img|
+                      %li.Image__sub__list
+                        = image_tag(img.image.url, class: "sub__photo", size: "75x75")
+          .MainShow__box__price
+            %span.price
+              = @item.price.to_s(:delimited)
+              円
+            .MainShow__box__price__detail
+              %span
+                (税込)
+              %span
+                送料込み 
+          .MainShow__box__explanation
+            = @item.item_introduction
+          .MainShow__box__table
+            %table 
+              %tr 
+                %th 出品者
+                %td= @user.nickname
+              %tr 
+                %th カテゴリー
+                %td= @item.category.name
+              %tr
+                %th 商品の状態
+                %td= @item.item_condition_id
+              %tr
+                %th 配送料の負担
+                %td= @item.postage_payer.name
+              %tr
+                %th 発送元の地域
+                %td= @item.shipping_origin.name
+              %tr
+                %th 発送方法
+                %td= @item.postage_type.name
+              %tr
+                %th 発送日の目安
+                %td= @item.preparation_day.name
+          .MainShow__box__option
+            %ul.report
+              %li.report__list
+                = link_to "#" do
+                  = icon('fa', 'flag')
+                  不適切な商品の通報
+        .MainShow__box__edit
+          - if current_user == @user
+            = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
+            = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
+          - elsif user_signed_in?
+            = link_to "購入画面に進む", root_path
+            -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
+          - else
