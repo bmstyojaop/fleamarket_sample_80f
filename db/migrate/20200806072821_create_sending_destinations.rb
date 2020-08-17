@@ -3,7 +3,7 @@ class CreateSendingDestinations < ActiveRecord::Migration[6.0]
     create_table :sending_destinations do |t|
       t.string :phone_number
       t.integer :post_code, null: false
-      t.integer :prefecture_code, null: false
+      t.string :prefecture_code, null: false
       t.string :address_city, null: false
       t.string :address_street, null: false
       t.string :address_building
