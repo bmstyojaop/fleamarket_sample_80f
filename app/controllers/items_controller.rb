@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
-
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
+  before_action :show_all_instance, only: [ :show, :edit, :update, :destroy]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')

@@ -1,4 +1,3 @@
-
 %header.Header
   .Header__inner
     .Header__inner--main
@@ -15,7 +14,7 @@
     .NavLists
       .NavLists__left
         カテゴリー
-      
+        
       %ul.NavLists__right
         - if user_signed_in?
           = link_to "マイページ", "/users/#{current_user.id}"
@@ -26,4 +25,5 @@
           %li.NavLists__right--new.NavLists__right--item
             = link_to "新規会員登録", new_user_registration_path
           
+
 
