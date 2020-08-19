@@ -44,7 +44,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def authorization
     sns_info = User.from_omniauth(request.env["omniauth.auth"])
     @user = sns_info[:user]
-
+    session["sns_auth"] = true
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
