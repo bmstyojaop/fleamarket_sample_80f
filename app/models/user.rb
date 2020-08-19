@@ -5,7 +5,8 @@ class User < ApplicationRecord
   mount_uploader :background, ImageUploader
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   validates :nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, presence: true
   validates :family_name, :first_name, presence: true,
                  format: {
