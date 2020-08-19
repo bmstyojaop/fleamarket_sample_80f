@@ -1,7 +1,11 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :show_all_instance, only: [:show, :edit, :update, :destroy]
+  require "payjp"
+
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :confirm, :pay]
+  before_action :show_all_instance, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_credit_card, only: [:pay]
+  before_action :item_sold?, only: [:pay]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -24,6 +28,7 @@ class ItemsController < ApplicationController
 
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -61,6 +66,36 @@ class ItemsController < ApplicationController
     end
   end
 
+  def confirm
+  end
+
+  def pay
+    #クレジットカードは登録されているかどうか
+    if @card.blank?
+      redirect_to controller: "credit_cards", action: "new"
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
+      #クレジットカードがあり、売り切れでもない場合は決済処理を実行
+    else
+      #保管した顧客IDでpayjpから情報取得
+      Payjp.api_key = "sk_test_ed37e1648d66e1e3ab2794fd"
+      # 請求を発行
+      charge = Payjp::Charge.create(
+      amount: @item.price,
+      customer: Payjp::Customer.retrieve(@card.customer_id),
+      currency: 'jpy'
+      )
+      # 商品の状態を売り切れに更新
+      @item.update!(auction_status: 2)
+      redirect_to done_items_path
+    end
+  end
+    
+
+  def done #商品購入完了アクション
+  end
+
+
+
   private
   def item_params
     params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price,:author, :company, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
@@ -75,5 +110,19 @@ class ItemsController < ApplicationController
     @images = Image.where(item_id: params[:id])
     @image = @images.first
   end
+
+  def set_credit_card
+    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+  end
+
+  def item_sold?
+    @status = @item.auction_status
+    if @status == 2
+      redirect_to :show
+      flash[:alert] = 'この商品は売り切れです'
+      #登録された情報がない場合にクレジットカード登録画面に移動
+    end
+  end
+
 
 end

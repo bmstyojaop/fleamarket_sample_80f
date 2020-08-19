@@ -6,7 +6,7 @@
         .Images
           %ul.Image__main
             %li.Image__list
-              = image_tag(@images_first.image.url, class: "main__photo")
+              = image_tag(@image.image.url, class: "main__photo")
               .Image__box
                 %ul.Image__sub
                   - @images.each do |img|
@@ -63,6 +63,6 @@
           = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
           = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
         - elsif user_signed_in?
-          = link_to "購入画面に進む", root_path
+          = link_to "購入画面に進む", confirm_items_path(current_user)
           -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
         - else

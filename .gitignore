@@ -32,3 +32,6 @@ yarn-debug.log*
 
 /public/uploads
 # /config/initilizers/carrierwabe.rb
+
+/.env
+/config/initializers/carrierwave.rb

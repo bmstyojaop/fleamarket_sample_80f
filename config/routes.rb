@@ -13,6 +13,18 @@ Rails.application.routes.draw do
     resources :sending_destinations, only: [:edit, :update]
   end
   
-  resources :items
- 
+  resources :credit_cards, only: [:new, :show, :create, :destroy]
+  
+  resources :items do
+    collection do
+      get  'confirm/:id'=>  'items#confirm', as: 'confirm'
+      post 'pay/:id'=>   'items#pay', as: 'pay'
+      get  'done'=>      'items#done', as: 'done'
+    end
+  end
+  
+  
+  
+  
+  
 end
