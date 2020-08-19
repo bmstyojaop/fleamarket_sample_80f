@@ -20,7 +20,7 @@ class User < ApplicationRecord
                   #  message: "全角カタカナのみで入力して下さい"
                  }
   
-  validates :nickname, presence: true, length: { maximum: 10 }
+  validates :nickname, presence: true, length: { maximum: 20 }
 
 
   has_one :sending_destination 
@@ -44,6 +44,6 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
 
-    
+
   end
 end

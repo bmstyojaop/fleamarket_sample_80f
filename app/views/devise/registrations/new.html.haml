@@ -1,75 +1,79 @@
-%nav.LocationNav
-  .LocationNav__current
-    .LocationNav__current--now
-      1
-    %h4.Now
-      本人確認情報
-  .LocationNav__current
-    .LocationNav__current--num
-      2
-    %h4 住所登録
-  .LocationNav__current
-    .LocationNav__current--num
-      3
-    %h4 登録完了
-%main.RegistrationField
-  .RegistrationField__form
-    %h1 本人確認情報
-    %h2 FURIMAをご利用いただくにはFURIMAへの会員登録が必要です。
-    = form_for(@user, url: user_registration_path) do |f|
-      .RegistrationField__form--field
-        = f.label :nickname
-        %br/
-        = f.text_field :nickname
+- if @sns_id.present?
+  = hidden_field_tag :sns_auth, true
 
-      .RegistrationField__form--field
-        = f.label :family_name
-        %br/
-        = f.text_field :family_name, placeholder: "例）神南"
+- else
+  %nav.LocationNav
+    .LocationNav__current
+      .LocationNav__current--now
+        1
+      %h4.Now
+        本人確認情報
+    .LocationNav__current
+      .LocationNav__current--num
+        2
+      %h4 住所登録
+    .LocationNav__current
+      .LocationNav__current--num
+        3
+      %h4 登録完了
+  %main.RegistrationField
+    .RegistrationField__form
+      %h1 本人確認情報
+      %h2 FURIMAをご利用いただくにはFURIMAへの会員登録が必要です。
+      = form_for(@user, url: user_registration_path) do |f|
+        .RegistrationField__form--field
+          = f.label :nickname
+          %br/
+          = f.text_field :nickname
 
-      .RegistrationField__form--field
-        = f.label :first_name
-        %br/
-        = f.text_field :first_name, placeholder: '例）太郎'
+        .RegistrationField__form--field
+          = f.label :family_name
+          %br/
+          = f.text_field :family_name, placeholder: "例）神南"
 
-      .RegistrationField__form--field
-        = f.label :family_name_kana
-        %br/
-        = f.text_field :family_name_kana, placeholder: '例）ジンナン'
+        .RegistrationField__form--field
+          = f.label :first_name
+          %br/
+          = f.text_field :first_name, placeholder: '例）太郎'
 
-      .RegistrationField__form--field
-        = f.label :first_name_kana
-        %br/
-        = f.text_field :first_name_kana, placeholder: '例）タロウ'
+        .RegistrationField__form--field
+          = f.label :family_name_kana
+          %br/
+          = f.text_field :family_name_kana, placeholder: '例）ジンナン'
 
-      .RegistrationField__form--field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+        .RegistrationField__form--field
+          = f.label :first_name_kana
+          %br/
+          = f.text_field :first_name_kana, placeholder: '例）タロウ'
 
-      .RegistrationField__form--field
-        = f.label :birthday
-        %br/
-        .InputBirthday
-          != sprintf(f.date_select(:birthday,with_css_classes:'Barthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')
-          日
-      .RegistrationField__form--field
-        = f.label :password
-        - if @minimum_password_length
-          %em
-            (半角英数字#{@minimum_password_length} 文字以上)
-        %br/
-        = f.password_field :password, autocomplete: "new-password", placeholder: '半角英数字７文字以上'
+        .RegistrationField__form--field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
 
-      .RegistrationField__form--field
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'コピー&ペーストしないでください'
-      .RegistrationField__form--action
-        %b
-          ※本人確認情報は後に変更できません。
-        (ニックネームのみ変更可能です)
-        = f.submit "次へ"
-  .RegistrationField__error
-    = render "devise/shared/error_messages", resource: @user
--# = render "devise/shared/links"
+        .RegistrationField__form--field
+          = f.label :birthday
+          %br/
+          .InputBirthday
+            != sprintf(f.date_select(:birthday,with_css_classes:'Barthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')
+            日
+        .RegistrationField__form--field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (半角英数字#{@minimum_password_length} 文字以上)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: '半角英数字７文字以上'
+
+        .RegistrationField__form--field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'コピー&ペーストしないでください'
+        .RegistrationField__form--action
+          %b
+            ※本人確認情報は後に変更できません。
+          (ニックネームのみ変更可能です)
+          = f.submit "次へ"
+    .RegistrationField__error
+      = render "devise/shared/error_messages", resource: @user
+  -# = render "devise/shared/links"
