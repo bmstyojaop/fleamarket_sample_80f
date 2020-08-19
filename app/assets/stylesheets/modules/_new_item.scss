@@ -1,0 +1,198 @@
+.PageHeader{
+  height: 30px;
+  width: 100%;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  box-sizing: border-box;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+.new_item, .edit_item{
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
+  .FormLabel{
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    margin-top: 10px;
+    .LavelName{
+      margin-right: 5px;
+    }
+    .LavelRequired{
+      background-color: red;
+      color: white;
+      width: 35px;
+      text-align: center;
+      border-radius: 4px;
+    }
+  }
+  #ImageBox-1{
+    display: flex;
+    flex-wrap: wrap;
+    .ItemImage{
+      width: 180px;
+    }
+    .Item-num-0{
+      width: 940px;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-1{
+      width: 760PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-2{
+      width: 580PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-3{
+      width: 400PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-4{
+      width: 220PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-5{
+      width: 940px;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-6{
+      width: 760PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-7{
+      width: 580PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-8{
+      width: 400PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .Item-num-9{
+      width: 220PX;
+      content: '';
+      text-align: center;
+      height: 180px;
+      padding: 0.5em 1em;
+      background: #f0f7ff;
+      border: dashed 2px rgb(214, 214, 214);
+    }
+    .img-label{
+      flex-wrap: wrap;
+      .ItemImage{
+        &__content{
+          &--icon{
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    .fas.fa-camera{
+      margin-top: 75px;
+    }
+    .ItemImage__operetion{
+      width: 50px;
+      margin-right: 0px;
+      &--delete{
+        cursor: pointer;
+        text-align: center;
+        &:hover{
+          background-color: #3CCACE;
+          border-radius: 4px;
+          color: #f0f7ff;
+        }
+      }
+    }
+    .js-file,.js-file-edit{
+      display: none;
+    }
+  }
+  .NameField{
+    content: '';
+    padding: 0 16px;
+    width: 940px;
+    height: 60px;
+  }
+  .ExplanationField{
+    padding: 0 16px;
+    width: 940px;
+    height: 120px;
+  }
+  .SerectField{
+    content: '';
+    padding: 0 16px;
+    width: 940px;
+    height: 60px;
+  }
+  .PriceField{
+    height: 40px;
+    padding: 0 16px;
+    width: 40%;
+    text-align: right;
+  }
+  .Send{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    &__sipping_btn{
+      background-color: #3CCACE;
+      color: #FFFFFF;
+      width: 360px;
+      height: 48px;
+      font-weight: 600;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+  }
+}

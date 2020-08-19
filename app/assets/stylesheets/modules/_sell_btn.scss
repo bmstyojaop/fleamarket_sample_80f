@@ -1,0 +1,34 @@
+
+.SellBtn{
+  height: 120px;
+  width: 120px;
+  &__box {
+    background-color: #3ccace;
+    height: 120px;
+    width: 120px;
+    border-radius: 4%;
+    bottom: 32px;
+    right: 32px;
+    position: fixed;
+    padding: 15px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span{
+      color: #fff;
+      display: block;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    img {
+      height: 80%;
+      width: 80%;
+      vertical-align: bottom;
+    }
+  }
+  :hover {
+    opacity: 0.8;
+  }
+}

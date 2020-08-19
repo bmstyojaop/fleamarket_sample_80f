@@ -10,11 +10,14 @@
     -# = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
 
-    .notifications
-    - flash.each do |key, value|
-      = content_tag(:div, value, class: key)
+    -# .notifications
+    -# - flash.each do |key, value|
+    -#   = content_tag(:div, value, class: key)
   %body
     = render 'modules/header'
     .TopBox
     %main.MainWrapper
       = yield
+      = render 'modules/footer'
+
+      
