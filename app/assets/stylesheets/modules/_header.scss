@@ -91,12 +91,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &__right{
     display: flex;
     &--item{
     color: #333;
     line-height: 38px;
     margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+
     } 
     &--login{
       display: flex;

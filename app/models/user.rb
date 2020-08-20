@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+
   validates :nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, presence: true
   validates :family_name, :first_name, presence: true,
                  format: {
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   has_one :sending_destination 
   # has_many :seller_items, foreign_key: 'seller_id', class_name: 'Item'
   # has_many :buyer_items, foreign_key: 'buyer_id', class_name: 'Item'
-
+  has_one :sns_credential, dependent: :destroy
   has_many :items,     dependent: :destroy
 
   def self.from_omniauth(auth)
@@ -43,7 +44,5 @@ class User < ApplicationRecord
       sns.save
     end
     { user: user, sns: sns }
-
-
   end
 end
