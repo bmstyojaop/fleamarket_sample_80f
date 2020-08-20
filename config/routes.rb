@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resources :sending_destinations, only: [:edit, :update]
   end
   
-  resources :items
+  # resources :items
+  resources :items do
+    # resources :comments, only: :create
+    collection do
+      get 'search'
+    end
+  end
  
 end
