@@ -149,9 +149,14 @@ $(function(){
     .done(function(data){
       if (data.comment_user_id == data.item_user_id) {
         let html = buildHTML(data);
+        $('#Comments').append(html);
+        $('.Text_area').val('');
+        $('.Comment__btn').prop('disabled', false);
       } else {
         let html = buildHTMLother(data);
-        ('disabled', false);
+        $('#Comments').append(html);
+        $('.Text_area').val('');
+        $('.Comment__btn').prop('disabled', false);
       }
     })
     .fail(function(){
