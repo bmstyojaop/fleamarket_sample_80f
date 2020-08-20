@@ -119,7 +119,7 @@ margin-bottom: 20px;
 .MainShow__box__option{
   display: flex;
   justify-content: space-between;
-  .report{
+  .Report{
     margin-top: 10px;
     display: flex;
     &__list{
@@ -151,6 +151,161 @@ margin-bottom: 20px;
     margin: 20px auto;
     &:hover{
       opacity: 0.5;
+      cursor: pointer;
     }
   }
+}
+.MainShow__box__comment{
+  padding: 24px;
+  background-color: #fff;
+  margin: 10px 0;
+  text-align: center;
+
+  .Title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3ccace;
+    margin-bottom: 10px;
+  }
+
+  .MainShow__box__comments{
+    padding: 10px;
+
+    .Profile {
+      display: flex;
+      justify-content: flex-end;
+      &__name {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .Image {
+        font-size: 50px;
+        margin-bottom: 5px;
+      }
+      .Seller_or_buyer {
+        font-size: 12px;
+        padding: 2px;
+        border-radius: 8px;
+        background-color: #3ccace;
+        color: #fff;
+      }
+    }
+    .Comment {
+      background-color: #eee;
+      width: 91%;
+      padding: 8px;
+      margin-top: -55px;
+      border-radius: 12px;
+
+      &__text {
+        text-align: left;
+        word-break: break-all;
+      } 
+      &__bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: 5px;
+        color: #6d6d6d;
+        font-size: 12px;
+
+        a {
+          text-decoration: none;
+          color: #6d6d6d;
+        }
+      }
+    }
+    .MainShow__box__comment__comments--other{
+      padding: 10px;
+      display: flex;
+
+      .Profile {
+        display: flex;
+        justify-content: flex-start;
+        .Image {
+          font-size: 50px;
+          margin-bottom: 5px;
+        }
+        .Seller_or_buyer {
+          font-size: 12px;
+          padding: 2px;
+          border-radius: 8px;
+          background-color: #3ccace;
+          color: #fff;
+        }
+      }
+      .Comment {
+        background-color: #cdf4f4;
+        width: 100%;
+        padding: 8px;
+        margin: 25px 0px 0px -40px;
+        border-radius: 12px;
+        max-width: 570px;
+
+        &__text {
+          text-align: left;
+          width: 100%;
+          word-break: break-all;
+        } 
+        &__bottom {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 20px;
+          margin-top: 5px;
+          color: #6d6d6d;
+          font-size: 12px;
+
+          a {
+            text-decoration: none;
+            color: #6d6d6d;
+          }
+        }
+        &__icon {
+          display: flex;
+        }
+      }
+    }
+  }
+  .New_comment{
+    margin-top: 40px;
+
+    .Text_area{
+      width: 100%;
+      min-height: 104px;
+      padding: 10px;
+    }
+    .note{
+      padding: 8px;
+      font-size: 14px;
+      background-color: #f8f8f8;
+      margin: 10px 0;
+      text-align: left;
+    }
+    .Send{
+      margin-top: 50px;
+      text-align: center;
+      margin-bottom: 50px;
+      .Comment__btn{
+        background-color: #3CCACE;
+        color: #FFFFFF;
+        width: 60%;
+        height: 48px;
+        font-size: 18px;
+        border-radius: 100px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+.MainShow__box__comments#Comments{
+  padding: 10px;
+}
+.MainShow__box__comment__comments--other#Comments{
+  padding: 10px;
+  display: flex;
 }
