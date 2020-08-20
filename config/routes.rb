@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :sending_destinations, only: [:edit, :update]
   end
   
-  resources :items
+  resources :items do
+    resources :comments, only: [:create, :destroy]
+  end
  
 end
