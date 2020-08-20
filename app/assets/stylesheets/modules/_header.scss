@@ -92,51 +92,19 @@ header {
   height: 32px;
   display: flex;
   justify-content: space-between;
-  // align-items: center;
-
-
   &__right{
     display: flex;
-
-
-    // &--item{
-    // color: #333;
-    // line-height: 38px;
-    // margin-left: 16px;
-    // display: flex;
-    // flex-direction: column; 
-
-    // } 
-
-
-    // &--login{
-    //   display: flex;
-    //   align-items: center;
-    //   color: #333;
-    //   text-decoration: none;
-    //   line-height: 32px;
-    // }
-
-
-    // &--new{
-    //   display: flex;
-    //   align-items: center;
-    //   color: #333;
-    //   text-decoration: none;
-    //   line-height: 32px;
-    // }
-
-
   }
-  
-
 }
 
+// ログイン・新規登録リンクのドロップダウンリスト
 .NavLists__right > li {
   width: 100px;
-  // font-size: 200%;
   position: relative;
   list-style: none;
+  :hover {
+    color: #3CCACE;
+  }
   ul {
     position: absolute;
     li {
@@ -168,7 +136,6 @@ header {
     }
   }
 }
-
 .NavLists__right li:hover > ul > li {
   height: 2rem;
   overflow: visible;
