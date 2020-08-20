@@ -18,6 +18,7 @@ a {
 
 header {
   width: 100vw;
+  height: 98.72px;
   display: block;
   position: fixed;
   z-index: 9999;
@@ -88,33 +89,89 @@ header {
 }
 
 .NavLists{
+  height: 32px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
+
 
   &__right{
     display: flex;
-    &--item{
-    color: #333;
-    line-height: 38px;
-    margin-left: 16px;
-    display: flex;
-    flex-direction: column;
 
-    } 
-    &--login{
+
+    // &--item{
+    // color: #333;
+    // line-height: 38px;
+    // margin-left: 16px;
+    // display: flex;
+    // flex-direction: column; 
+
+    // } 
+
+
+    // &--login{
+    //   display: flex;
+    //   align-items: center;
+    //   color: #333;
+    //   text-decoration: none;
+    //   line-height: 32px;
+    // }
+
+
+    // &--new{
+    //   display: flex;
+    //   align-items: center;
+    //   color: #333;
+    //   text-decoration: none;
+    //   line-height: 32px;
+    // }
+
+
+  }
+  
+
+}
+
+.NavLists__right > li {
+  width: 100px;
+  // font-size: 200%;
+  position: relative;
+  list-style: none;
+  ul {
+    position: absolute;
+    li {
+      background-color: #fff;
+      width: 200px;
+      height: 0;
+      overflow: hidden;
+      transition: .3s;
+      padding-left: 5px;
+      border: 1px solid #eee;
       display: flex;
       align-items: center;
-      color: #333;
-      text-decoration: none;
-      line-height: 32px;
+      a {
+        display: block;
+        height: 2rem;
+        line-height: 2rem;
+        text-decoration: none;
+        width: 100%;
+        margin-left: 8px;
+        transition: .3s;
+      }
     }
-    &--new{
-      display: flex;
-      align-items: center;
-      color: #333;
-      text-decoration: none;
-      line-height: 32px;
+    li:hover {
+      background-color: #3CCACE;
+      color: #fff;
+      a {
+        color: #fff;
+      }
     }
   }
 }
+
+.NavLists__right li:hover > ul > li {
+  height: 2rem;
+  overflow: visible;
+}
+
+
