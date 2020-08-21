@@ -66,46 +66,26 @@
           .MainShow__box__comments#Comments
             - if @comments
               - @comments.each do |comment|
-                -if comment.user_id == @item.user_id
-                  .MainShow__box__comments__comment
-                    .Profile
-                      .Profile__right
-                        .Image
-                          - if @user.image?
-                            = image_tag @user.image.url, class: "user-circle"
-                          - else
-                            = icon('far', 'smile-wink', class: "user-circle" )
-                        .Seller_or_buyer
-                          = comment.user.nickname
-                    .Comment
-                      .Comment__text
-                        = comment.comment
-                      .Comment__bottom
-                        .Comment__date
-                          = icon('far', 'clock')
-                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                        .Comment__trash
-                          = link_to item_comment_path(comment.item.id, comment.id), "item_id": :@item, method: :delete do
-                            = icon('fa', 'trash')
-                - else
-                  .MainShow__box__comments__comment--other
-                    .Profile
-                      .Profile__right
-                        .Image
-                          = icon('far', 'user-circle')
-                        .Seller_or_buyer
-                          = comment.user.nickname
-                    .Comment
-                      .Comment__text
-                        = comment.comment
-                      .Comment__bottom
-                        .Date
-                          = icon('far', 'clock')
-                          = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                        .Comment__icon
-                          .Trash
-                            = link_to item_comment_path(comment.item.id, comment.id), "item_id": :@item, method: :delete do
-                              = icon('fa', 'trash')
+                .MainShow__box__comments__comment
+                  .Profile
+                    .Profile__right
+                      .Image
+                        - if @user.image?
+                          = image_tag @user.image.url, class: "user-circle"
+                        - else
+                          = icon('far', 'smile-wink', class: "user-circle" )
+                      .Seller_or_buyer
+                        = comment.user.nickname
+                  .Comment
+                    .Comment__text
+                      = comment.comment
+                    .Comment__bottom
+                      .Comment__date
+                        = icon('far', 'clock')
+                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                      .Comment__trash
+                        = link_to item_comment_path(comment.item.id, comment.id), "item_id": :@item, method: :delete do
+                          = icon('fa', 'trash')
           - if user_signed_in?
             = form_with model: [@item, @comment], local: true, class: "New_comment", id: "comment_form"  do |f|
               = f.text_area :comment, required: "required", class: 'Text_area', placeholder: "コメントする"
