@@ -27,4 +27,5 @@ class User < ApplicationRecord
   # has_many :buyer_items, foreign_key: 'buyer_id', class_name: 'Item'
 
   has_many :items,     dependent: :destroy
+  has_many :comments,  dependent: :destroy
 end
