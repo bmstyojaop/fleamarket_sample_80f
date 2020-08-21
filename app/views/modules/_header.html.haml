@@ -41,6 +41,9 @@
                 = icon('fab', 'google')
                 = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
 
+    .Notifications
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)
           
 
 
