@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
+
   def create
+    @user = current_user
     @item = Item.find(params[:item_id])
     @comment = Comment.create(comment_params)
     respond_to do |format|
