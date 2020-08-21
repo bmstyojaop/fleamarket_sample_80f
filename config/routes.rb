@@ -21,10 +21,14 @@ Rails.application.routes.draw do
       post 'pay/:id'=>   'items#pay', as: 'pay'
       get  'done'=>      'items#done', as: 'done'
     end
+    resources :items do
+      resources :comments, only: [:create, :destroy]
+    end
   end
   
   
   
   
   
+ 
 end

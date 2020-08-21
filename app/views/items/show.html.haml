@@ -48,8 +48,8 @@
                 %th 発送日の目安
                 %td= @item.preparation_day.name
           .MainShow__box__option
-            %ul.report
-              %li.report__list
+            %ul.Report
+              %li.Report__list
                 = link_to "#" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
@@ -63,3 +63,42 @@
             = link_to "購入画面に進む", confirm_items_path(@item)
             -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
           - else
+            = link_to "購入画面に進む", root_path
+          - else
+        .MainShow__box__comment
+          .Title
+            コメント一覧
+          .MainShow__box__comments#Comments
+            - if @comments
+              - @comments.each do |comment|
+                .MainShow__box__comments__comment
+                  .Profile
+                    .Profile__right
+                      .Image
+                        - if @user.image?
+                          = image_tag @user.image.url, class: "user-circle"
+                        - else
+                          = icon('far', 'smile-wink', class: "user-circle" )
+                      .Seller_or_buyer
+                        = comment.user.nickname
+                  .Comment
+                    .Comment__text
+                      = comment.comment
+                    .Comment__bottom
+                      .Comment__date
+                        = icon('far', 'clock')
+                        = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                      .Comment__trash
+                        = link_to item_comment_path(comment.item.id, comment.id), "item_id": :@item, method: :delete do
+                          = icon('fa', 'trash')
+          - if user_signed_in?
+            = form_with model: [@item, @comment], local: true, class: "New_comment", id: "comment_form"  do |f|
+              = f.text_area :comment, required: "required", class: 'Text_area', placeholder: "コメントする"
+              %p.note
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              .Send
+                = f.submit "コメントする", class: "Comment__btn"
+          - else 
+            %p.note
+              商品の購入、コメントの投稿には新規会員登録/ログインが必要です。
