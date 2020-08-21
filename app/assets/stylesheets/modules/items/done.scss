@@ -1,0 +1,41 @@
+.MainBox {
+  background-color: #f8f8f8;
+  margin: 0 auto;
+  height: 50vh;
+  overflow: scroll;
+
+  &__inner {
+    width: 50%;
+    margin: 100px auto;
+    border: 1px solid white;
+
+    h3 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    &--ToTop {
+      text-align: center;
+      margin-top: 70px;
+      height: 80px;
+
+      .TopPage {
+        width: 30%;
+        height: 60%;
+        display: inline-block;
+        line-height: 42px;
+        background: #3ccace;
+        border: 1px solid #3ccace;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 100px;
+        text-decoration: none;
+        text-align: center;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

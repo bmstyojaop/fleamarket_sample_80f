@@ -4,11 +4,12 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy, :confirm, :pay]
   before_action :show_all_instance, only: [:show, :edit, :update, :destroy, :confirm]
-  before_action :set_credit_card, only: [:pay]
+  before_action :set_credit_card, only: [:pay, :confirm]
   before_action :item_sold?, only: [:pay]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
+    # @status = @item.auction_status
   end
 
   def new
@@ -67,6 +68,33 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    # ログイン中のユーザーのクレジットカード登録の有無を判断
+    @card = CreditCard.find_by(user_id: current_user.id)
+    # credentials.yml.encに記載したAPI秘密鍵を呼び出します。
+    Payjp.api_key = "sk_test_ed37e1648d66e1e3ab2794fd"
+    # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    # カスタマー情報からカードの情報を引き出す
+    @card_info = customer.cards.retrieve(@card.card_id)
+    @exp_month = @card_info.exp_month.to_s
+    @exp_year = @card_info.exp_year.to_s.slice(2,3) 
+
+    # クレジットカード会社を取得したので、カード会社の画像をviewに表示させるため、ファイルを指定する。
+    @card_brand = @card_info.brand
+    case @card_brand
+    when "Visa"
+      @card_image = "visa.png"
+    when "JCB"
+      @card_image = "jcb.png"
+    when "MasterCard"
+      @card_image = "master-card.png"
+    when "American Express"
+      @card_image = "american_express.png"
+    when "Diners Club"
+      @card_image = "dinersclub.png"
+    when "Discover"
+      @card_image = "discover.png"
+    end
   end
 
   def pay
@@ -98,7 +126,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :item_introduction, :author, :company, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
