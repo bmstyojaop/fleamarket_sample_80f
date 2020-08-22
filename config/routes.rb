@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   
   resources :items do
     resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
  
 end
