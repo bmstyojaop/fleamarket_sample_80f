@@ -11,8 +11,9 @@
             = icon('fas', 'cog')
             発送元・お届け先住所
         %li.UserDetails__nav--element
-          = icon('fas', 'cog')
-          クレジットカード
+          = link_to credit_card_path(current_user) do
+            = icon('fas', 'cog')
+            クレジットカード
 
     %main.UserDetails__field
       - if @user.background?

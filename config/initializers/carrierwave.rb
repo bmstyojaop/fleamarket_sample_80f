@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'keita73'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/keita73'
+  config.fog_directory  = 'samplecreditcard'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/samplecreditcard'
 end

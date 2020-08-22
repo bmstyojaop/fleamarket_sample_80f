@@ -1,0 +1,153 @@
+.ConfirmBox {
+  background-color: #f8f8f8;
+  // width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: scroll;
+
+  &__inner {
+    width: 50%;
+    background-color: white;
+    margin: 100px auto;
+    border: 1px solid white;
+    position: relative;
+    
+    .Purchase {
+      margin-top: 80px;
+      text-align: center;
+      height: 100px;
+      border-bottom: 1px solid lightgray;
+  
+      &__text {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+      }
+    }
+
+    .ItemInfo {
+      height: 150px;
+      margin: 30px auto;
+      position: relative;
+      border-bottom: 1px solid lightgray;
+      display: flex;
+      justify-content: space-around;
+      
+      &__right {
+        // margin-left: 200px;
+
+        .main__photo {
+          width: 100px;
+          height: 100px;
+        }
+
+        &--name {
+          margin-top: 5px;
+          margin-left: 25px;
+
+          p {
+            font-weight: bold;
+            font-size: 20px;
+          }
+        }
+      }
+
+      &__left {
+        display: flex;
+        // position: absolute;
+        // top: 50px;
+        // right: 200px;
+        margin-top: 50px;
+
+        &--base {
+          margin-right: 10px;
+          p {
+            font-weight: bold;
+          }
+        }
+
+        &--tax {
+
+          h3 {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .Payment {
+      height: 100px;
+      margin-top: 45px auto;
+      display: flex;
+      // position: relative;
+      border-bottom: 1px solid lightgray;
+      display: flex;
+      justify-content: space-around;
+
+      &__text {
+        margin-top: 20px;
+
+        h2 {
+          // margin-left: 200px;
+          font-weight: bold;
+          font-size: 20px;
+        }
+      }
+
+
+      &__price {
+        // position: absolute;
+        // top: 5px;
+        // right: 220px;
+        margin-top: 25px;
+        margin-right: 100px;
+      }
+    }
+
+    .CreditCard {
+      height: 200px;
+      width: 50%;
+      margin: 50px auto;
+      text-align: center;
+
+      h3 {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .creditcard-info__delete {
+        line-height: 20px;
+        background: #3ccace;
+        border: 1px solid #3ccace;
+        color: #fff;
+        width: 30%;
+        font-size: 12px;
+        border-radius: 100px;
+        text-decoration: none;
+        text-align: center;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+
+      .Paybtn {
+        margin-top: 50px;
+        width: 60%;
+        height: 20%;
+        line-height: 42px;
+        background: #3ccace;
+        border: 1px solid #3ccace;
+        color: #fff;
+        width: 60%;
+        font-size: 18px;
+        border-radius: 100px;
+        text-decoration: none;
+        text-align: center;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+
+  }
+}
