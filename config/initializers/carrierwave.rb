@@ -16,4 +16,5 @@ CarrierWave.configure do |config|
   # config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/fleamarket-sample-80f-shibuya'
   config.fog_directory  = 'fleamarket80fff'
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/fleamarket80fff'
+
 end
