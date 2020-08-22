@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user
+  before_action :user_items
   def show
-    
   end
   
   def edit
@@ -16,6 +16,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def item_list
+  end
+
   
 
   private
@@ -26,6 +29,9 @@ class UsersController < ApplicationController
     def  set_user
       @user = User.find(params[:id])
       @nickname = @user.nickname
+    end
 
+    def user_items
+      @items = @user.items
     end
 end
