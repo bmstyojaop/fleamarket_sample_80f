@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :show_all_instance, only: [ :show, :edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -22,13 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @search_items = Item.search(params[:key])
   end
-
 
   def show
     @comment = Comment.new

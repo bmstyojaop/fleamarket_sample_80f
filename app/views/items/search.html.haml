@@ -1,26 +1,28 @@
-%header.Header
-  .Header__inner
-    .Header__inner--main
-      %h1.MainIcon
-        = link_to root_path do
-          = image_tag("logo.png")
-      .SearchArea
-        %ul.SearchArea__form
-          = form_with(url: "#", local: true, method: :get) do |form|
-            = form.text_field :keyword, placeholder: "キーワードから探す", class: "search-input"
-            .SearchArea__form--submit
-              = form.submit "", class: 'submit' 
-          
-    .NavLists
-      .NavLists__left
-        カテゴリー
-        
-      %ul.NavLists__right
-        - if user_signed_in?
-          = link_to "マイページ", "/users/#{current_user.id}"
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          %li.NavLists__right--login.NavLists__right--item
-            = link_to "ログイン", new_user_session_path
-          %li.NavLists__right--new.NavLists__right--item
-            = link_to "新規会員登録", new_user_registration_path
+= render "modules/header"
+.MainShow  
+  .MainShow__box
+    .MainShow__box__content
+      .MainShow__box__content__top
+        .ItemBox
+          %h2= @item.item_name
+          .ItemBox__Images
+            %ul.Image__main
+              %li.Image__main__list
+                = image_tag(@image.image.url, class: "Main__photo")
+                .Image__box
+                  %ul.Image__sub
+                    - @images.each do |img|
+                      %li.Image__sub__list
+                        = image_tag(img.image.url, class: "sub__photo", size: "75x75")
+          .MainShow__box__price
+            %span.price
+              = @item.price.to_s(:delimited)
+              円
+            .MainShow__box__price__detail
+              %span
+                (税込)
+              %span
+                送料込み 
+
+  = render "modules/footer"
+  = render "modules/sell_btn"

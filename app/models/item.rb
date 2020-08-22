@@ -36,4 +36,12 @@ class Item < ApplicationRecord
   enum auction_status: {出品中: 1, 売り切れ: 2}
   accepts_nested_attributes_for :images, allow_destroy: true
 
+  def self.search(search)
+    if search != ""
+      Item.where(['name LIKE(?) or explanation LIKE(?)', "%#{search}%", "%#{search}%"])
+    else
+      Item.all
+    end
+  end
+
 end
