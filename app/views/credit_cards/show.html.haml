@@ -1,18 +1,29 @@
 = flash[:notice]
-.CreditCard
+.ShowBox
+  .ShowBox__inner
+    .CreditCard
       %section.creditcard_section
         %h3 クレジットカード情報
         - if @card.present?
           .Container
             .Container__CardInfo
-              = image_tag "creditcards/#{@card_image}", width: '34', height: '20', alt: 'card_brand'
-              %p.creditcard-info__number
-                = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
-              %p.creditcard-info__period 
-              = @exp_month + " / " + @exp_year
-              = button_to "削除する", credit_card_path(@card), method: :delete, class:"creditcard-info__delete"
+              %table.ShowTable
+                %tr
+                  %th クレジットカードブランド
+                  %td.card_brand
+                    = image_tag "creditcards/#{@card_image}", width: '34', height: '20', alt: 'card_brand', class: "card_img"
+                %tr
+                  %th クレジットカード番号
+                  %td.card_number
+                    = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+                %tr
+                  %th.exp 有効期限
+                  %td.exp
+                    = @exp_month + " / " + @exp_year
+            = button_to "削除する", credit_card_path(@card), method: :delete, class: "creditcard-info__delete"
         - else
-          .new-card
+          .New-card
             = link_to new_credit_card_path, class:"new-card-btn" do
               %i.far.fa-credit-card 
               クレジットカードを追加する
+            
