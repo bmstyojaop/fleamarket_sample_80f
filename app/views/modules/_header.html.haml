@@ -15,16 +15,35 @@
       .NavLists__left
         カテゴリー
         
-      %ul.NavLists__right
+      %ul.NavLists__right 
         - if user_signed_in?
           = link_to "マイページ", "/users/#{current_user.id}"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          
         - else
           %li.NavLists__right--login.NavLists__right--item
             = link_to "ログイン", new_user_session_path
+            %ul
+              %li
+                = icon('fab', 'facebook-f')
+                = link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post
+              %li
+                = icon('fab', 'google')
+                = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post
+          
           %li.NavLists__right--new.NavLists__right--item
             = link_to "新規会員登録", new_user_registration_path
-    
+            %ul
+              %li.NavLists__right--item
+                = icon('fab', 'facebook-f')
+                = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
+              %li.NavLists__right--item
+                = icon('fab', 'google')
+                = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
+
+    .Notifications
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)
           
 
 

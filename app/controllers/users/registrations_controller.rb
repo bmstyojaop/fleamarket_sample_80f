@@ -9,6 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    if session["sns_auth"]
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
     @user = User.new(sign_up_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
@@ -18,6 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @sending_destination = @user.build_sending_destination
     render :new_sending_destination
+  
   end
 
   def create_sending_destination
