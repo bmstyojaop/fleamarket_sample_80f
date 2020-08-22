@@ -70,18 +70,13 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    # ログイン中のユーザーのクレジットカード登録の有無を判断
     @card = CreditCard.find_by(user_id: current_user.id)
-    # credentials.yml.encに記載したAPI秘密鍵を呼び出します。
     Payjp.api_key = "sk_test_ed37e1648d66e1e3ab2794fd"
-    # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
     customer = Payjp::Customer.retrieve(@card.customer_id)
-    # カスタマー情報からカードの情報を引き出す
     @card_info = customer.cards.retrieve(@card.card_id)
     @exp_month = @card_info.exp_month.to_s
     @exp_year = @card_info.exp_year.to_s.slice(2,3) 
 
-    # クレジットカード会社を取得したので、カード会社の画像をviewに表示させるため、ファイルを指定する。
     @card_brand = @card_info.brand
     case @card_brand
     when "Visa"
@@ -100,28 +95,23 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    #クレジットカードは登録されているかどうか
     if @card.blank?
       redirect_to controller: "credit_cards", action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
-      #クレジットカードがあり、売り切れでもない場合は決済処理を実行
     else
-      #保管した顧客IDでpayjpから情報取得
       Payjp.api_key = "sk_test_ed37e1648d66e1e3ab2794fd"
-      # 請求を発行
       charge = Payjp::Charge.create(
       amount: @item.price,
       customer: Payjp::Customer.retrieve(@card.customer_id),
       currency: 'jpy'
       )
-      # 商品の状態を売り切れに更新
       @item.update!(auction_status: 2)
       redirect_to done_items_path
     end
   end
     
 
-  def done #商品購入完了アクション
+  def done
   end
 
 
@@ -150,7 +140,6 @@ class ItemsController < ApplicationController
     if @status == 2
       redirect_to :show
       flash[:alert] = 'この商品は売り切れです'
-      #登録された情報がない場合にクレジットカード登録画面に移動
     end
   end
 
