@@ -95,21 +95,44 @@
     新規投稿商品
   %ul.PickupContainer__items
     - @items.each do |item|
-      %li.PickupContainer__items--item
-        = link_to item_path(item.id) do
-          .Image
-            = image_tag item.images.first.image.url
-          .DetailBox
-            .DetailBox__name
-              = item.item_name
-            .DetailBox__details
-              %ul
-                %li
-                  = item.price.to_s(:delimited)
+      - if item.auction_status == "出品中"
+        %li.PickupContainer__items--item
+          = link_to item_path(item.id) do
+            .Image
+              = image_tag item.images.first.image.url
+            .DetailBox
+              .DetailBox__name
+                = item.item_name
+              .DetailBox__details
+                %ul
+                  %li
+                    = item.price.to_s(:delimited)
+                    円
+                %p 
+                  (税込)
+                  = (item.price * 1.1).floor
                   円
-              %p 
-                (税込)
-                = (item.price * 1.1).floor
-                円
+              .DetailBox__status
+                出品中
+      - else
+        %li.PickupContainer__items--item
+          = link_to item_path(item.id) do
+            .Image
+              = image_tag item.images.first.image.url
+            .DetailBox
+              .DetailBox__name
+                = item.item_name
+              .DetailBox__details
+                %ul
+                  %li
+                    = item.price.to_s(:delimited)
+                    円
+                %p 
+                  (税込)
+              .DetailBox__status
+                売り切れ
+     
+                  
+
 
 = render 'modules/sell_btn'

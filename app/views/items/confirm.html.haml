@@ -1,0 +1,44 @@
+.ConfirmBox
+  .ConfirmBox__inner
+
+    .Purchase
+      .Purchase__text 購入内容の確認
+
+    .ItemInfo
+      .ItemInfo__right
+        .ItemInfo__right--image
+          = image_tag(@image.image.url, class: "main__photo")
+        .ItemInfo__right--name
+          %p= @item.item_name
+      .ItemInfo__left
+        .ItemInfo__left--base
+          = @item.price.to_s(:delimited)
+          円
+        .ItemInfo__left--tax 
+          %h3 送料込み（税込み）
+
+    .Payment
+      .Payment__text
+        %h2 支払い金額
+      .Payment__price
+        = @item.price.to_s(:delimited)
+        円
+    
+    .CreditCard
+      %section.creditcard_section
+        %h3 クレジットカード情報
+        - if @card.present?
+          .Container
+            .Container__CardInfo
+              = image_tag "creditcards/#{@card_image}", width: '34', height: '20', alt: 'card_brand'
+              %p.creditcard-info__number
+                = "**** **** **** " + @card_info.last4 
+              %p.creditcard-info__period 
+              = @exp_month + " / " + @exp_year
+              = button_to "削除する", credit_card_path(@card), method: :delete, class:"creditcard-info__delete"
+        
+      = form_tag(action: :pay, method: :post) do
+        %button.Paybtn{type:"submit"} 購入する
+
+
+

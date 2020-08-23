@@ -12,9 +12,7 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  # config.fog_directory  = 'fleamarket-sample-80f-shibuya'
-  # config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/fleamarket-sample-80f-shibuya'
-  config.fog_directory  = 'fleamarket80fff'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/fleamarket80fff'
+  config.fog_directory  = 'fleamarket-sample-80f-shibuya'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/fleamarket-sample-80f-shibuya'
 
 end

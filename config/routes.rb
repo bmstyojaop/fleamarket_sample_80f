@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
     resources :sending_destinations, only: [:edit, :update]
+    member do 
+      get :item_list
+    end
   end
   
   resources :items, only: [:index, :show, :new] do
@@ -23,6 +26,22 @@ Rails.application.routes.draw do
   resources :items do
     resources :comments, only: [:create, :destroy]
 
+
+  resources :credit_cards, only: [:new, :show, :create, :destroy]
+  
+  resources :items do
+    resources :comments, only: [:create, :destroy]
+    collection do
+      get  'confirm/:id'=>  'items#confirm', as: 'confirm'
+      post 'pay/:id'=>   'items#pay', as: 'pay'
+      get  'done'=>      'items#done', as: 'done'
+    end
+
   end
+  
+  
+  
+  
+  
  
 end

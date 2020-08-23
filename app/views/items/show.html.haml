@@ -28,7 +28,7 @@
             %table 
               %tr 
                 %th 出品者
-                %td= @user.nickname
+                %td= link_to @item.user.nickname, "/users/#{@item.user_id}"
               %tr 
                 %th カテゴリー
                 %td= @item.category.name
@@ -57,9 +57,13 @@
           - if current_user == @user
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
+          - elsif @item.auction_status == "売り切れ"
+            %h3 この商品は売り切れです
           - elsif user_signed_in?
-            = link_to "購入画面に進む", root_path
+            = link_to "購入画面に進む", confirm_items_path(@item)
+            -# buy_card_path(@item.id), data: {"turbolinks" => false} , class: "pay"
           - else
+            = link_to "購入画面に進む", root_path
         .MainShow__box__comment
           .Title
             コメント一覧
