@@ -6,9 +6,8 @@ class ItemsController < ApplicationController
   before_action :show_all_instance, only: [:show, :edit, :update, :destroy, :confirm]
   before_action :set_credit_card, only: [:pay, :confirm]
   before_action :item_sold?, only: [:pay]
-
+  before_action :items_desc
   def index
-    @items = Item.includes(:images).order('created_at DESC')
     # @status = @item.auction_status
   end
 
@@ -129,6 +128,10 @@ class ItemsController < ApplicationController
     @user = @item.user 
     @images = Image.where(item_id: params[:id])
     @image = @images.first
+  end
+
+  def items_desc
+    @items = Item.includes(:images).order('created_at DESC')
   end
 
   def set_credit_card
