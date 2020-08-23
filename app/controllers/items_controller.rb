@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :show_all_instance, only: [ :show, :edit, :update, :destroy]
-
+  before_action :items_desc
   def index
-    @items = Item.includes(:images).order('created_at DESC')
   end
 
   def new
@@ -75,6 +74,10 @@ class ItemsController < ApplicationController
     @user = @item.user 
     @images = Image.where(item_id: params[:id])
     @image = @images.first
+  end
+
+  def items_desc
+    @items = Item.includes(:images).order('created_at DESC')
   end
 
 end

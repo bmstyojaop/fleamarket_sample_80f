@@ -57,6 +57,9 @@
 
       %section.UserDetails__field--introduction
         = @user.introduction
+  .UserName
+    = @nickname 
+    さんの出品した商品
   %section.UserItems
     - @items.each do |item|
       %li.UserItems__item

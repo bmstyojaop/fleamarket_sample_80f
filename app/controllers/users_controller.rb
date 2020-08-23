@@ -32,6 +32,6 @@ class UsersController < ApplicationController
     end
 
     def user_items
-      @items = @user.items
+      @items = @user.items.order('created_at DESC')
     end
 end
