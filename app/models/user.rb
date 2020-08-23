@@ -24,9 +24,12 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
 
 
-  has_one :sending_destination 
   # has_many :seller_items, foreign_key: 'seller_id', class_name: 'Item'
   # has_many :buyer_items, foreign_key: 'buyer_id', class_name: 'Item'
+
+  validates :nickname, presence: true
+  has_one :sending_destination
+  has_one :credit_card, dependent: :destroy
   has_one :sns_credential, dependent: :destroy
   has_many :items,     dependent: :destroy
   has_many :comments,  dependent: :destroy
@@ -47,3 +50,4 @@ class User < ApplicationRecord
     { user: user, sns: sns }
   end
 end
+  

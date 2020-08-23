@@ -77,10 +77,13 @@ gem 'ancestry'
 
 gem "haml-rails"
 
+gem 'payjp'
+
 gem 'jp_prefecture'
 
 gem 'jquery-rails'
 
+gem 'dotenv-rails'
 gem 'carrierwave'
 
 gem 'font-awesome-sass'

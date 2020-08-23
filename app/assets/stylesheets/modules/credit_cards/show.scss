@@ -1,0 +1,67 @@
+.ShowBox {
+  background-color: #f8f8f8;
+  margin: 0 auto;
+  height: 80vh;
+  overflow: scroll;
+
+  &__inner {
+    width: 50%;
+    height: 50vh;
+    background-color: white;
+    margin: 100px auto;
+    border: 1px solid white;
+
+    .CreditCard {
+      height: 200px;
+      width: 50%;
+      margin: 50px auto;
+      text-align: center;
+
+      .Container__CardInfo {
+        margin-bottom: 60px;
+        .ShowTable {
+          width: 100%;
+          margin-top: 300px;
+          border-spacing: 0;
+          margin: 0 auto;
+    
+          th {
+            border-bottom: solid 5px #fb5144;
+            padding: 10px 0;
+            width: 80%;
+            text-align: center;
+          }
+        
+          td {
+            border-bottom: solid 2px #ddd;
+            text-align: center;
+            padding: 10px 0;
+            width: 100px;
+          }
+        }
+      }
+    
+      h3 {
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+    
+      .creditcard-info__delete {
+        line-height: 20px;
+        background: #3ccace;
+        border: 1px solid #3ccace;
+        color: #fff;
+        width: 50%;
+        height: 60px;
+        font-size: 20px;
+        border-radius: 100px;
+        text-decoration: none;
+        text-align: center;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
