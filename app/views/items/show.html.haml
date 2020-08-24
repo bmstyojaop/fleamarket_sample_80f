@@ -58,7 +58,7 @@
         .MainShow__box__edit
           - if current_user == @user
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
-            = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
+            = link_to "商品の削除", item_path(@item.id), data: {"turbolinks" => false},  method: :delete, class: "destory"
           - elsif @item.auction_status == "売り切れ"
             %h3 この商品は売り切れです
           - elsif user_signed_in?

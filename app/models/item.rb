@@ -37,7 +37,4 @@ class Item < ApplicationRecord
   enum auction_status: {出品中: 1, 売り切れ: 2}
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
-  end
 end

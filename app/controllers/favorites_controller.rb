@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
       @user_favorite = @favorites.where(user_id: current_user)
       render 'create.js.haml'
     else
-      redirect_to item_path(params[:item_id]), alert: :'お気に入り登録はログインして使用して下さい'
+      redirect_to item_path(params[:item_id]), data: {"turbolinks" => false}, alert: :'お気に入り登録はログインして使用して下さい'
     end
   end
 
@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
       @user_favorite = @favorites.where(user_id: current_user)
       render 'destroy.js.haml'
     else
-      redirect_to item_path(params[:item_id]), alert: :'お気に入り削除はログインして使用して下さい'
+      redirect_to item_path(params[:item_id]), data: {"turbolinks" => false}, alert: :'お気に入り削除はログインして使用して下さい'
     end
   end
 end
