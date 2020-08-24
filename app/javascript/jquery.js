@@ -1,1 +1,1 @@
-import "./pay.js"
+import "../pay.js"
