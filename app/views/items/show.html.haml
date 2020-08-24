@@ -48,6 +48,8 @@
                 %th 発送日の目安
                 %td= @item.preparation_day.name
           .MainShow__box__option
+            .Like
+              = render partial: "favorites/favorite", locals: { item: @item, favorites: @favorites, user_favorite: @user_favorite }
             %ul.Report
               %li.Report__list
                 = link_to "#" do
