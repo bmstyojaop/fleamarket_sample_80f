@@ -1,1 +1,1 @@
-import "../assets/javascripts/modules/pay"
+// import "../assets/javascripts/modules/pay"
