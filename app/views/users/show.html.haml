@@ -11,8 +11,20 @@
             = icon('fas', 'cog')
             発送元・お届け先住所
         %li.UserDetails__nav--element
-          = icon('fas', 'cog')
-          クレジットカード
+          = link_to credit_card_path do
+            = icon('fas', 'cog')
+            クレジットカード
+        %li.UserDetails__nav--element
+          = link_to item_list_user_path(current_user), method: :get do
+            = icon('fas', 'box-open')
+            = @nickname
+            さんの出品一覧
+          
+        %li.UserDetails__nav--element
+          = icon('fas', 'star')
+          = @nickname
+          さんのお気に入り一覧
+        
 
     %main.UserDetails__field
       - if @user.background?
@@ -46,4 +58,26 @@
 
       %section.UserDetails__field--introduction
         = @user.introduction
+  .UserName
+    = @nickname 
+    さんの出品した商品
+  %section.UserItems
+    - @items.each do |item|
+      %li.UserItems__item
+        = link_to item_path(item.id) do
+          .UserItems__item--image
+            = image_tag item.images.first.image.url
+          .UserItems__item--detail
+            .DetaiName
+              = item.item_name
+            .DetailPrice
+              %ul
+                %li
+                  = item.price.to_s(:delimited)
+                  円
+              %p 
+                (税込) 
+              
+      
+      
       

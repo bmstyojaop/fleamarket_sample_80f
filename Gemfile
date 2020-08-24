@@ -77,10 +77,13 @@ gem 'ancestry'
 
 gem "haml-rails"
 
+gem 'payjp'
+
 gem 'jp_prefecture'
 
 gem 'jquery-rails'
 
+gem 'dotenv-rails'
 gem 'carrierwave'
 
 gem 'font-awesome-sass'
@@ -91,3 +94,8 @@ gem 'fog-aws'
 
 gem 'rails-i18n'
 
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'
+
+gem "omniauth-rails_csrf_protection"

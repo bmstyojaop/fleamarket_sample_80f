@@ -32,16 +32,16 @@
 |item_name|string|null: false|
 |author|string|null: false|
 |company|string|null: false|
-|price|integer|null: false|
+|price|string|null: false|
 |item_introduction|text|null:false|
-|postage_payer_id|integer|references, null: false, foreign_key: true|
-|category_id|integer|references, null: false, foreign_key: true|
-|item_condition_id|integer|references, null: false, foreign_key: true|
-|preparation_day_id|integer|references, null: false, foreign_key: true|
-|postage_type_id|integer|references, null: false, foreign_key: true|
-|seller_id|integer|references, null: false, foreign_key: true|
-|buyer_id|integer|references, foreign_key: true|
-|deal_closed_date|integer|timestamp|
+|postage_payer_id|string|references, null: false, foreign_key: true|
+|category_id|string|references, null: false, foreign_key: true|
+|item_condition_id|string|references, null: false, foreign_key: true|
+|preparation_day_id|string|references, null: false, foreign_key: true|
+|postage_type_id|string|references, null: false, foreign_key: true|
+|seller_id|string|references, null: false, foreign_key: true|
+|buyer_id|string|references, foreign_key: true|
+|deal_closed_date|string|timestamp|
 
 
 ### Association
@@ -128,7 +128,7 @@
 
 | Column | Type | Options|
 |--------|------|--------|
-|item_id|integer|references, foreign_key: true|
+|item_id|string|references, foreign_key: true|
 |url|string|null: false| 
 
 ### Association
@@ -141,8 +141,8 @@
 
 | Column | Type | Options|
 |--------|------|--------|
-|user_id|integer|references, null: false, foreign_key: true|
-|item_id|integer|references, null: false, foreign_key: true|
+|user_id|string|references, null: false, foreign_key: true|
+|item_id|string|references, null: false, foreign_key: true|
 |comment|text|null: false|
 |created_at|timestamp|null: false|
 
@@ -158,8 +158,8 @@
 
 | Column | Type | Options|
 |--------|------|--------|
-|user_id|integer|references, null: false, foreign_key: true|
-|item_id|integer|references, null: false, foreign_key: true|
+|user_id|string|references, null: false, foreign_key: true|
+|item_id|string|references, null: false, foreign_key: true|
 
 ### Association
 
@@ -181,7 +181,7 @@
 |birth_day|date|null: false|
 |introduction|text||
 |image|string||
-|user_id|integer|references, null: false, foreign_key: true|
+|user_id|string|references, null: false, foreign_key: true|
 
 
 ### Association
@@ -193,11 +193,9 @@
 
 | Column | Type | Options|
 |--------|------|--------|
-|user_id|integer|references, null: false, foreign_key: true|
-|card_number|integer|references, null: false, unique: true|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|user|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 
 ### Association
@@ -211,9 +209,9 @@
 
 | Column | Type | Options|
 |--------|------|--------|
-|phone_number|integer||
-|post_code|integer(7)|null: false|
-|prefecture_code|integer|null: false|
+|phone_number|string||
+|post_code|string(7)|null: false|
+|prefecture_code|string|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_number|string||
@@ -221,7 +219,7 @@
 |destination_first_name|string|null: false|
 |destination_family_name_kana|string|null: false|
 |destination_first_name_kana|string|null: false|
-|user_id|integer|references, null: false, foreign_key: true|
+|user_id|string|references, null: false, foreign_key: true|
 
 
 ### Association

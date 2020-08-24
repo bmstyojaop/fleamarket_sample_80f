@@ -269,6 +269,10 @@
               text-align: left;
             }
           }
+          &__status {
+            color: red;
+            font-weight: bold;
+          }
         }
       }
     }
