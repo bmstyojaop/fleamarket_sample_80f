@@ -1,3 +1,7 @@
+- breadcrumb :sending_destinations
+= render "layouts/breadcrumbs"
+
+
 %h2 商品送り先の情報を登録
 = form_with(model: [@user, @sending_destination], local: true) do |f|
   = render "devise/shared/error_messages", resource: @sending_destination
