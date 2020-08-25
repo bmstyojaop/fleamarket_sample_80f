@@ -6,6 +6,10 @@
     -if user_signed_in? && current_user.id.to_s == params[:id]
       %ul.UserDetails__nav
         %li.UserDetails__nav--element
+          = link_to destroy_user_session_path, method: :delete do
+            = icon('fas', 'sign-out-alt')
+            ログアウト
+        %li.UserDetails__nav--element
           = link_to edit_user_path(current_user), method: :get do
             = icon('fas', 'cog')
             プロフィール
@@ -24,9 +28,11 @@
             さんの出品一覧
           
         %li.UserDetails__nav--element
-          = icon('fas', 'star')
-          = @nickname
-          さんのお気に入り一覧
+          = link_to favorites_users_path do
+            = icon('fas', 'star')
+            = @nickname
+            さんのお気に入り一覧
+        
         
 
     %main.UserDetails__field
@@ -67,7 +73,7 @@
   %section.UserItems
     - @items.each do |item|
       %li.UserItems__item
-        = link_to item_path(item.id) do
+        = link_to item_path(item.id), data: {"turbolinks" => false} do
           .UserItems__item--image
             = image_tag item.images.first.image.url
           .UserItems__item--detail

@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
+    @favorites = Favorite.where(item_id: params[:id])
+    @user_favorite = @favorites.where(user_id: current_user)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
@@ -117,7 +118,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_introduction, :author, :company, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
 
   def set_item

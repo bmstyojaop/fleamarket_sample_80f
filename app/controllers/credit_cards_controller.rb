@@ -19,10 +19,8 @@ class CreditCardsController < ApplicationController
       )
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        flash[:notice] = 'クレジットカードの登録が完了しました'
         redirect_to credit_card_path(@card)
       else
-        flash[:alert] = 'クレジットカードを登録できませんでした。'
         rdirect_to credit_cards_path
       end
     end
@@ -64,7 +62,7 @@ class CreditCardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete 
     if @card.destroy 
-      redirect_to user_path(current_user), notice: "クレジットカード情報を削除しました"
+      redirect_to user_path(current_user), alert: "クレジットカード情報を削除しました"
     else
       redirect_to action: "show", alert: "クレジットカード情報を削除できませんでした"
     end

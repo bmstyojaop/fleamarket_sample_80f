@@ -1,0 +1,42 @@
+.Item__body
+  .Item__body__title
+    お気に入り商品一覧
+  .Item__body__lists
+    - @favorites.each do |favorite|
+      -if favorite.item.auction_status == '売り切れ'
+        .Item__body__list
+          = link_to item_path(favorite.item.id), data: {"turbolinks" => false} do
+            %figure.List__img
+              = image_tag favorite.item.images.first.image.url
+            .List__body
+              %h3.name
+                = favorite.item.item_name
+              .List__price
+                %ul
+                  %li
+                    = favorite.item.price.to_s(:delimited)
+                    円
+                  %li
+                    = icon('fa', 'star')
+                    = favorite.item.favorites.count
+                %p (税込)
+            .List__sold
+              .List__sold__inner
+                sold
+      - else
+        .Item__body__list
+          = link_to item_path(favorite.item.id) do
+            %figure.List__img
+              = image_tag favorite.item.images.first.image.url
+            .List__body
+              %h3.name
+                = favorite.item.item_name
+              .List__price
+                %ul
+                  %li
+                    = favorite.item.price.to_s(:delimited)
+                    円
+                  %li
+                    = icon('fa', 'star')
+                    = favorite.item.favorites.count
+                %p (税込)
