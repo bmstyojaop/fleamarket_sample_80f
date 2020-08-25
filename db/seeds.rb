@@ -1,5 +1,17 @@
 # 親
 lady = Category.create(name: "レディース")
+man = Category.create(name: "メンズ")
+kids = Category.create(name: "ベビー・キッズ")
+interior = Category.create(name: "インテリア・住まい・小物")
+book = Category.create(name: "本・音楽・ゲーム")
+hobby = Category.create(name: "おもちゃ・ホビー・グッズ")
+beauty = Category.create(name: "コスメ・香水・美容")
+election = Category.create(name: "家電・スマホ・カメラ")
+sport = Category.create(name: "スポーツ・レジャー")
+handmade = Category.create(name: "ハンドメイド")
+ticket = Category.create(name: "チケット")
+bike = Category.create(name: "自転車・オートバイ")
+etcetera = Category.create(name: "その他")
 
 # 子
 lady_tops = lady.children.create(name: "トップス")
@@ -17,10 +29,32 @@ lady_hairAccessory = lady.children.create(name: "ヘアアクセサリー")
 lady_smallArticles = lady.children.create(name: "小物")
 lady_watch = lady.children.create(name: "時計")
 
+lady_wig = lady.children.create(name: "ウィッグ/エクステ")
+lady_summer = lady.children.create(name: "浴衣/水着")
+lady_suits = lady.children.create(name: "スーツ/フォーマル/ドレス")
+lady_maternity = lady.children.create(name: "マタニティ")
+lady_etcetra = lady.children.create(name: "その他")
+
+
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+man_ = man.children.create(name: "時計")
+
 # 孫
 
 lady_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"}, {name: "Tシャツ/カットソー(七分/長袖)"}, {name: "シャツ/ブラウス(半袖/袖なし)"}, {name: "シャツ/ブラウス(七分/長袖)"}, {name: "ポロシャツ"}, {name: "キャミソール"}, {name: "タンクトップ"}, {name: "ホルターネック"}, {name: "ニット/セーター"}, {name: "チェニック"}, {name: "カーディガン/ボレロ"}, {name: "アンサンブル"}, {name: "ベスト/ジレ"}, {name: "パーカー"}])
-lady_jacket.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"}, {name: "レザージャケット"}, {name: "ダウンジャケット"}, {name: "ライダースジャケット"}, {name: "ミリタリージャケット"}, {name: "ダウンベスト"}, {name: "ジャンパー/ブルゾン"}, {name: "ポンチョ"}, {name: "ロングコート"}, {name: "トレンチコート"}, {name: "ダッフルコート"}, {name: "ピーコート"}])
+lady_jacket.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"}, {name: "レザージャケット"}, {name: "ダウンジャケット"}, {name: "ライダースジャケット"}, {name: "ミリタリージャケット"}, {name: "ダウンベスト"}, {name: "ジャンパー/ブルゾン"}, {name: "ポンチョ"}, {name: "ロングコート"}, {name: "トレンチコート"}, {name: "ダッフルコート"}, {name: "ピーコート"}, {name: "チェスターコート"}, {name: "モッズコート"}, {name: "スタジャン"}, {name: "毛皮/ファーコート"}, {name: "スプリングコート"}, {name: "スカジャン"}, {name: "その他"}])
 lady_pants.children.create([{name: "デニムジーンズ"}, {name: "ショートパンツ"}, {name: "カジュアルパンツ"}, {name: "ハーフパンツ"}, {name: "チノパン"}, {name: "ワークパンツ/カーゴパンツ"}, {name: "クロップドパンツ"}, {name: "サロペット/オーバーオール"}, {name: "オールインワン"}, {name: "サルエルパンツ"}, {name: "ガウチョパンツ"}, {name: "その他"}])
 lady_skirt.children.create([{name: "ミニスカート"}, {name: "ひざ丈スカート"}, {name: "ロングスカート"}, {name: "キュロット"}, {name: "その他"}])
 lady_onePiece.children.create([{name: "ミニワンピース"}, {name: "ひざ丈ワンピース"}, {name: "ロングワンピース"}, {name: "その他"}])
@@ -28,25 +62,14 @@ lady_shoes.children.create([{name: "ハイヒール/パンプス"}, {name: "ブ�
 lady_room.children.create([{name: "パジャマ"}, {name: "ルームウェア"}])
 lady_leg.children.create([{name: "ソックス"}, {name: "スパッツ/レギンス"}, {name: "ストッキング/タイツ"}, {name: "レッグウォーマー"}, {name: "その他"}])
 lady_cap.children.create([{name: "ニットキャップ"},{name: "ハット"}, {name: "ハンチング/ベレー帽"}, {name: "キャップ"}, {name: "キャスケット"}, {name: "麦わら帽子"}, {name: "その他"}])
-lady_bag.children.create([{name: "ハンドバッグ"}, {name: "トートバッグ"}, {name: "エコバッグ"}, {name: "リュック/バックパック"}, {name: "ボストンバッグ"}, {name: "スポーツバッグ"}, {name: "ショルダーバッグ"}, {name: "クラッチバッグ"}, {name: "ポーチ/バニティ"}, {name: "ボディバッグ/ウェストバッグ"}, {name: "マザーズバッグ"}, {name: "メッセンジャーバッグ"}, {name: "ビジネスバッグ"}, {name: "旅行用バッグ/キャリーバッグ"}])
-lady_accessory.children.create([{name: ""}, ])
-lady_hairAccessory.children.create([{name: ""}, ])
-lady_smallArticles.children.create([{name: ""}, ])
-lady_watch.children.create([{name: ""}, ])
+lady_bag.children.create([{name: "ハンドバッグ"}, {name: "トートバッグ"}, {name: "エコバッグ"}, {name: "リュック/バックパック"}, {name: "ボストンバッグ"}, {name: "スポーツバッグ"}, {name: "ショルダーバッグ"}, {name: "クラッチバッグ"}, {name: "ポーチ/バニティ"}, {name: "ボディバッグ/ウェストバッグ"}, {name: "マザーズバッグ"}, {name: "メッセンジャーバッグ"}, {name: "ビジネスバッグ"}, {name: "旅行用バッグ/キャリーバッグ"}, {name: "ショップ袋"}, {name: "和装用バッグ"}, {name: "かごバッグ"}, {name: "その他"}])
+lady_accessory.children.create([{name: "ネックレス"}, {name: "ブレスレット"}, {name: "バンクル/リストバンド"}, {name: "リング"}, {name: "ピアス(片耳用)"}, {name: "ピアス(両耳用)"}, {name: "イヤリング"}, {name: "アンクレット"}, {name: "ブローチ/コサージュ"}, {name: "チャーム"}, {name: "その他"}])
+lady_hairAccessory.children.create([{name: "ヘアゴム"}, {name: "ヘアバンド/カチューシャ"}, {name: "ヘアピン"}, {name: "その他"}])
+lady_smallArticles.children.create([{name: "長財布"}, {name: "折り財布"}, {name: "コインケース/小銭入れ"}, {name: "名刺入れ/定期入れ"}, {name: "キーケース"}, {name: "キーホルダー"}, {name: "手袋/アームカバー"}, {name: "ハンカチ"}, {name: "ベルト"}, {name: "マフラー/ショーツ"}, {name: "ストール/スヌード"}, {name: "バンダナ/スカーフ"}, {name: "ネックウォーマー"}, {name: "サスペンダー"}, {name: "サングラス/メガネ"}, {name: "モバイルケース/カバー"}, {name: "手帳"}, {name: "イヤマフラー"}, {name: "傘"}, {name: "レインコート/ポンチョ"}, {name: "ミラー"}, {name: "タバコグッズ"}, {name: "その他"}])
+lady_watch.children.create([{name: "腕時計(アナログ)"}, {name: "腕時計(デジタル)"}, {name: "ラバーベルト"}, {name: "レザーベルト"}, {name: "金属ベルト"}, {name: "その他"}])
+lady_wig.children.create([{name: "前髪ウィッグ"}, {name: "ロングストレート"}, {name: "ロングカール"}, {name: "ショートストレート"}, {name: "ショートカール"}, {name: "その他"}])
+lady_summer.children.create([{name: "浴衣"}, {name: "着物"}, {name: "振袖"}, {name: "長襦袢/半襦袢"}, {name: "水着セパレート"}, {name: "水着ワンピース"}, {name: "スポーツ"}, {name: "その他"}])
+lady_suits.children.create([{name: "スカートスーツ上下"}, , {name: "パンツスーツ上下"}, {name: "ドレス"}, {name: "パーティバッグ"}, {name: "シューズ"}, {name: "ウェディング"}, {name: "その他"}])
+lady_maternity.children.create([{name: "トップス"}, {name: "アウター"}, {name: "インナー"}, {name: "ワンピース"}, {name: "パンツ/スパッツ"}, {name: "スカート"}, {name: "パジャマ"}, {name: "授乳服"}, {name: "その他"}])
+lady_etcetra.children.create([{name: "コスプレ"}, {name: "下着"}, {name: "その他"}])
 
-management = business_book.children.create(name: "経営")
-management.children.create([{name: "経営全般"}, {name: "国際経営"}, {name: "法律"}, {name: "企業の歴史"}])
-
-skill_up = business_book.children.create(name: "スキルアップ")
-skill_up.children.create([{name: "仕事術"}, {name: "キャリアプラン"}, {name: "資格"}, {name: "語学"}, {name: "自己啓発"}])
-
-finance = business_book.children.create(name: "金融")
-finance.children.create([{name: "金融全般"}, {name: "お金の哲学"}, {name: "金融業務"}, {name: "税金"}])
-
-job_category = business_book.children.create(name: "職種別")
-job_category.children.create([{name: "経理"}, {name: "人事"}, {name: "秘書"}, {name: "情報管理"}, {name: "営業"}, {name: "マーケティング"}, {name: "広報"}, {name: "デザイン"}])
-
-lifestyle = business_book.children.create(name: "ライフスタイル")
-lifestyle.children.create([{name: "家庭・暮らし"}, {name: "健康"}, {name: "人生論・生き方"}, {name: "旅行"}, {name: "趣味・雑学"}, {name: "エンターテイメント"}, {name: "副業"}])
-
-other = business_book.children.create(name: "その他")
