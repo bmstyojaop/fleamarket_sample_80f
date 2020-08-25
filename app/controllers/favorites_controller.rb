@@ -1,6 +1,5 @@
 class FavoritesController < ApplicationController
   def create
-    # binding.pry
     if user_signed_in?
       Favorite.create(user_id: current_user.id, item_id: params[:item_id])
       @favorites = Favorite.where(item_id: params[:item_id])

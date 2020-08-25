@@ -1,5 +1,4 @@
 - if user_favorite.exists?
-  -# - binding.pry
   .Like__list--on
     = link_to item_favorite_path(item.id, user_favorite.ids), method: :delete, remote: true do
       = icon('fa', 'star')
