@@ -1,7 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :show_all_instance, only: [ :show, :edit, :update, :destroy]
-  before_action :move_to_index, except: [:index, :show, :search]
 
   require "payjp"
 
@@ -10,6 +7,8 @@ class ItemsController < ApplicationController
   before_action :set_credit_card, only: [:pay, :confirm]
   before_action :item_sold?, only: [:pay]
   before_action :items_desc
+  before_action :set_ransack,only: [:search, :detail_search]
+
   def index
     # @status = @item.auction_status
   end
@@ -29,12 +28,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def search
-    @search_items = Item.search(params[:key])
-  end
 
   def show
-    @item = Item.find(params[:id])
+    @favorites = Favorite.where(item_id: params[:id])
+    @user_favorite = @favorites.where(user_id: current_user)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
@@ -72,6 +69,18 @@ class ItemsController < ApplicationController
       flash.now[:alert] = '削除できませんでした'
       render :show
     end
+  end
+
+  def search
+    @search_items = Item.search(params[:keyword])
+    @keyword = params[:keyword]
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+  end
+  def detail_search   
+    @search_item = Item.ransack(params[:q]) 
+    @items = @search_item.result
+    @keyword = params[:name_cont]
   end
 
   def confirm
@@ -152,5 +161,8 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_ransack
+    @q = Item.ransack(params[:q])
+  end
 
 end
