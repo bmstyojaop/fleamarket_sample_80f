@@ -1,28 +1,72 @@
-= render "modules/header"
-.MainShow  
-  .MainShow__box
-    .MainShow__box__content
-      .MainShow__box__content__top
-        .ItemBox
-          %h2= @item.item_name
-          .ItemBox__Images
-            %ul.Image__main
-              %li.Image__main__list
-                = image_tag(@image.image.url, class: "Main__photo")
-                .Image__box
-                  %ul.Image__sub
-                    - @images.each do |img|
-                      %li.Image__sub__list
-                        = image_tag(img.image.url, class: "sub__photo", size: "75x75")
-          .MainShow__box__price
-            %span.price
-              = @item.price.to_s(:delimited)
-              円
-            .MainShow__box__price__detail
-              %span
-                (税込)
-              %span
-                送料込み 
+.item
+  = render "items/item_search" 
+  .item__body#short
+    .item__body__title
+      #{@keyword}の検索結果一覧
+    .item__body__lists
+      - @search_items.each do |item|
+        -if item.auction_status == '売り切れ'
+          .item__body__lists__list
+            = link_to item_path(item.id), data: {"turbolinks" => false}  do
+              %figure.list__img
+                = image_tag item.images.first.image.url
+              .list__body
+                %h3.name
+                  = item.name
+                .list__price
+                  %ul
+                    %li
+                      = item.exhibition_price.to_s(:delimited)
+                      円
+                    %li
+                      = icon('fa', 'star')
+                      = item.favorites.count
+                  %p (税込)
+              .list__sold
+                .list__sold__inner
+                  sold
+        - else
+          .item__body__lists__list
+            = link_to item_path(item.id), data: {"turbolinks" => false}  do
+              %figure.list__img
+                = image_tag item.images.first.image.url
+              .list__body
+                %h3.name
+                  = item.name
+                .list__price
+                  %ul
+                    %li
+                      = item.exhibition_price.to_s(:delimited)
+                      円
+                    %li
+                      = icon('fa', 'star')
+                      = item.favorites.count
+                  %p (税込)
+                  
+-# .MainShow  
+-#   .MainShow__box
+-#     .MainShow__box__content
+-#       .MainShow__box__content__top
+-#         .ItemBox
+-#           %h2= @item.item_name
+-#           .ItemBox__Images
+-#             %ul.Image__main
+-#               %li.Image__main__list
+-#                 = image_tag(@image.image.url, class: "Main__photo")
+-#                 .Image__box
+-#                   %ul.Image__sub
+-#                     - @images.each do |img|
+-#                       %li.Image__sub__list
+-#                         = image_tag(img.image.url, class: "sub__photo", size: "75x75")
+-#           .MainShow__box__price
+-#             %span.price
+-#               = @item.price.to_s(:delimited)
+-#               円
+-#             .MainShow__box__price__detail
+-#               %span
+-#                 (税込)
+-#               %span
+-#                 送料込み 
 
   = render "modules/footer"
   = render "modules/sell_btn"
