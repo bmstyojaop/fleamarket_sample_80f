@@ -1,57 +1,82 @@
-%h2 商品送り先の情報を登録
-= form_with(model: [@user, @sending_destination], local: true) do |f|
-  = render "devise/shared/error_messages", resource: @sending_destination
 
-  .field
-    = f.label :post_code
-    %br/
-    = f.text_field :post_code
+%main.RegistrationField
+  .RegistrationField__form
+    %h1 商品送り先を登録
+    %h2 (あとから変更できます)
+    = form_with(model: [@user, @sending_destination], local: true) do |f|
+      .RegistrationField__form--field
+        = f.label :post_code
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :post_code, placeholder: "例）1500041"
 
-  .field
-    = f.label :prefecture_code
-    %br/
-    = f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' 
+      .RegistrationField__form--field
+        = f.label :prefecture_code
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' , placeholder: "例）東京都"
 
-  .field
-    = f.label :address_city
-    %br/
-    = f.text_field :address_city
+      .RegistrationField__form--field
+        = f.label :address_city
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :address_city, placeholder: "例）渋谷区"
 
-  .field
-    = f.label :address_street
-    %br/
-    = f.text_field :address_street
+      .RegistrationField__form--field
+        = f.label :address_street
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :address_street, placeholder: "例）神南1-1-1"
 
-  .field
-    = f.label :address_building
-    %br/
-    = f.text_field :address_building
+      .RegistrationField__form--field
+        = f.label :address_building
+        %span.Requre.Gray
+          任意
+        %br/
+        = f.text_field :address_building, placeholder: "例）神南ビル101"
 
-  .field
-    = f.label :destination_family_name
-    %br/
-    = f.text_field :destination_family_name
+      .RegistrationField__form--field
+        = f.label :destination_family_name
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :destination_family_name, placeholder: "例）神南"
 
-  .field
-    = f.label :destination_first_name
-    %br/
-    = f.text_field :destination_first_name
+      .RegistrationField__form--field
+        = f.label :destination_first_name
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :destination_first_name, placeholder: '例）太郎'
 
-  .field
-    = f.label :destination_family_name_kana
-    %br/
-    = f.text_field :destination_family_name_kana
+      .RegistrationField__form--field
+        = f.label :destination_family_name_kana
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :destination_family_name_kana, placeholder: '例）ジンナン'
 
-  .field
-    = f.label :destination_first_name_kana
-    %br/
-    = f.text_field :destination_first_name_kana
+      .RegistrationField__form--field
+        = f.label :destination_first_name_kana
+        %span.Requre.Red
+          必須
+        %br/
+        = f.text_field :destination_first_name_kana, placeholder: '例）タロウ'
 
-  .field
-    = f.label :phone_number
-    %br/
-    = f.text_field :phone_number
+      .RegistrationField__form--field
+        = f.label :phone_number
+        %span.Requre.Gray
+          任意
+        %br/
+        = f.text_field :phone_number, placeholder: '例）09012345678'
 
-  .actions
-    = f.submit "Sign up"
+      .RegistrationField__form--action
+        = f.submit "変更を保存する"
+  .RegistrationField__error
+    = render "devise/shared/error_messages", resource: @sending_destination
+  -# = render "devise/shared/links"
 

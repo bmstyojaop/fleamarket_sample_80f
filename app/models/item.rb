@@ -2,8 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
-  has_many :favorites
+  has_many :users,       through: :favorites
+  has_many :comments,    dependent: :destroy
+  has_many :favorites,   dependent: :destroy
   has_many :item_images, dependent: :destroy
   # belongs_to :category
   belongs_to_active_hash :postage_type, dependent: :destroy

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   root to: "items#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
+    collection do
+      get 'favorites'
+    end
     resources :sending_destinations, only: [:edit, :update]
     member do 
       get :item_list
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
   
   resources :items do
     resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     collection do
       get  'confirm/:id'=>  'items#confirm', as: 'confirm'
       post 'pay/:id'=>   'items#pay', as: 'pay'
