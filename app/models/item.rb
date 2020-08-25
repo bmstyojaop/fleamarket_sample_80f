@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :item_images, dependent: :destroy
-  # belongs_to :category
+  belongs_to :category
   belongs_to_active_hash :postage_type, dependent: :destroy
   belongs_to_active_hash :preparation_day, dependent: :destroy
   belongs_to_active_hash :postage_payer, dependent: :destroy
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
  
   validates :item_name,                    presence: true,    length: { maximum: 40 } 
   validates :item_introduction,            presence: true,    length: { maximum: 1000 } 
-  validates :category_id,                  presence: true
+  # validates :category_id,                  presence: true
   validates :item_condition_id,               presence: true
   validates :auction_status,               presence: true
   validates :postage_payer_id,                presence: true
