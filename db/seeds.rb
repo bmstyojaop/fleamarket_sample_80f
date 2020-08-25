@@ -1,4 +1,4 @@
-# 親
+# 親カテゴリー
 lady = Category.create(name: "レディース")
 man = Category.create(name: "メンズ")
 kids = Category.create(name: "ベビー・キッズ")
@@ -13,7 +13,7 @@ ticket = Category.create(name: "チケット")
 bike = Category.create(name: "自転車・オートバイ")
 etcetera = Category.create(name: "その他")
 
-# 子
+# 子カテゴリー
 lady_tops = lady.children.create(name: "トップス")
 lady_jacket = lady.children.create(name: "ジャケット/アウター")
 lady_pants = lady.children.create(name: "パンツ")
@@ -79,9 +79,16 @@ interior_smallAccessory = interior.children.create(name: "インテリア小物"
 interior_season = interior.children.create(name: "季節/年中行事")
 interior_etcetera = interior.children.create(name: "その他")
 
+book_general = book.children.create(name: "本")
+book_comic = book.children.create(name: "漫画")
+book_magazine = book.children.create(name: "雑誌")
+book_cd = book.children.create(name: "CD")
+book_dvd = book.children.create(name: "DVD/ブルーレイ")
+book_record = book.children.create(name: "レコード")
+book_game = book.children.create(name: "テレビゲーム")
 
-# 孫
 
+# 孫カテゴリー
 lady_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"}, {name: "Tシャツ/カットソー(七分/長袖)"}, {name: "シャツ/ブラウス(半袖/袖なし)"}, {name: "シャツ/ブラウス(七分/長袖)"}, {name: "ポロシャツ"}, {name: "キャミソール"}, {name: "タンクトップ"}, {name: "ホルターネック"}, {name: "ニット/セーター"}, {name: "チュニック"}, {name: "カーディガン/ボレロ"}, {name: "アンサンブル"}, {name: "ベスト/ジレ"}, {name: "パーカー"}, {name: "トレーナー/スウェット"}, {name: "ペアトップ/チューブトップ"}, {name: "ジャージ"}, {name: "その他"}])
 lady_jacket.children.create([{name: "テーラードジャケット"}, {name: "ノーカラージャケット"}, {name: "Gジャン/デニムジャケット"}, {name: "レザージャケット"}, {name: "ダウンジャケット"}, {name: "ライダースジャケット"}, {name: "ミリタリージャケット"}, {name: "ダウンベスト"}, {name: "ジャンパー/ブルゾン"}, {name: "ポンチョ"}, {name: "ロングコート"}, {name: "トレンチコート"}, {name: "ダッフルコート"}, {name: "ピーコート"}, {name: "チェスターコート"}, {name: "モッズコート"}, {name: "スタジャン"}, {name: "毛皮/ファーコート"}, {name: "スプリングコート"}, {name: "スカジャン"}, {name: "その他"}])
 lady_pants.children.create([{name: "デニム/ジーンズ"}, {name: "ショートパンツ"}, {name: "カジュアルパンツ"}, {name: "ハーフパンツ"}, {name: "チノパン"}, {name: "ワークパンツ/カーゴパンツ"}, {name: "クロップドパンツ"}, {name: "サロペット/オーバーオール"}, {name: "オールインワン"}, {name: "サルエルパンツ"}, {name: "ガウチョパンツ"}, {name: "その他"}])
@@ -145,3 +152,14 @@ interior_bedding.children.create([{name: "布団/毛布"}, {name: "枕"}, {name:
 interior_smallAccessory.children.create([{name: "ごみ箱"}, {name: "ウェルカムボード"}, {name: "オルゴール"}, {name: "クッション"}, {name: "クッションカバー"}, {name: "スリッパラック"}, {name: "テッシュボックス"}, {name: "バケット/かご"}, {name: "フォトフレーム"}, {name: "マガジンラック"}, {name: "モビール"}, {name: "花瓶"}, {name: "灰皿"}, {name: "傘立て"}, {name: "小物入れ"}, {name: "置き時計"}, {name: "掛け時計/柱時計"}, {name: "鏡(立て掛け式)"}, {name: "鏡(壁掛け式)"}, {name: "置物"}, {name: "風鈴"}, {name: "植物/観葉植物"}, {name: "その他"}])
 interior_season.children.create([{name: "正月"}, {name: "成人式"}, {name: "バレンタインデー"}, {name: "ひな祭り"}, {name: "子どもの日"}, {name: "母の日"}, {name: "父の日"}, {name: "サマーギフト/お中元"}, {name: "夏/夏休み"}, {name: "ハロウィン"}, {name: "敬老の日"}, {name: "七五三"}, {name: "お歳暮"}, {name: "クリスマス"}, {name: "冬一般"}, {name: "その他"}])
 
+book_general.children.create([{name: "文学/小説"}, {name: "人文/社会"}, {name: "ノンフィクション/教養"}, {name: "地図/旅行ガイド"}, {name: "ビジネス/経済"}, {name: "健康/医学"}, {name: "コンピュータ/IT"}, {name: "趣味/スポーツ/実用"}, {name: "住まい/暮らし/子育て"}, {name: "アート/エンタメ"}, {name: "洋書"}, {name: "絵本"}, {name: "参考書"}, {name: "その他"}])
+book_comic.children.create([{name: "全巻セット"}, {name: "少年漫画"}, {name: "少女漫画"}, {name: "青年漫画"}, {name: "女性漫画"}, {name: "同人誌"}, {name: "その他"}])
+book_magazine.children.create([{name: "アート/エンタメ/ホビー"}, {name: "ファッション"}, {name: "ニュース/総合"}, {name: "趣味/スポーツ"}, {name: "その他"}])
+book_cd.children.create([{name: "邦楽"}, {name: "洋楽"}, {name: "アニメ"}, {name: "クラシック"}, {name: "K-POP/アジア"}, {name: "キッズ/ファミリー"}, {name: "その他"}])
+book_dvd.children.create([{name: "外国映画"}, {name: "日本映画"}, {name: "アニメ"}, {name: "TVドラマ"}, {name: "ミュージック"}, {name: "お笑い/バラエティ"}, {name: "スポーツ/フィットネス"}, {name: "キッズ/ファミリー"}, {name: "その他"}])
+book_record.children.create([{name: "邦楽"}, {name: "洋楽"}, {name: "その他"}])
+book_game.children.create([{name: "家庭用ゲーム本体"}, {name: "家庭用ゲームソフト"}, {name: "携帯用ゲーム本体"}, {name: "携帯用ゲームソフト"}, {name: "PCゲーム"}, {name: "その他"}])
+
+
+
+([{name: ""}, {name: "その他"}])
