@@ -23,10 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items do
-    resources :comments, only: [:create, :destroy]
-
-
   resources :credit_cards, only: [:new, :show, :create, :destroy]
   
   resources :items do
@@ -35,6 +31,7 @@ Rails.application.routes.draw do
       get  'confirm/:id'=>  'items#confirm', as: 'confirm'
       post 'pay/:id'=>   'items#pay', as: 'pay'
       get  'done'=>      'items#done', as: 'done'
+      get 'search'
     end
 
   end
