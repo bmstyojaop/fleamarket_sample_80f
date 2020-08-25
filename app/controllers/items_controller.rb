@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
+    @favorites = Favorite.where(item_id: params[:id])
+    @user_favorite = @favorites.where(user_id: current_user)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
