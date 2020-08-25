@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user
-  before_action :user_items
+  before_action :set_user, only: [:show, :edit, :update ]
+  before_action :user_items, only: [:show, :edit, :update ]
   def show
   end
   
   def edit
     
+  end
+
+  def favorites
+    @favorites = Favorite.where(user_id: current_user)
   end
 
   def update
@@ -15,11 +19,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
-  def item_list
-  end
-
-  
 
   private
     def user_params

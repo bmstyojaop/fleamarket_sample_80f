@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = Comment.create(comment_params)
     respond_to do |format|
-      format.html { redirect_to item_path(params[:item_id]) }
+      format.html { redirect_to item_path(params[:item_id]),data: {"turbolinks" => false} }
       format.json
     end
   end
@@ -14,9 +14,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if user_signed_in? && current_user.id == @comment.user_id && @comment.destroy
       @comment.destroy
-      redirect_to item_path(params[:item_id])
+      redirect_to item_path(params[:item_id]), data: {"turbolinks" => false}
     else
-      redirect_to item_path(params[:item_id]), alert: :'ログイン済みのコメント投稿者本人のみがコメントを削除できます'
+      redirect_to item_path(params[:item_id]), data: {"turbolinks" => false}, alert: :'ログイン済みのコメント投稿者本人のみがコメントを削除できます'
     end
   end
 

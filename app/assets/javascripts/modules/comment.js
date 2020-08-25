@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(comment){
-    if (comment.user_image) {
+    if (comment.user_image_url) {
       let html = `<div class="MainShow__box__comments__comment">
                     <div class="Profile">
                       <div class="Profile__name">

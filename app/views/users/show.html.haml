@@ -25,9 +25,10 @@
             さんの出品一覧
           
         %li.UserDetails__nav--element
-          = icon('fas', 'star')
-          = @nickname
-          さんのお気に入り一覧
+          = link_to favorites_users_path do
+            = icon('fas', 'star')
+            = @nickname
+            さんのお気に入り一覧
         
         
 
@@ -69,7 +70,7 @@
   %section.UserItems
     - @items.each do |item|
       %li.UserItems__item
-        = link_to item_path(item.id) do
+        = link_to item_path(item.id), data: {"turbolinks" => false} do
           .UserItems__item--image
             = image_tag item.images.first.image.url
           .UserItems__item--detail
