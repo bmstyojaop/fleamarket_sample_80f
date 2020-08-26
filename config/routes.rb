@@ -31,12 +31,12 @@ Rails.application.routes.draw do
       get  'done'=>      'items#done', as: 'done'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'search'
+      get 'detail_search'
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      get 'search'
-      get 'detail_search'
     end
   end
   
