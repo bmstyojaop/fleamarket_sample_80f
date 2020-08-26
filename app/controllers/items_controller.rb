@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   before_action :item_sold?, only: [:pay]
   before_action :items_desc
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_ransack,only: [:search, :detail_search]
 
   def index
     # @status = @item.auction_status
@@ -80,6 +81,17 @@ class ItemsController < ApplicationController
       flash.now[:alert] = '削除できませんでした'
       render :show
     end
+  end
+
+  def search
+    @search_items = Item.search(params[:keyword])
+    @keyword = params[:keyword]
+    @items = @q.result(distinct: true)
+  end
+  def detail_search   
+    @search_item = Item.ransack(params[:q]) 
+    @items = @search_item.result
+    @keyword = params[:name_cont]
   end
 
   def confirm
@@ -164,5 +176,8 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
 
+  def set_ransack
+    @q = Item.ransack(params[:q])
+  end
 
 end

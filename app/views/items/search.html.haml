@@ -1,0 +1,80 @@
+.Search
+  .Search__wrapper
+    .Left__box
+      = search_form_for(@q, url: search_items_path, method: :get) do |f|
+        .Left__box__sort
+          = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { onchange: 'this.form.submit()'} )
+        .Left__box__detail
+          %h1 詳細検索
+          .Left__box__detail__keyword
+            = f.label "キーワードを追加する"
+            = f.search_field :item_name_cont
+          .Left__box__detail__price
+            = f.label "価格"
+            .Left__box__detail__price__box
+              = f.number_field :price_gteq, placeholder:"¥ 0"
+              = f.label "~"
+              = f.number_field :price_lteq, placeholder:"¥ 0"
+          .Left__box__detail__state
+            .Left__box__detail__text 商品の状態
+            .Left__box__detail__state__box
+              - ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"].each do |state|
+                .Left__box__detail__state__box__boxes
+                  = f.check_box :item_condition_id_eq_any, {}, checked_value = "#{state}", unchecked_value = false
+                  = f.label "#{state}"
+          .Left__box__detail__order-status
+            .Left__box__detail__order-status__text 販売状況
+            .Left__box__detail__order-status__sale
+              .Left__box__detail__order-status__sale__boxes
+                =f.radio_button :auction_status_eq,1
+                = '出品中'
+              .Left__box__detail__order-status__sale__boxes
+                =f.radio_button :auction_status_eq,2
+                = '売り切れ'  
+          .Left__box__detail__btn
+            .Left__box__detail__btn__clear
+              = f.submit "クリア", type: :reset
+            .Left__box__detail__btn__fix
+              = f.submit "完了"  
+    .Right__box
+      .Search-sort
+      %section.Search-container
+        - if params[:search] != ""
+          %h2.result
+            %span 検索結果
+          .Search-container__count
+            = "1 - #{@items.length}件表示"
+        - else
+          %h2 新着商品
+        .Search-container__results
+          - @items.each do |item|
+            - if item.auction_status == "出品中"
+              %li.PickupContainer__items--item
+                = link_to item_path(item.id), data: {"turbolinks" => false} do
+                  .Image
+                    = image_tag item.images.first.image.url
+                  .DetailBox
+                    .DetailBox__name
+                      = item.item_name
+                    .DetailBox__details
+                      %ul
+                        %li
+                          = item.price.to_s(:delimited)
+                          円(税込)
+                    .DetailBox__status
+                      出品中
+            - else
+              %li.PickupContainer__items--item
+                = link_to item_path(item.id), data: {"turbolinks" => false} do
+                  .Image
+                    = image_tag item.images.first.image.url
+                  .DetailBox
+                    .DetailBox__name
+                      = item.item_name
+                    .DetailBox__details
+                      %ul
+                        %li
+                          = item.price.to_s(:delimited)
+                          円(税込)
+                    .DetailBox__status
+                      売り切れ
