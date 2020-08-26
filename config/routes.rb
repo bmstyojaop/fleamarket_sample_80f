@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       get  'confirm/:id'=>  'items#confirm', as: 'confirm'
       post 'pay/:id'=>   'items#pay', as: 'pay'
       get  'done'=>      'items#done', as: 'done'
+      get 'search'
+      get 'detail_search'
     end
   end
   

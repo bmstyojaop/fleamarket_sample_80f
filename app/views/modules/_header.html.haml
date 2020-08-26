@@ -10,8 +10,8 @@
           = image_tag("logo.png")
       .SearchArea
         %ul.SearchArea__form
-          = form_with(url: "#", local: true, method: :get) do |form|
-            = form.text_field :keyword, placeholder: "キーワードから探す", class: "search-input"
+          = search_form_for(@q, url: search_items_path, method: :get) do |form|
+            = form.search_field :item_name_cont, placeholder: "キーワードから探す", class: "search-input"
             .SearchArea__form--submit
               = form.submit "", class: 'submit' 
           

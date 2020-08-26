@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
 
   protected
   # デバイス用のストロングパラメーターを設置
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
       username == Rails.application.credentials[:basic_auth][:user] &&
       password == Rails.application.credentials[:basic_auth][:pass]
     end
+  end
+
+  def set_search
+    @q = Item.ransack(params[:q])
   end
 
 end
