@@ -171,6 +171,29 @@
     width: 940px;
     height: 60px;
   }
+  .pulldown {
+    .parent_category_box{
+      content: '';
+      padding: 0 16px;
+      width: 940px;
+      height: 60px;
+    }
+    .AppendCategory__category__children--select{
+      content: '';
+      padding: 0 16px;
+      width: 940px;
+      height: 60px;
+      
+    }
+    .AppendCategory__category__grandchildren--select{
+      content: '';
+      padding: 0 16px;
+      width: 940px;
+      height: 60px;
+
+    }
+  }
+
   .PriceField{
     height: 40px;
     padding: 0 16px;
@@ -195,4 +218,8 @@
       }
     }
   }
+}
+
+#size_box{
+  display: none;
 }
