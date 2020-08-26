@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update ]
-  before_action :user_items, only: [:show, :edit, :update ]
+  before_action :set_user, only: [:show, :edit, :update, :item_list]
+  before_action :user_items, only: [:show, :edit, :update, :item_list]
   def show
   end
   
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def item_list
   end
 
   private

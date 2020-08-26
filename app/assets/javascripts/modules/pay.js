@@ -24,7 +24,7 @@ window.addEventListener(
             const cardForm = document.querySelector('#charge-form');
             console.log(cardForm);
             cardForm.submit();
-            alert("登録が完了しました"); 
+            alert("クレジットカードの登録が完了しました"); 
           } else {
               alert("カード情報が正しくありません。"); 
               console.table(response.error);
