@@ -37,12 +37,12 @@ crumb :item_show do |issue|
 end
 
 crumb :item_confirm do 
-  link "商品購入確認ページ", confirm_items(current_user)
+  link "商品購入確認ページ", confirm_items_path(current_user)
   parent :item_show
 end
 
 crumb :item_done do 
-  link "商品購入完了ページ", done_items
+  link "商品購入完了ページ", done_items_path
   parent :item_confirm
 end
 
