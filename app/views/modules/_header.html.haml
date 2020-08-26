@@ -1,5 +1,9 @@
 %header.Header
+  -# - breadcrumb :item_show, class: "breadcrumbs"
+  -# = render "layouts/breadcrumbs"
+  
   .Header__inner
+
     .Header__inner--main
       %h1.MainIcon
         = link_to root_path do
@@ -11,6 +15,7 @@
             .SearchArea__form--submit
               = form.submit "", class: 'submit' 
           
+
     .NavLists
       .NavLists__left
         カテゴリー
@@ -44,6 +49,7 @@
     .Notifications
     - flash.each do |key, value|
       = content_tag(:div, value, class: key)
+
           
 
 

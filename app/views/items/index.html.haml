@@ -1,3 +1,6 @@
+- breadcrumb :root
+= render "layouts/breadcrumbs"
+
 .TopMain
   .TopVisual
     .Content
@@ -97,7 +100,7 @@
     - @items.each do |item|
       - if item.auction_status == "出品中"
         %li.PickupContainer__items--item
-          = link_to item_path(item.id) do
+          = link_to item_path(item.id), data: {"turbolinks" => false} do
             .Image
               = image_tag item.images.first.image.url
             .DetailBox
@@ -116,7 +119,7 @@
                 出品中
       - else
         %li.PickupContainer__items--item
-          = link_to item_path(item.id) do
+          = link_to item_path(item.id), data: {"turbolinks" => false} do
             .Image
               = image_tag item.images.first.image.url
             .DetailBox
