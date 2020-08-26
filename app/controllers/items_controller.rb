@@ -9,9 +9,10 @@ class ItemsController < ApplicationController
   before_action :items_desc
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_ransack,only: [:search, :detail_search]
-
+  
   def index
     # @status = @item.auction_status
+
   end
 
   def new
@@ -180,4 +181,5 @@ class ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
   end
 
+  
 end
