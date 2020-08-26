@@ -26,9 +26,24 @@ crumb :item_list do
   parent :user
 end
 
-crumb :issue do |issue|
-  link issue.title, issue_path(issue)
-  parent :project_issues, issue.project
+crumb :favorites do
+  link "お気に入り一覧", favorites_users_path
+  parent :user
+end
+
+crumb :item_show do |issue|
+  link "商品詳細ページ", item_path(current_user)
+  parent :root
+end
+
+crumb :item_confirm do 
+  link "商品購入確認ページ", confirm_items(current_user)
+  parent :item_show
+end
+
+crumb :item_done do 
+  link "商品購入完了ページ", done_items
+  parent :item_confirm
 end
 
 # If you want to split your breadcrumbs configuration over multiple files, you

@@ -1,7 +1,7 @@
-- breadcrumb :profile
-= render "layouts/breadcrumbs"
 
 .UserBackground
+  - breadcrumb :profile
+  = render "layouts/breadcrumbs"
   .UserDetails
     .UserDetails__field
       = form_with model: @user, local: true do |f|
