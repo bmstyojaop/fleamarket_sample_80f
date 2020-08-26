@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   before_action :set_credit_card, only: [:pay, :confirm]
   before_action :item_sold?, only: [:pay]
   before_action :items_desc
+  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_ransack,only: [:search, :detail_search]
 
   def index
@@ -16,7 +17,18 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+
   end
+
+  def get_category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end
+
+  #jsonで子カテゴリーに紐づく孫カテゴリーの配列を取得
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
 
   def create
     @item = Item.new(item_params)
@@ -158,6 +170,10 @@ class ItemsController < ApplicationController
       redirect_to :show
       flash[:alert] = 'この商品は売り切れです'
     end
+  end
+
+  def set_category  
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def set_ransack
