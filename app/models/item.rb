@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_many :comments,    dependent: :destroy
   has_many :favorites,   dependent: :destroy
   has_many :item_images, dependent: :destroy
-  # belongs_to :category
+  belongs_to :category
   belongs_to_active_hash :postage_type, dependent: :destroy
   belongs_to_active_hash :preparation_day, dependent: :destroy
   belongs_to_active_hash :postage_payer, dependent: :destroy
@@ -38,11 +38,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   def self.search(search)
-    if search != ""
-      Item.where(['name LIKE(?) or explanation LIKE(?)', "%#{search}%", "%#{search}%"])
-    else
-      Item.all
-    end
+    return Item.all unless search
+    Item.where(['item_name LIKE(?) or item_introduction LIKE(?)', "%#{search}%", "%#{search}%"])
   end
-
 end

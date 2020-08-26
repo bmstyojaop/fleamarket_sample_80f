@@ -1,15 +1,20 @@
 %header.Header
+  -# - breadcrumb :item_show, class: "breadcrumbs"
+  -# = render "layouts/breadcrumbs"
+  
   .Header__inner
+
     .Header__inner--main
       %h1.MainIcon
         = link_to root_path do
           = image_tag("logo.png")
       .SearchArea
         %ul.SearchArea__form
-          = form_with(url: search_items_path, local: true, method: :get, class: "") do |f|
-            = f.text_field :key, placeholder: "キーワードから探す", class: "search-input", id: "searchInput"
-            = f.submit class: 'submit', id: 'SearchArea__form--submit'
-          
+          = search_form_for(@q, url: search_items_path, method: :get) do |form|
+            = form.search_field :item_name_cont, placeholder: "キーワードから探す", class: "search-input"
+            .SearchArea__form--submit
+              = form.submit "", class: 'submit' 
+
     .NavLists
       .NavLists__left
         カテゴリー
@@ -43,6 +48,7 @@
     .Notifications
     - flash.each do |key, value|
       = content_tag(:div, value, class: key)
+
           
 
 
