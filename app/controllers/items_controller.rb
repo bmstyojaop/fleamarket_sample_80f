@@ -74,7 +74,6 @@ class ItemsController < ApplicationController
   def search
     @search_items = Item.search(params[:keyword])
     @keyword = params[:keyword]
-    @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
   end
   def detail_search   
