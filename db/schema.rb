@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_052652) do
+ActiveRecord::Schema.define(version: 2020_08_27_100158) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,12 +38,10 @@ ActiveRecord::Schema.define(version: 2020_08_19_052652) do
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_favorites_on_item_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_052652) do
     t.text "item_introduction", null: false
     t.integer "category_id", null: false
     t.integer "item_condition_id", null: false
-    t.integer "postage_type_id", null: false
+    t.integer "postage_type_id"
     t.integer "postage_payer_id", null: false
     t.integer "preparation_day_id", null: false
     t.integer "shipping_origin_id", null: false
@@ -144,8 +142,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_052652) do
   end
 
   add_foreign_key "credit_cards", "users"
-  add_foreign_key "favorites", "items"
-  add_foreign_key "favorites", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
   add_foreign_key "sns_credentials", "users"

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     collection do
       get 'favorites'
+      get 'commented_items'
+      get 'sold_items'
     end
     resources :sending_destinations, only: [:edit, :update]
     member do 
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'search'
       get 'detail_search'
+      get 'post_done'
+      get 'update_done'
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }

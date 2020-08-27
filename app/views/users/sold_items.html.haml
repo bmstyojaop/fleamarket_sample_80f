@@ -1,0 +1,28 @@
+.Item__body
+  .Item__body__title
+    売却済の商品一覧
+  .Item__body__lists
+    - @sold_items.each do |item|
+      %li.PickupContainer__items--item
+        = link_to item_path(item.id), data: {"turbolinks" => false} do
+          .Image
+            = image_tag item.images.first.image.url
+          .DetailBox
+            .DetailBox__name
+              = item.item_name
+            .DetailBox__details
+              %ul
+                %li
+                  = item.price.to_s(:delimited)
+                  円
+              %ul
+                %li
+                  (税込)
+            .Icon
+              %ul
+                %li
+                  = icon('fa', 'star')
+                  = item.favorites.count
+          .List__sold
+            .List__sold__inner
+              sold

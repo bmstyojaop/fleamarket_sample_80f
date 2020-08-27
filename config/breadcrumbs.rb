@@ -32,7 +32,7 @@ crumb :favorites do
 end
 
 crumb :item_show do |issue|
-  link "商品詳細ページ", item_path(current_user)
+  link "商品詳細ページ", done_items_path
   parent :root
 end
 
