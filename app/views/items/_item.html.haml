@@ -13,12 +13,14 @@
                 %li
                   = item.price.to_s(:delimited)
                   円
-              %p 
-                (税込)
-                = (item.price * 1.1).floor
-                円
-            .DetailBox__status
-              出品中
+              %ul
+                %li
+                  (税込)
+            .Icon
+              %ul
+                %li
+                  = icon('fa', 'star')
+                  = item.favorites.count
     - else
       %li.CategoryContainer__items
       
@@ -33,7 +35,14 @@
                 %li
                   = item.price.to_s(:delimited)
                   円
-              %p 
-                (税込)
-            .DetailBox__status
-              売り切れ
+              %ul
+                %li
+                  (税込)
+            .Icon
+              %ul
+                %li
+                  = icon('fa', 'star')
+                  = item.favorites.count
+          .List__sold
+            .List__sold__inner
+              sold
