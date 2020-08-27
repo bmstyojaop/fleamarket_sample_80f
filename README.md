@@ -180,7 +180,7 @@
 |birth_month|date|null: false|
 |birth_day|date|null: false|
 |introduction|text||
-|image|string||
+|image|string||  
 |user_id|string|references, null: false, foreign_key: true|
 
 
@@ -225,4 +225,7 @@
 ### Association
 
 - belongs_to :user
+
+![Animated GIF-downsized](https://user-images.githubusercontent.com/67876040/91416508-6ec8b680-e88a-11ea-8e60-240a65024e2b.gif)
+
 
