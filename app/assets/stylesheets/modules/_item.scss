@@ -85,3 +85,10 @@
   }
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  span {
+    margin: 5px;
+  }
+}
