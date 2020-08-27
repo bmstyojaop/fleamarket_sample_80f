@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
   def show
-    @items = @category.set_categories.order("created_at DESC").page(params[:page]).per(9)
+    @items = @category.set_categories.order("created_at DESC").page(params[:page]).per(16)
   end
 
   private

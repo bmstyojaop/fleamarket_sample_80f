@@ -4,10 +4,9 @@
       = link_to category.name, category_path(category)
 .ItemsContainer
   .ItemsContainer__index
-    .ItemsContainer__index__title
+    .ItemsContainer__index--title
       = "#{@category.name}の商品一覧"
       .title__border
     - if @items
-      %ul.lists
-        = render "items/item", items: @items
+      = render "items/item", items: @items
     = paginate @items

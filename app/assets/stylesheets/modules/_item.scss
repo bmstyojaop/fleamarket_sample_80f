@@ -11,3 +11,77 @@
     }
   }
 }
+
+.ItemsContainer{
+  &__index {
+    &--title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+    
+  }
+}
+.CategoryContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 30px 100px;
+  &__items {
+    width: 220px;
+    display: block;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    margin: 30px 20px;
+    a {
+      text-decoration: none;
+      .Image {
+        width: 220px;
+        height: 150px; 
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        z-index: auto;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          z-index: auto;
+          height: 150px;
+          object-fit: cover;
+        }
+      }
+      .DetailBox {
+        background-color: white;
+        color: #333;
+        padding: 16px;
+        &__name {
+          overflow: hidden;
+          line-height: 1.5;
+          font-size: 16px;
+          text-align: left;
+        }
+        &__details {
+          font-size: 16px;
+          ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          p {
+            font-size: 10px;
+            text-align: left;
+          }
+        }
+        &__status {
+          color: red;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+

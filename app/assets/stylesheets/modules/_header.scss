@@ -146,20 +146,17 @@ header {
 }
 
 
-
+// カテゴリーのドロップダウンリスト
 .Category__child, .Category__parent, .Category__grandchild{
   display: none;
 }
 
-
-// カテゴリーの大枠の要素の共通項
 .Category__list{
   position: absolute;
   height: 560px;
   background-color: white;
 }
 
-// 子要素はカテゴリー名の共通項
 .Category__child--name{
   width: 100%;
   color: black;

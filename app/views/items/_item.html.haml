@@ -1,7 +1,7 @@
-%ul.PickupContainer__items
+%ul.CategoryContainer
   - @items.each do |item|
     - if item.auction_status == "出品中"
-      %li.PickupContainer__items--item
+      %li.CategoryContainer__items
         = link_to item_path(item.id), data: {"turbolinks" => false} do
           .Image
             = image_tag item.images.first.image.url
@@ -20,7 +20,8 @@
             .DetailBox__status
               出品中
     - else
-      %li.PickupContainer__items--item
+      %li.CategoryContainer__items
+      
         = link_to item_path(item.id), data: {"turbolinks" => false} do
           .Image
             = image_tag item.images.first.image.url
