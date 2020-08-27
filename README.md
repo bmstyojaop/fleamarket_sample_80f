@@ -58,8 +58,9 @@ Basic認証
 
 ## アプリ説明
 
-### サインアップログイン  
-新規登録はウィザード形式で、ユーザー情報、住所の順に登録いたします。  
+### サインアップ/ログイン  
+![Animated GIF-downsized](https://user-images.githubusercontent.com/67876040/91416508-6ec8b680-e88a-11ea-8e60-240a65024e2b.gif)  
+新規登録はウィザード形式で、ユーザー情報、住所（お届け先）の順に登録いたします。  
 ログインはemailとpasswordの２つの情報が必要になります。  
 
 ### 商品の出品  
@@ -301,6 +302,6 @@ Basic認証
 
 - belongs_to :user
 
-![Animated GIF-downsized](https://user-images.githubusercontent.com/67876040/91416508-6ec8b680-e88a-11ea-8e60-240a65024e2b.gif)
+
 
 
