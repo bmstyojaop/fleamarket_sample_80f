@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to  items_path
+      redirect_to post_done_items_path
     else
       @item.images.new
       render :new
@@ -66,12 +66,21 @@ class ItemsController < ApplicationController
       Image.where(id:delete__db).destroy_all
       @item.touch
       if @item.update(item_params)
-        redirect_to  root_path
+        redirect_to  update_done_items_path
       else
         flash.now[:alert] = '更新できませんでした'
         render :edit
       end
     end
+  end
+
+  def  post_done
+    @item = Item.where(user_id: current_user.id).last
+  end
+
+  def update_done
+    @item_update = Item.order("updated_at DESC").first
+    @item = Item.where(user_id: current_user.id).last
   end
 
   def destroy
