@@ -58,22 +58,26 @@ Basic認証
 
 ## アプリ説明
 
-### サインアップログイン  
-新規登録はウィザード形式で、ユーザー情報、住所の順に登録いたします。  
+### サインアップ/ログイン  
+![Animated GIF-downsized](https://user-images.githubusercontent.com/67876040/91416508-6ec8b680-e88a-11ea-8e60-240a65024e2b.gif)  
+新規登録はウィザード形式で、ユーザー情報、住所（お届け先）の順に登録いたします。  
 ログインはemailとpasswordの２つの情報が必要になります。  
 
 ### 商品の出品  
-商品の出品はマイページのサイドバー「出品する」をクリックすることで商品を出品することができます  
+![Animated GIF-downsized (1)](https://user-images.githubusercontent.com/67876040/91433267-02f04900-e89e-11ea-83a2-c9bfa8d4d680.gif)  
+商品の出品はトップページ右下の「出品する」をクリックすることで商品を出品することができます  
 出品情報は必須を全て入力しなければ進めないようになっています。  
 出品後は、トップページに表示されております。  
 
 ### 商品の購入  
+![Animated GIF-downsized (2)](https://user-images.githubusercontent.com/67876040/91433583-75612900-e89e-11ea-8a30-72c135d5a02c.gif)  
 出品者以外は、購入するボタンが表示されます。クレジットカードが登録されていれば、購入を実行することができます。  
 カードが登録されていない場合、カード登録画面へと遷移いたします。  
 カードの登録はマイページのサイドバーで実行することができますが、デフォルトで登録されているカードをお使いください。  
 商品購入後は売り切れと表示され、トップページで商品を購入することができなくなります。  
 
 ### ログアウト実行のお願い  
+![Animated GIF-downsized (3)](https://user-images.githubusercontent.com/67876040/91433799-c7a24a00-e89e-11ea-90ff-df5a06d32d1f.gif)  
 最後に、必ずログアウトいただきますようお願い申し上げます。ログアウトはヘッダーもしくはマイページのサイドバーにございます。
 
 ## ER図
@@ -301,6 +305,6 @@ Basic認証
 
 - belongs_to :user
 
-![Animated GIF-downsized](https://user-images.githubusercontent.com/67876040/91416508-6ec8b680-e88a-11ea-8e60-240a65024e2b.gif)
+
 
 
