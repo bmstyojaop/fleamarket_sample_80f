@@ -26,7 +26,6 @@ class Item < ApplicationRecord
   validates :item_condition_id,               presence: true
   validates :auction_status,               presence: true
   validates :postage_payer_id,                presence: true
-  validates :postage_type_id,                presence: true
   validates :shipping_origin_id,              presence: true
   validates :preparation_day_id,              presence: true
   validates :price,                        presence: true

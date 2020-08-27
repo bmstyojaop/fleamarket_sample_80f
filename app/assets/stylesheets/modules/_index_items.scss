@@ -226,6 +226,8 @@
     &--item {
       width: 220px;
       display: inline-block;
+      position: relative;
+      box-shadow: 3px 2px 3px 3px rgba(100,100,100,0.8);
       a {
         text-decoration: none;
         .Image {
@@ -269,10 +271,29 @@
               text-align: left;
             }
           }
-          &__status {
-            color: red;
-            font-weight: bold;
+          .Icon {
+            color: #3ccace;
           }
+        }
+      }
+      .List__sold{
+        width: 0;
+        height: 0;
+        border-top: 40px solid #3ccace;
+        border-right: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 40px solid #3ccace;
+        z-index:100;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        &__inner{
+          color: #fff;
+          transform: rotate(-45deg);
+          font-size: 20px;
+          margin:-16px 0px 0px -32px;
+          letter-spacing: 2px;
+          font-weight: bold;
         }
       }
     }

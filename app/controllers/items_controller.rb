@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to  items_path
+      redirect_to post_done_items_path
     else
       @item.images.new
       render :new
@@ -66,12 +66,21 @@ class ItemsController < ApplicationController
       Image.where(id:delete__db).destroy_all
       @item.touch
       if @item.update(item_params)
-        redirect_to  root_path
+        redirect_to  update_done_items_path
       else
         flash.now[:alert] = '更新できませんでした'
         render :edit
       end
     end
+  end
+
+  def  post_done
+    @item = Item.where(user_id: current_user.id).last
+  end
+
+  def update_done
+    @item_update = Item.order("updated_at DESC").first
+    @item = Item.where(user_id: current_user.id).last
   end
 
   def destroy
@@ -143,7 +152,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :shipping_origin_id, :postage_type_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :item_introduction, :item_condition_id, :postage_payer_id, :price, :preparation_day_id, :category_id, :postage_type_id, :shipping_origin_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
