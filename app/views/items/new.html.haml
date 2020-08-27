@@ -77,8 +77,6 @@
       .FormLabel
         .LavelName
           配送方法
-        .LavelRequired
-          必須
       =f.collection_select(:postage_type_id, PostageType.all, :id, :name,{include_blank: "選択してください"}, class: "SerectField")
     .ExhibitionPrice
       .FormLabel
