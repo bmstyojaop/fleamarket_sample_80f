@@ -97,6 +97,9 @@ header {
   justify-content: space-between;
   &__right{
     display: flex;
+    a {
+      margin-left: 20px;
+    }
   }
 }
 
