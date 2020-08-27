@@ -22,11 +22,15 @@
             = icon('fas', 'cog')
             クレジットカード
         %li.UserDetails__nav--element
-          = link_to item_list_user_path(current_user), method: :get do
+          = link_to sold_items_users_path, method: :get do
             = icon('fas', 'box-open')
             = @nickname
-            さんの出品一覧
-          
+            さんの売却済一覧
+        %li.UserDetails__nav--element
+          = link_to commented_items_users_path, method: :get do
+            = icon('fas', 'comment')
+            = @nickname
+            さんのコメント付き一覧
         %li.UserDetails__nav--element
           = link_to favorites_users_path do
             = icon('fas', 'star')
@@ -71,7 +75,7 @@
     = @nickname 
     さんの出品した商品
   %section.UserItems
-    - @items.each do |item|
+    - @sale_items.each do |item|
       %li.UserItems__item
         = link_to item_path(item.id), data: {"turbolinks" => false} do
           .UserItems__item--image
