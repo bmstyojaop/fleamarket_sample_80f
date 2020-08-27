@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/show'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -43,6 +44,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
+  resources :categories, only: [:show]
   
   
   

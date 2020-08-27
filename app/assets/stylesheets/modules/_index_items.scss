@@ -221,7 +221,6 @@
     width: 900px;
     margin: 26px auto 0;
     display: flex;
-    justify-content: space-around;
     overflow: scroll;
     &--item {
       width: 220px;
@@ -232,7 +231,7 @@
         text-decoration: none;
         .Image {
           width: 220px;
-          height: 150px;
+          height: 150px; 
           position: relative;
           overflow: hidden;
           margin: 0;

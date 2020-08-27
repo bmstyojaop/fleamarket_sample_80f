@@ -1,13 +1,13 @@
 $(function(){
   function appendOption(category) {
-    let html = 
+    let html =
       `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   function appendChildrenBox(insertHTML) {
     let childSelectHtml = '';
     childSelectHtml = 
-      `<select class="AppendCategory__category__children--select" id="children_category">
+      `<select class="AppendCategory__category__children--select" id="children_category" name="item[category_id]">
          <option value="" data-category="" >選択してください</option>
          ${insertHTML}</select>
       `;
@@ -76,7 +76,7 @@ $(function(){
         alert('error:孫カテゴリーの取得に失敗');
       })
     }else{
-      $("#grandchildren_box").empty();    
+      $("#grandchildren_box").empty();
     }
   });
 

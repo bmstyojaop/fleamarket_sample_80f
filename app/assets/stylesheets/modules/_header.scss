@@ -142,9 +142,85 @@ header {
     }
   }
 }
+
 .NavLists__right li:hover > ul > li {
   height: 2rem;
   overflow: visible;
+}
+
+
+// カテゴリーのドロップダウンリスト
+.Category__child, .Category__parent, .Category__grandchild{
+  display: none;
+}
+
+.Category__list{
+  position: absolute;
+  height: 560px;
+  background-color: white;
+}
+
+.Category__child--name{
+  width: 100%;
+  color: black;
+  display: inline-block;
+  padding: 3px 15px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.Category{
+  &__search {
+    &:hover {
+      color: #ffb304;
+    }
+  }
+  &:hover{
+    .Category__parent{
+      margin-top: 9px;
+      display: block;
+      &--name{
+        width: 100%;
+        color: black;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 13px;
+        letter-spacing: 2px;
+        &:hover{
+          color: #ffb304;
+        }
+      }
+      li {
+        &:hover{
+          .Category__child{
+            width: 100%;
+            display: block;
+            top: 0;
+            left: 220px;
+            font-size: 13px;
+
+            &--name:hover{
+              color: #ffb304;
+            }
+            li {
+              &:hover{
+                .Category__grandchild{
+                  width: 300px;
+                  display: block;
+                  top: 0;
+                  left: 220px;
+                  font-size: 13px;
+                  &--name:hover{
+                    color: #ffb304;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 

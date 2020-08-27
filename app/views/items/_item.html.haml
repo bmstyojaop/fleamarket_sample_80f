@@ -1,0 +1,48 @@
+%ul.CategoryContainer
+  - @items.each do |item|
+    - if item.auction_status == "出品中"
+      %li.CategoryContainer__items
+        = link_to item_path(item.id), data: {"turbolinks" => false} do
+          .Image
+            = image_tag item.images.first.image.url
+          .DetailBox
+            .DetailBox__name
+              = item.item_name
+            .DetailBox__details
+              %ul
+                %li
+                  = item.price.to_s(:delimited)
+                  円
+              %ul
+                %li
+                  (税込)
+            .Icon
+              %ul
+                %li
+                  = icon('fa', 'star')
+                  = item.favorites.count
+    - else
+      %li.CategoryContainer__items
+      
+        = link_to item_path(item.id), data: {"turbolinks" => false} do
+          .Image
+            = image_tag item.images.first.image.url
+          .DetailBox
+            .DetailBox__name
+              = item.item_name
+            .DetailBox__details
+              %ul
+                %li
+                  = item.price.to_s(:delimited)
+                  円
+              %ul
+                %li
+                  (税込)
+            .Icon
+              %ul
+                %li
+                  = icon('fa', 'star')
+                  = item.favorites.count
+          .List__sold
+            .List__sold__inner
+              sold

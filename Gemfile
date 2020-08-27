@@ -104,3 +104,5 @@ gem "omniauth-rails_csrf_protection"
 gem 'ransack'
 
 gem 'gretel'
+
+gem 'kaminari'
