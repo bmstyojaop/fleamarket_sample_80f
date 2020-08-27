@@ -1,0 +1,13 @@
+.CategoryWrapper {
+  padding: 20px;
+  word-wrap: break-word;
+  &__links {
+    a {
+      color: #3ccace;
+      margin-left: 10px;
+      &:hover {
+        color: #ffb304;
+      }
+    }
+  }
+}

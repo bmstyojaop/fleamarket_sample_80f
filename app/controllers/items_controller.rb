@@ -7,17 +7,11 @@ class ItemsController < ApplicationController
   before_action :set_credit_card, only: [:pay, :confirm]
   before_action :item_sold?, only: [:pay]
   before_action :items_desc
-  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_ransack,only: [:search, :detail_search]
-  
+  before_action :set_category
+  # , only: [:new, :edit, :create, :update, :destroy]
   def index
     # @status = @item.auction_status
-
-  end
-
-  def new
-    @item = Item.new
-    @item.images.new
 
   end
 
@@ -29,6 +23,13 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+
+  def new
+    @item = Item.new
+    @item.images.new
+
+  end
+
 
 
   def create
@@ -50,6 +51,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    #カテゴリーデータ取得
+  @grandchild_category = @item.category
+  @child_category = @grandchild_category.parent 
+  @category_parent = @child_category.parent
+
+  #カテゴリー一覧を作成
+  @category = Category.find(params[:id])
+  # 紐づく孫カテゴリーの親（子カテゴリー）の一覧を配列で取得
+  @category_children = @item.category.parent.parent.children
+  # 紐づく孫カテゴリーの一覧を配列で取得
+  @category_grandchildren = @item.category.parent.children
   end
 
   def update
@@ -173,7 +185,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_category  
+  def set_category
     @category_parent_array = Category.where(ancestry: nil)
   end
 

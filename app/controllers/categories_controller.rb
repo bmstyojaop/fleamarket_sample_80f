@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
 
   def show
     @items = @category.set_categories.order("created_at DESC").page(params[:page]).per(9)
-    # @items = @items.where(user_id: nil).order("created_at DESC").page(params[:page]).per(9)
   end
 
   private

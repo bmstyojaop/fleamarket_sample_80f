@@ -1,10 +1,10 @@
-.category_wrapper
-  .category_links
+.CategoryWrapper
+  .CategoryWrapper__links
     - @category_links.each do |category|
       = link_to category.name, category_path(category)
-.products-container
-  .products-index
-    .title
+.ItemsContainer
+  .ItemsContainer__index
+    .ItemsContainer__index__title
       = "#{@category.name}の商品一覧"
       .title__border
     - if @items
