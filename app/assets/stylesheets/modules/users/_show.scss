@@ -12,6 +12,7 @@
   padding-top: 100px;
   padding-bottom: 10px;
   display: flex;
+  justify-content: space-around;
   &__nav {
     background-color: #fff;
     width: 300px;
@@ -39,6 +40,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.4);
+
     &--image {
       background-color: #d3d3d3;
       height: 230px;
