@@ -3,7 +3,6 @@
   -# = render "layouts/breadcrumbs"
   
   .Header__inner
-
     .Header__inner--main
       %h1.MainIcon
         = link_to root_path do
@@ -17,13 +16,33 @@
           
 
     .NavLists
-      .NavLists__left
-        カテゴリー
+      .Category
+        %ul
+          %li
+            = link_to "#", class: "Category__search search__btn" do
+              %i.fas.fa-bars.Category__icon
+              カテゴリーから探す
+            %ul.Category__parent.Category__list
+              - @parents.each do |parent|
+                %li
+                  = link_to category_path(parent), class: "Category__parent--name" do
+                    = parent.name
+                  %ul.Category__child.Category__list
+                    - parent.children.each do |child|
+                      %li
+                        = link_to category_path(child), class: "Category__child--name" do
+                          = child.name
+                        %ul.Category__grandchild.Category__list
+                          - child.children.each do |grandchild|
+                            %li
+                              = link_to category_path(grandchild), class: " Category__child--name" do
+                                = grandchild.name 
         
       %ul.NavLists__right 
         - if user_signed_in?
-          = link_to "マイページ", "/users/#{current_user.id}"
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          .NavLists__right--logout
+            = link_to "マイページ", "/users/#{current_user.id}"
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
           
         - else
           %li.NavLists__right--login.NavLists__right--item
@@ -46,9 +65,10 @@
                 = icon('fab', 'google')
                 = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
 
-    .Notifications
-    - flash.each do |key, value|
-      = content_tag(:div, value, class: key)
+
+    -# .Notifications
+    -# - flash.each do |key, value|
+    -#   = content_tag(:div, value, class: key)
 
           
 

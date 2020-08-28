@@ -1,0 +1,9 @@
+.Done#fullsize
+  .Done__title
+    商品を出品しました
+  .Done__backlink
+    = link_to 'トップページへ戻る', root_path, class: 'link'
+  .Done__backlink
+    = link_to '出品した商品を確認する', item_path(@item), class: 'link'
+  .Done__backlink
+    = link_to '出品中の商品一覧を見る', user_path(current_user.id), class: 'link'
