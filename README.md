@@ -67,7 +67,7 @@ Basic認証
 ![Animated GIF-downsized (1)](https://user-images.githubusercontent.com/67876040/91433267-02f04900-e89e-11ea-83a2-c9bfa8d4d680.gif)  
 商品の出品はトップページ右下の「出品する」をクリックすることで商品を出品することができます  
 出品情報は必須を全て入力しなければ進めないようになっています。  
-出品後は、トップページに表示されております。  
+商品出品後は、トップページに表示されております。  
 
 ### 商品の購入  
 ![Animated GIF-downsized (2)](https://user-images.githubusercontent.com/67876040/91433583-75612900-e89e-11ea-8a30-72c135d5a02c.gif)  
