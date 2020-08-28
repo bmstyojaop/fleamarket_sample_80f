@@ -55,7 +55,7 @@
               = @nickname
 
       - else
-        .UserDetails__field--image
+        .UserDetails__field--image 
           .UserImage
             - if @user.image?
               = image_tag @user.image.url, class: "UserImage__icon "
