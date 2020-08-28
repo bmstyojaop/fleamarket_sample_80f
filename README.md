@@ -13,6 +13,11 @@ Basic認証
   * EMAIL: furima@taro
   * PASS: furima0123
 
+  * クレジットカード情報
+    * カード番号: 4242424242424242
+    * 期限: 12/20
+    * セキュリティコード: 123
+
 確認用出品者用アカウント  
   * EMAIL: furima@hanako
   * PASS: furima4567
@@ -68,6 +73,12 @@ Basic認証
 商品の出品はトップページ右下の「出品する」をクリックすることで商品を出品することができます  
 出品情報は必須を全て入力しなければ進めないようになっています。  
 商品出品後は、トップページに表示されております。  
+
+### クレジットカードの登録・削除  
+![Animated GIF-downsized (4)](https://user-images.githubusercontent.com/67876040/91529417-3a193580-e944-11ea-91c9-700b8e5b6936.gif)  
+クレジットカードの登録は上記の値を入力していただくと登録できます。  
+カード情報がある時はカードの詳細情報を閲覧できます。  
+
 
 ### 商品の購入  
 ![Animated GIF-downsized (2)](https://user-images.githubusercontent.com/67876040/91433583-75612900-e89e-11ea-8a30-72c135d5a02c.gif)  
